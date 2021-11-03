@@ -7,6 +7,3 @@ def login(request):
     
 def main(request):
     return render(request, 'main.html')
-
-def supadmhome(request):
-    return render(request, 'superadmin.html')
