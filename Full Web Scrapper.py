@@ -5,8 +5,8 @@ import re
 def scrapper():
     try:
         domain_url = str(input("Enter URL: "))
-        # user_file = str(input("Enter File Name: "))
-        # Data_file = open(user_file + ".txt", "w+")
+        user_file = str(input("Enter File Name: "))
+        Data_file = open(user_file + ".txt", "w+", encoding="utf-8")
         domain_result = requests.get(domain_url).text
         domain_doc = BeautifulSoup(domain_result, "html.parser")
         domain_body = domain_doc.body
@@ -35,13 +35,13 @@ def scrapper():
                                 print("Tag Name: ", grab.name)
                                 print("Tag String",grab.string)
                                 print("\n")
-                                # Data_file.write("Tag Name: %s \nTag String: %s \n" % (grab.name,grab.string))
+                                Data_file.write("Tag Name: %s \nTag String: %s \n" % (grab.name,grab.string))
                             else:
                                 pass
                         else:
                             pass
-        #     Data_file.write("New Anker Tag URL Data Scrape")
-        # Data_file.close()
+            Data_file.write("New Anker Tag URL Data Scrape")
+        Data_file.close()
     except:
         print("Invalid Input")
 
