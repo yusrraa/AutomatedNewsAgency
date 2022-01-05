@@ -1,35 +1,52 @@
 from bs4 import BeautifulSoup
+from selenium import webdriver
 import requests
+import re
 
 def scrapper():
     try:
-        Data_file = open("Data_Scrape_File.txt", "w+")
-        url = str(input("Enter URL: "))
-        result = requests.get(url).text
-        doc = BeautifulSoup(result, "html.parser")
-        body = doc.body
-        remove_tag = ['header', 'script', 'noscript', 'img', 'footer', 'figure', "button", "input","style"]
+        domain_url = str(input("Enter URL: "))
+        user_file = str(input("Enter File Name: "))
+        Data_file = open(user_file + ".txt", "w+", encoding="utf-8")
+        domain_result = requests.get(domain_url).text
+        domain_doc = BeautifulSoup(domain_result, "html.parser")
+        domain_body = domain_doc.body
+        remove_tag = ['header', 'script', 'noscript', 'img', 'footer', 'figure', "button", "input", "style"]
         for sel_tag in remove_tag:
-            for scr in body.find_all(sel_tag):
+            for scr in domain_body.find_all(sel_tag):
                 scr.decompose()
-        all_tags = set([tag.name for tag in body.find_all()])
-        print(all_tags)
-        for single_tag in list(all_tags):
-            for scrp in body.find_all(single_tag):
-                content = scrp.contents
-                for grap in content:
-                    if grap.name != None:
-                        if grap.string != None and grap.string != "\n":
-                            print("Tag Name: ", grap.name)
-                            print("Tag String",grap.string)
-                            print("\n")
-                            Data_file.write("Tag Name: %s \nTag String: %s \n" % (grap.name,grap.string))
+        for anker_tag in domain_body.find_all('a', attrs={'href': re.compile("^https://")}):
+            print("Href of tag: ", anker_tag.get('href'))
+            driver = webdriver.Chrome(executable_path="C:/Program Files (x86)/chromedriver.exe")
+            url = str(anker_tag.get('href'))
+            Data_file.write("\nNew Anker Tag URL Data Scrape\n")
+            driver.get(url)
+            #result = requests.get(url).text
+            doc = BeautifulSoup(driver.page_source, "html.parser")
+            driver.quit()
+            body = doc.body
+            remove_tag = ['header', 'script', 'noscript', 'img', 'footer', 'figure', "button", "input","style", "span"]
+            for sel_tag in remove_tag:
+                for scr in body.find_all(sel_tag):
+                    scr.decompose()
+            all_tags = set([tag.name for tag in body.find_all()])
+            print(all_tags)
+            for single_tag in list(all_tags):
+                for scrp in body.find_all(single_tag):
+                    content = scrp.contents
+                    for grab in content:
+                        if grab.name != None:
+                            if grab.string != None and grab.string != "\n":
+                                print("Tag Name: ", grab.name)
+                                print("Tag String",grab.string)
+                                print("\n")
+                                Data_file.write("Tag Name: %s \nTag String: %s \n" % (grab.name,grab.string))
+                            else:
+                                pass
                         else:
                             pass
-                    else:
-                        pass
         Data_file.close()
     except:
-        print("invalid Input")
+        print("Invalid Input")
 
 print(scrapper())
