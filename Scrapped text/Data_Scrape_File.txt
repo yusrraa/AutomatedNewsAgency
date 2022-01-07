@@ -1,0 +1,231 @@
+Tag Name: h1 
+Tag String: Sorry, we could not find the page you were looking for 
+Tag Name: p 
+Tag String: Make sure the URL in the address bar contains no capital letters or spaces and please check your bookmarks. 
+Tag Name: h3 
+Tag String: Popular Links 
+Tag Name: li 
+Tag String: Sky Sports Home 
+Tag Name: li 
+Tag String: Sky Sports Football 
+Tag Name: li 
+Tag String: Sky Sports Score Centre 
+Tag Name: a 
+Tag String: Sky Sports Home 
+Tag Name: a 
+Tag String: Sky Sports Football 
+Tag Name: a 
+Tag String: Sky Sports Score Centre 
+Tag Name: a 
+Tag String: 
+                        Home                     
+Tag Name: a 
+Tag String: 
+                    Sports                 
+Tag Name: a 
+Tag String: 
+                                Football                             
+Tag Name: a 
+Tag String: 
+                                F1                             
+Tag Name: a 
+Tag String: 
+                                Cricket                             
+Tag Name: a 
+Tag String: 
+                                Rugby Union                             
+Tag Name: a 
+Tag String: 
+                                Rugby League                             
+Tag Name: a 
+Tag String: 
+                                Golf                             
+Tag Name: a 
+Tag String: 
+                                Boxing                             
+Tag Name: a 
+Tag String: 
+                                NFL                             
+Tag Name: a 
+Tag String: 
+                                Tennis                             
+Tag Name: a 
+Tag String: 
+                                Racing                             
+Tag Name: a 
+Tag String: 
+                                Darts                             
+Tag Name: a 
+Tag String: 
+                                NBA                             
+Tag Name: a 
+Tag String: 
+                                Netball                             
+Tag Name: a 
+Tag String: 
+                                GAA                             
+Tag Name: a 
+Tag String: 
+                                MMA                             
+Tag Name: a 
+Tag String: 
+                                More Sports                             
+Tag Name: a 
+Tag String: 
+                        Scores                     
+Tag Name: a 
+Tag String: 
+                        Video                     
+Tag Name: a 
+Tag String: 
+                        TV                     
+Tag Name: a 
+Tag String: 
+                        Sky Bet                     
+Tag Name: a 
+Tag String: 
+                        Games                     
+Tag Name: a 
+Tag String: 
+                    More                 
+Tag Name: a 
+Tag String: 
+                                Transfer Centre                             
+Tag Name: a 
+Tag String: 
+                                Live on Sky                             
+Tag Name: a 
+Tag String: 
+                                Get Sky Sports                             
+Tag Name: a 
+Tag String: 
+                                TV Shows                             
+Tag Name: a 
+Tag String: 
+                                TV Guide                             
+Tag Name: a 
+Tag String: 
+                                Sky Go                             
+Tag Name: a 
+Tag String: 
+                                Now TV                             
+Tag Name: a 
+Tag String: 
+                                Kick It Out                             
+Tag Name: a 
+Tag String: 
+                                Black Lives Matter                             
+Tag Name: a 
+Tag String: 
+                                Sky Zero                             
+Tag Name: a 
+Tag String: 
+                                Podcasts                             
+Tag Name: a 
+Tag String: 
+                                Mobile                             
+Tag Name: a 
+Tag String: 
+                                Twitter                             
+Tag Name: a 
+Tag String: 
+                                Facebook                             
+Tag Name: a 
+Tag String: 
+                                Contact Us                             
+Tag Name: a 
+Tag String: 
+                                Work @ Sky Sports                             
+Tag Name: a 
+Tag String: 
+                                Terms & Conditions                             
+Tag Name: a 
+Tag String: Twitter 
+Tag Name: a 
+Tag String: Facebook 
+Tag Name: a 
+Tag String: Sky Sports 
+Tag Name: a 
+Tag String: Get Sky Sports 
+Tag Name: a 
+Tag String: Sky Sports Apps 
+Tag Name: a 
+Tag String: Sportinglife.com 
+Tag Name: a 
+Tag String: TEAMtalk.com 
+Tag Name: a 
+Tag String: Football365.com 
+Tag Name: a 
+Tag String: Partners 
+Tag Name: a 
+Tag String: Sky Bet 
+Tag Name: a 
+Tag String: Fantasy Football 
+Tag Name: a 
+Tag String: Super 6 
+Tag Name: a 
+Tag String: Planet Rugby 
+Tag Name: a 
+Tag String: Golf365 
+Tag Name: a 
+Tag String: Planet F1 
+Tag Name: a 
+Tag String: Cricket365 
+Tag Name: a 
+Tag String: Sky Sports Channels 
+Tag Name: a 
+Tag String: Sky Sports Main Event 
+Tag Name: a 
+Tag String: Sky Sports Premier League 
+Tag Name: a 
+Tag String: Sky Sports Football 
+Tag Name: a 
+Tag String: Sky Sports Cricket 
+Tag Name: a 
+Tag String: Sky Sports Golf 
+Tag Name: a 
+Tag String: Sky Sports Racing 
+Tag Name: a 
+Tag String: Sky Sports F1  
+Tag Name: a 
+Tag String: Sky Sports NFL 
+Tag Name: a 
+Tag String: Sky Sports Arena  
+Tag Name: a 
+Tag String: Sky Sports News 
+Tag Name: a 
+Tag String: Sky Sports Mix 
+Tag Name: a 
+Tag String: More Sky Sites 
+Tag Name: a 
+Tag String: Sky.com 
+Tag Name: a 
+Tag String: Sky News 
+Tag Name: a 
+Tag String: Sky Group 
+Tag Name: a 
+Tag String: Sky For Businesses 
+Tag Name: a 
+Tag String: Work @ Sky Sports 
+Tag Name: a 
+Tag String: NOW TV 
+Tag Name: a 
+Tag String: Sky Communal TV 
+Tag Name: a 
+Tag String: Bigger Picture 
+Tag Name: a 
+Tag String: Store Locator 
+Tag Name: a 
+Tag String: Advertise With Us 
+Tag Name: a 
+Tag String: Sky TV Accessories 
+Tag Name: a 
+Tag String: Terms & Conditions 
+Tag Name: a 
+Tag String: Privacy & Cookies Notice 
+Tag Name: a 
+Tag String: Privacy Options 
+Tag Name: a 
+Tag String: Accessibility Information 
+Tag Name: a 
+Tag String: Contact Us 

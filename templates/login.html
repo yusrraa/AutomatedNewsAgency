@@ -1,29 +1,114 @@
-﻿<!DOCTYPE html>
+﻿{% load static %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Login admin</title>
-</head>
-<body>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Automated News Channel/Login</title>
 
-    <h1>login page</h1>
-    <br><br /><br />
-    <div  style="justify-content:center; display:flex">
-    <form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">User Name</label>
-            <input type="text" class="form-control" id="Inputusrname" aria-describedby="emailHelp" placeholder="Enter your username">
+
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/icons/icomoon/styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/colors.css' %}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/pace.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/core/libraries/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/core/libraries/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/blockui.min.js' %}"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+
+    <script type="text/javascript" src="{% static 'assets/js/core/app.js' %}"></script>
+    <!-- /theme JS files -->
+
+
+</head>
+
+<body class="login-container">
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size:large;">News@000</a>
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            </ul>
         </div>
-        <br /><br />
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-        </div>
-        <br /><br /><br />
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+
+
     </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <!-- Content area -->
+                <div class="content">
+
+                    <!-- Simple login form -->
+                    <form action="{% url 'adm_interface:main' %}">
+                        <div class="panel panel-body login-form " style="border-radius: 1rem; height: 450px; background-color: #36454F; color: white">
+                            <div class="text-center">
+                                <div class="icon-object border-slate-300 text-slate-300"><i class="icon-user-plus"></i></div>
+                                <h5 class="content-group">LOGIN DETAILS<br /><small class="display-block">Please enter your Login id and Password!</small></h5>
+                            </div>
+
+                            <div class="form-group has-feedback has-feedback-left">
+                                <input type="text" class="form-control" placeholder="Username">
+                                <div class="form-control-feedback">
+                                    <i class="icon-user text-muted"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group has-feedback has-feedback-left">
+                                <input type="text" class="form-control" placeholder="Password">
+                                <div class="form-control-feedback">
+                                    <i class="icon-lock2 text-muted"></i>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="text-center">
+                                <a href="login_password_recover.html">Forgot password?</a>
+                            </div>
+                            <br /><br />
+                            <div class="form-group" style="padding-left: 80px">
+                                <button type="submit" class="btn btn-block btn-lg px-5" style="color:black; border:medium 2px black; width: 120px; ">Login <i class="icon-circle-right2 position-right"></i></button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                    <!-- /simple login form -->
+                    <!-- Footer -->
+                    <div class="footer text-muted text-center" style="text-align:center">
+                        Copyright  &copy; 2021. <a href="#">Automated News Channel</a>
+                    </div>
+                    <!-- /footer -->
+
+                </div>
+                <!-- /content area -->
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
 
 </body>
 </html>
