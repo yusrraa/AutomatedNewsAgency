@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import requests
 from datetime import datetime,date
 import time
@@ -66,7 +67,9 @@ def scrapper():
                 scr.decompose()
         for anker_tag in domain_body.find_all('a', attrs={'href': re.compile("^https://")}):
             print("Href of tag: ", anker_tag.get('href'))
-            driver = webdriver.Chrome(executable_path="C:/Program Files (x86)/chromedriver.exe")
+            options = Options()
+            options.headless = True
+            driver = webdriver.Chrome(executable_path="C:/Program Files (x86)/chromedriver.exe", options=options)
             # driver.add_argument("--headless")  # make it not visible, just comment if you like seeing opened browsers
             # webdriver.Chrome(options=driver)
             url = str(anker_tag.get('href'))
