@@ -13,6 +13,20 @@ def add_domain():
     cur = conn.cursor()
     cur.execute("Insert Into Domain_table (domain_name) values ('%s')" % domain_names)
     conn.commit()
+    
+def add_url(domain_name,url_string,status):
+    conn = sqlite3.connect('Python_data_Scrape.db')
+    cur = conn.cursor()
+    cur.execute("select url_id from add_url_table where url_string = '%s'" % url_string)
+    redundant_main_url = cur.fetchall()
+    if len(redundant_main_url) == 0:
+        conn = sqlite3.connect('Python_data_Scrape.db')
+        cur = conn.cursor()
+        cur.execute("Insert Into add_url_table (domain_name,url_string,url_status) values (?,?,?)",(domain_name,url_string,status))
+        conn.commit()
+        return
+    else:
+        print("Url Already Exist..!")
 
 def domain_options():
     conn = sqlite3.connect('Python_data_Scrape.db')
