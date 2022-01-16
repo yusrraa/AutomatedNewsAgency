@@ -8,8 +8,10 @@ urlpatterns = [
     path('', views.login, name='login'),
     path('main', views.main, name='main'),
     path('domain', views.domain, name='domain'),
+    path('deletedom/<int:id>', views.deletedom, name='deletedom'),
     path('document', views.document, name='document'),
     path('url', views.url, name='url'),
+    path('deleteurl/<int:id>', views.deleteurl, name='urldom'),
     path('test', views.test, name='test'), # remmove this path later (for testing purpose only)
 ]
 

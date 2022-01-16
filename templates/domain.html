@@ -180,12 +180,11 @@
                                         <h5 class="modal-title"><i class="icon-popout"></i> &nbsp;Add New Domain</h5>
                                     </div>
                                     <br />
-                                    <form action="" method="post" autocomplete="off" style="padding-left:10px">
+                                    <form action="" method="POST" autocomplete="off" style="padding-left:10px">
                                         &nbsp;&nbsp;
                                         {% csrf_token %}
                                         {{form.domain_name|as_crispy_field}}
                                         <button type="submit" class="btn btn-success"><i class="icon-database"></i> Save</button>
-
                                     </form>
                                     
                                     <br /><br />
@@ -198,6 +197,10 @@
                         </div>
                         <!-- /iconified modal -->
                     </div>
+
+                    <form action="">
+
+                    </form>
 
 
                     <br /><br />
@@ -221,7 +224,7 @@
                                     <tr>
                                         <th>S.No</th>
                                         <th>Domain Name</th>
-
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -229,28 +232,11 @@
                                        <tr>
                                            <td>{{domain.id}}</td>
                                            <td>{{domain.domain_name}}</td>
+                                           <td> 
+                                               <a href="/adm/deletedom/{{ domain.id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this domain? \n\nDELETING THIS DOMAIN WOULD DELETE ALL THE RELATED URLS AS WELL!')">Delete</a></td>  <!---pop up message-->
                                        </tr>
                                     {% endfor %}
-                                    <!--<tr>
-                                        <td>1</td>
-                                        <td>Sports</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Weather</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>sports</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>weather</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>sports</td>
-                                    </tr>-->
+                                   
                                 </tbody>
                             </table>
                         </div>
