@@ -6,6 +6,8 @@ from datetime import datetime,date
 import time
 import re
 import sqlite3
+import urllib.request
+
 
 
 def add_domain():
@@ -61,9 +63,20 @@ def select_url_id(article_url):
 
 
 
+def  active(url):
+    act_url = urllib.request.urlopen(url).getcode()
+    if act_url == 200:
+        return True
+    else:
+        return False
+
 
 def scrapper():
     domain_url = str(input("Enter URL: "))
+    dom_url_act = active(domain_url)
+    #if dom_url_act == True:
+    #else:
+
     fetch_domain_id = domain_options()
     domain_result = requests.get(domain_url).text
     domain_doc = BeautifulSoup(domain_result, "html.parser")
