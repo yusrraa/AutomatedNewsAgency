@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2022 at 09:03 PM
+-- Generation Time: Jan 31, 2022 at 02:41 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -79,6 +79,21 @@ CREATE TABLE `article_text_configuration` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `article_topic_headline_configuration`
+--
+
+CREATE TABLE `article_topic_headline_configuration` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `parent_tag_name` varchar(20) NOT NULL,
+  `child_tag_name` varchar(20) NOT NULL,
+  `scrape_type` varchar(20) NOT NULL,
+  `attribute_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -86,6 +101,15 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Sports'),
+(2, 'Technology'),
+(3, 'Entertainment');
 
 -- --------------------------------------------------------
 
@@ -164,6 +188,13 @@ ALTER TABLE `article_text_configuration`
   ADD KEY `fk_article_text_id` (`article_id`);
 
 --
+-- Indexes for table `article_topic_headline_configuration`
+--
+ALTER TABLE `article_topic_headline_configuration`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_topic_headline` (`article_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -219,10 +250,16 @@ ALTER TABLE `article_text_configuration`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `article_topic_headline_configuration`
+--
+ALTER TABLE `article_topic_headline_configuration`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `domain_url`
@@ -271,6 +308,12 @@ ALTER TABLE `article_text_configuration`
   ADD CONSTRAINT `fk_article_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`),
   ADD CONSTRAINT `fk_article_pub_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`),
   ADD CONSTRAINT `fk_article_text_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`);
+
+--
+-- Constraints for table `article_topic_headline_configuration`
+--
+ALTER TABLE `article_topic_headline_configuration`
+  ADD CONSTRAINT `fk_topic_headline` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`);
 
 --
 -- Constraints for table `domain_url`
