@@ -184,9 +184,9 @@
                                     <form action="" method="POST" autocomplete="off" style="padding-left:10px">
                                         &nbsp;&nbsp;
                                         {% csrf_token %}
-                                        {{form.domain|as_crispy_field}}
-                                        {{form.url_string|as_crispy_field}}
-                                        <button type="submit" class="btn btn-success"><i class="icon-database"></i> Save</button>
+                                        {{form.category|as_crispy_field}}
+                                        {{form.url|as_crispy_field}}
+                                        <button type="submit" class="btn btn-success" name="add_url"><i class="icon-database"></i> Save</button>
 
                                     </form>
 
@@ -221,7 +221,6 @@
                                         <th>S.No</th>
                                         <th>Domain</th>
                                         <th>Website URLs</th>
-                                        <th>Article URL</th>
                                         <th>Status</th>
                                         <th class="text-center">Actions</th>
                                     </tr>
@@ -230,9 +229,9 @@
                                     {% for url in urls_list %}
                                     <tr>
                                         <td>{{url.id}}</td>
-                                        <td>{{url.domain}}</td>
-                                        <td>{{url.url_string}}</td>
-                                        <td>{{url.article_data_id}}</td>
+                                        <td>{{url.category}}</td>
+                                        <td>{{url.url}}</td>
+                                        <!--<td>{{url.is_active}}</td>-->
                                         <td><span class="label label-success">Active</span></td>
                                         <td class="text-center">
                                             <ul class="icons-list">
@@ -249,22 +248,138 @@
                                                     </ul>
                                                 </li>
                                             </ul>
+
+
+
                                             <!-- Iconified modal -->
                                             <div id="config" class="modal fade">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h5 class="modal-title"><i class="icon-cog"></i><i class="icon-cog"></i>&nbsp;Configure URL</h5>
+                                                            <h5 class="modal-title"><i class="icon-cog"></i><i class="icon-cog"></i>&nbsp;URL Configuration Form</h5>
                                                         </div>
                                                         <br />
-                                                        
+                                                        <h7>&nbsp;<strong>Text Configuration</strong></h7>
                                                         <form action="" method="POST" autocomplete="off" style="padding-left:10px">
                                                             &nbsp;&nbsp;
                                                             {% csrf_token %}
-                                                            {{form.domain|as_crispy_field}}
-                                                            {{form.url_string|as_crispy_field}}
-                                                            <button type="submit" class="btn btn-success"><i class="icon-database"></i> Save</button>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <div class="col-sm-6">
+                                                                        <input type="text" placeholder="Tag name" class="form-control">
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="text" placeholder="Enter Attribute name" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <div class="form-group">
+                                                                    <label class="radio-inline">
+                                                                        <input type="radio" class="styled" name="Scrape_type" checked="checked">
+                                                                        Scrape by Class
+                                                                    </label>
+
+                                                                    <label class="radio-inline">
+                                                                        <input type="radio" class="styled" name="Scrape_type">
+                                                                        Scrape by ID
+                                                                    </label>
+                                                                </div>
+
+                                                                <button type="submit" class="btn btn-success" name="add_url"><i class="icon-add position-right"></i> Add</button>
+                                                                <br /><br />
+                                                                <div class="col align-self-center">
+                                                                    <!-- table -->
+                                                                    <div class="panel panel-flat">
+                                                                        <div class="panel-heading">
+                                                                            <h5 class="panel-title">Scrapper Text Details</h5>
+                                                                            <div class="heading-elements">
+                                                                                <ul class="icons-list">
+                                                                                    <li><a data-action="collapse"></a></li>
+                                                                                    <li><a data-action="reload"></a></li>
+                                                                                    <li><a data-action="close"></a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="table-responsive">
+                                                                            <table class="table">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>S.No</th>
+                                                                                        <th>Tag Name</th>
+                                                                                        <th>Attribute Name</th>
+                                                                                        <th>Scrape type</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>1</td>
+                                                                                        <td>p</td>
+                                                                                        <td>center-align</td>
+                                                                                        <td>Scrape by Class</td>
+                                                                                    </tr>    
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- table -->
+                                                                </div>
+
+                                                                <br /><br /><br />
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <h7>&nbsp;<strong>Article URL Configuration</strong></h7>
+                                                                        <div class="form-group">
+                                                                            <div class="col-sm-6">
+                                                                                <input type="text" placeholder="Tag name" class="form-control">
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <input type="text" placeholder="Enter Attribute name" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <br />
+                                                                        <div class="form-group">
+                                                                            <label class="radio-inline">
+                                                                                <input type="radio" class="styled" name="Scrape_type" checked="checked">
+                                                                                Scrape by Class
+                                                                            </label>
+
+                                                                            <label class="radio-inline">
+                                                                                <input type="radio" class="styled" name="Scrape_type">
+                                                                                Scrape by ID
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-sm-6">
+                                                                        <h7>&nbsp;<strong>News Topic Headline Configuration</strong></h7>
+                                                                        <div class="form-group">
+                                                                            <div class="col-sm-6">
+                                                                                <input type="text" placeholder="Tag name" class="form-control">
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <input type="text" placeholder="Enter Attribute name" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                        <br />
+                                                                        <div class="form-group">
+                                                                            <label class="radio-inline">
+                                                                                <input type="radio" class="styled" name="Scrape_type" checked="checked">
+                                                                                Scrape by Class
+                                                                            </label>
+
+                                                                            <label class="radio-inline">
+                                                                                <input type="radio" class="styled" name="Scrape_type">
+                                                                                Scrape by ID
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+
+
+                                                            <button type="submit" class="btn btn-success" name="config_url"><i class="icon-database"></i> Save</button>
                                                         </form>
 
                                                         <br /><br />
@@ -276,7 +391,7 @@
                                             </div>
                                             <!-- /iconified modal -->
 
-                                        </td>  
+                                        </td>
                                     </tr>
                                     {% endfor %}
 

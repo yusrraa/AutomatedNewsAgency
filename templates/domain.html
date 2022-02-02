@@ -183,7 +183,7 @@
                                     <form action="" method="POST" autocomplete="off" style="padding-left:10px">
                                         &nbsp;&nbsp;
                                         {% csrf_token %}
-                                        {{form.domain_name|as_crispy_field}}
+                                        {{form.name|as_crispy_field}}
                                         <button type="submit" class="btn btn-success"><i class="icon-database"></i> Save</button>
                                     </form>
                                     
@@ -231,7 +231,7 @@
                                     {% for domain in domain_list %}
                                        <tr>
                                            <td>{{domain.id}}</td>
-                                           <td>{{domain.domain_name}}</td>
+                                           <td>{{domain.name}}</td>
                                            <td> 
                                                <a href="/adm/deletedom/{{ domain.id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this domain? \n\nDELETING THIS DOMAIN WOULD DELETE ALL THE RELATED URLS AS WELL!')">Delete</a></td>  <!---pop up message-->
                                        </tr>

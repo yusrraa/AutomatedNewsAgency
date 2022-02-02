@@ -17,12 +17,12 @@ def domain(request):
         form = DomainForm(request.POST)
         if form.is_valid():
             form.save()
-    dom_list = tb1_master_domain.objects.all()
+    dom_list = Category.objects.all()
     return render(request, 'domain.html', {'form':form, 'domain_list':dom_list })
 
        
 def deletedom(request, id):
-    dom_obj = tb1_master_domain.objects.get(id=id)
+    dom_obj = Category.objects.get(id=id)
     dom_obj.delete()
     return redirect("/adm/domain")    
     
@@ -33,18 +33,21 @@ def document(request):
 def url(request):
     if request.method == 'GET':
          form = URLform()
-    else:
+    elif request.method == 'POST' and 'add_url' in request.POST:
         form = URLform(request.POST)
         if form.is_valid():
             form.save()
-        
-    
-    url_list = tb2_Url_details_table.objects.all()
+    elif request.method == 'POST' and 'config_url' in request.POST:
+        form = TextConfiguraton(request.POST)
+        if form.is_valid():
+            form.save()
+
+    url_list = DomainUrl.objects.all()
     return render(request, 'url.html', {'form':form, 'urls_list':url_list})
     
 
 def deleteurl(request, id):
-    url_obj = tb2_Url_details_table.objects.get(id=id)
+    url_obj = DomainUrl.objects.get(id=id)
     url_obj.delete()
     return redirect("/adm/url")    
     
