@@ -23,6 +23,8 @@ class URLform(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(URLform,self).__init__(*args, **kwargs)
         self.fields['category'].empty_label = "Select Domain"
+        3
+
 
 
 
@@ -35,6 +37,3 @@ class TextConfiguraton(forms.ModelForm):
             'tag_name': 'Tag Name',
             'attribute_name': 'Attribute Name'
             }
-
-
-
