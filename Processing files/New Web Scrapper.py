@@ -10,7 +10,7 @@ import pymysql
 
 def get_url():
     # database connection
-    connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
     cursor = connection.cursor()
     # Extracting all url and their ids from database
     cursor.execute("Select id,url,is_active from domain_url where is_active = '%s'" % 1)
@@ -20,7 +20,7 @@ def get_url():
 
 def get_article_url_config(url_id):
     # database connection
-    connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
     cursor = connection.cursor()
     # Extracting all article url configuration details from database against url
     cursor.execute("Select tag_name,scrape_type,attribute_name from article_url_configuration where domain_url_id = '%s'" % url_id)
@@ -30,7 +30,7 @@ def get_article_url_config(url_id):
 
 def get_article_img_config(url_id):
     # database connection
-    connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
     cursor = connection.cursor()
     # Extracting all article url configuration details from database against url
     cursor.execute("Select tag_name,scrape_type,attribute_name from article_img_configuration where domain_url_id = '%s'" % url_id)
@@ -40,7 +40,7 @@ def get_article_img_config(url_id):
 
 def get_article_publish_date_config(url_id):
     # database connection
-    connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
     cursor = connection.cursor()
     # Extracting all article url configuration details from database against url
     cursor.execute("Select tag_name,scrape_type,attribute_name from article_publish_date_configuration where domain_url_id = '%s'" % url_id)
@@ -50,7 +50,7 @@ def get_article_publish_date_config(url_id):
 
 def get_article_text_config(url_id):
     # database connection
-    connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
     cursor = connection.cursor()
     # Extracting all article url configuration details from database against url
     cursor.execute("Select tag_name,scrape_type,attribute_name from article_text_configuration where domain_url_id = '%s'" % url_id)
@@ -60,7 +60,7 @@ def get_article_text_config(url_id):
 
 def get_article_topic_head_config(url_id):
     # database connection
-    connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
     cursor = connection.cursor()
     # Extracting all article url configuration details from database against url
     cursor.execute("Select parent_tag_name,child_tag_name,scrape_type,attribute_name from article_topic_headline_configuration where domain_url_id = '%s'" % url_id)
@@ -74,7 +74,7 @@ def get_article_url(url_id,domain_url):
     article_url_config_lst = get_article_url_config(url_id) #gets all details of article url config
     options = webdriver.ChromeOptions()
     options.headless = True
-    driver = webdriver.Chrome(executable_path="C:/Program Files (x86)/chromedriver.exe", options=options)
+    driver = webdriver.Chrome(executable_path="F:/Program Files (x86)/chromedriver.exe", options=options)
     driver.get(domain_url)
     time.sleep(5)
     doc = BeautifulSoup(driver.page_source, "html.parser")
@@ -91,7 +91,7 @@ def get_article_url(url_id,domain_url):
                     article_url_extract = re.search(url_id_extract, item.get('href')).group()
                     if (len(item.get('href')) - len(article_url_extract)) > 50:
                         # database connection
-                        connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+                        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
                         cursor = connection.cursor()
                         # Extracting all article url configuration details from database against url
                         cursor.execute("select article_url from article where article_url = '%s'" % (item.get('href')))
@@ -101,7 +101,7 @@ def get_article_url(url_id,domain_url):
                             print(item.get('href'))
                             article_url_extracted_lst.append(item.get('href'))
                             #database connection
-                            connection = pymysql.connect(host="localhost", user="root", passwd="", database="automated_news_broadcast")
+                            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
                             cur = connection.cursor()
                             # inserting article url into database
                             cur.execute("Insert into article (url_id,article_url) values (%s,%s)",
@@ -125,7 +125,7 @@ def get_article_url(url_id,domain_url):
                     # print(article_url_extract)
                     if (len(item.get('href')) - len(article_url_extract)) > 50:
                         # database connection
-                        connection = pymysql.connect(host="localhost", user="root", passwd="",database="automated_news_broadcast")
+                        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",database="automated_news_broadcast")
                         cursor = connection.cursor()
                         # Extracting all article url configuration details from database against url
                         cursor.execute("select id from article where article_url = '%s'" % (item.get('href')))
@@ -135,7 +135,7 @@ def get_article_url(url_id,domain_url):
                             print(item.get('href'))
                             article_url_extracted_lst.append(item.get('href'))
                             # database connection
-                            connection = pymysql.connect(host="localhost", user="root", passwd="",
+                            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
                                                          database="automated_news_broadcast")
                             cur = connection.cursor()
                             # inserting article url into database
@@ -163,7 +163,7 @@ def Scrapper():
         for article_url in article_url_extracted_lst: # get all article url from domain url one by one
             options = Options()
             options.headless = True
-            driver = webdriver.Chrome(executable_path="C:/Program Files (x86)/chromedriver.exe", options=options)
+            driver = webdriver.Chrome(executable_path="F:/Program Files (x86)/chromedriver.exe", options=options)
             driver.get(article_url)
             time.sleep(5)
             doc = BeautifulSoup(driver.page_source, "html.parser")
@@ -242,7 +242,7 @@ def Scrapper():
             except:
                 article_img_url += "None"
             # database connection
-            connection = pymysql.connect(host="localhost", user="root", passwd="",
+            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
                                          database="automated_news_broadcast")
             cursor = connection.cursor()
             # Extracting all article url configuration details from database against url
@@ -254,7 +254,7 @@ def Scrapper():
             today = date.today()
             current_date = today.strftime("%d/%m/%Y")  # dd/mm/YY
             # database connection
-            connection = pymysql.connect(host="localhost", user="root", passwd="",
+            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
                                          database="automated_news_broadcast")
             cur = connection.cursor()
             # inserting article url into database
@@ -262,6 +262,7 @@ def Scrapper():
                         "values (%s,%s,%s,%s,%s,%s,%s)",
                         (article_url_id[0][0],article_headline,merged_data,article_date,article_img_url,current_date,current_time))
             connection.commit()
+        merged_data = ""
     return
 
 
