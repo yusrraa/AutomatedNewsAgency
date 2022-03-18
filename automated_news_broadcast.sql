@@ -245,7 +245,8 @@ CREATE TABLE `unprocesssed_scrape_data` (
   `unprocessed_news_description` longtext NOT NULL,
   `publication_date` varchar(767) NOT NULL,
   `image_href` varchar(767) NOT NULL,
-  `scrape_time_stamp` datetime NOT NULL
+  `scrape_date_stamp` varchar(20) NOT NULL,
+  `scrape_time_stamp` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
