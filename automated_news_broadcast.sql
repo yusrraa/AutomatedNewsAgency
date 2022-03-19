@@ -56,10 +56,12 @@ INSERT INTO `article_img_configuration` (`id`, `domain_url_id`, `tag_name`, `scr
 (1, 1, 'div', 'class', 'media__item'),
 (2, 2, 'div', 'class', 'imgpost'),
 (3, 3, 'div', 'class', 'medium-insert-images'),
-(4, 20, 'div', 'class', 'media__item'),
-(5, 21, 'div', 'class', 'medium-insert-images'),
-(6, 22, 'div', 'class', 'medium-insert-images'),
-(7, 23, 'div', 'class', 'amp-top-main-img');
+(4, 6, 'div', 'class', 'amp-top-main-img'),
+(5, 20, 'div', 'class', 'media__item'),
+(6, 21, 'div', 'class', 'medium-insert-images'),
+(7, 22, 'div', 'class', 'medium-insert-images'),
+(8, 23, 'div', 'class', 'amp-top-main-img');
+
 
 -- --------------------------------------------------------
 
@@ -83,10 +85,11 @@ INSERT INTO `article_publish_date_configuration` (`id`, `domain_url_id`, `tag_na
 (1, 1, 'span', 'class', 'story__time'),
 (2, 2, 'p', 'class', 'meta-date'),
 (3, 3, 'div', 'class', 'category-date'),
-(4, 20, 'span', 'class', 'story__time'),
-(5, 21, 'div', 'class', 'category-date'),
-(6, 22, 'p', 'class', 'post-date-time'),
-(7, 23, 'div', 'class', 'left-authorbox');
+(4, 6, 'div', 'class', 'left-authorbox'),
+(5, 20, 'span', 'class', 'story__time'),
+(6, 21, 'div', 'class', 'category-date'),
+(7, 22, 'p', 'class', 'post-date-time'),
+(8, 23, 'div', 'class', 'left-authorbox');
 
 -- --------------------------------------------------------
 
@@ -107,13 +110,14 @@ CREATE TABLE `article_text_configuration` (
 --
 
 INSERT INTO `article_text_configuration` (`id`, `domain_url_id`, `tag_name`, `scrape_type`, `attribute_name`) VALUES
-(3, 1, 'div', 'class', 'story__content'),
-(4, 2, 'div', 'class', 'post-content'),
-(5, 3, 'div', 'class', 'story-detail'),
-(6, 20, 'div', 'class', 'story__content'),
-(7, 21, 'div', 'class', 'story-detail'),
-(8, 22, 'div', 'class', 'content-area'),
-(9, 23, 'div', 'class', 'story-text');
+(1, 1, 'div', 'class', 'story__content'),
+(2, 2, 'div', 'class', 'post-content'),
+(3, 3, 'div', 'class', 'story-detail'),
+(4, 6, 'div', 'class', 'story-text'),
+(5, 20, 'div', 'class', 'story__content'),
+(6, 21, 'div', 'class', 'story-detail'),
+(7, 22, 'div', 'class', 'content-area'),
+(8, 23, 'div', 'class', 'story-text');
 
 -- --------------------------------------------------------
 
@@ -138,10 +142,11 @@ INSERT INTO `article_topic_headline_configuration` (`id`, `domain_url_id`, `pare
 (1, 1, 'h2', 'a', 'class', 'story__title'),
 (2, 2, 'section', 'h1', 'class', 'singlepost'),
 (3, 3, 'div', 'h1', 'class', 'detail-heading'),
-(4, 20, 'h2', 'a', 'class', 'story__title'),
-(5, 21, 'div', 'h1', 'class', 'detail-heading'),
-(6, 22, 'div', 'h1', 'class', 'story-area'),
-(7, 23, 'div', 'h1', 'class', 'story-box-section');
+(4, 6, 'div', 'h1', 'class', 'story-box-section'),
+(5, 20, 'h2', 'a', 'class', 'story__title'),
+(6, 21, 'div', 'h1', 'class', 'detail-heading'),
+(7, 22, 'div', 'h1', 'class', 'story-area'),
+(8, 23, 'div', 'h1', 'class', 'story-box-section');
 
 -- --------------------------------------------------------
 
@@ -165,10 +170,11 @@ INSERT INTO `article_url_configuration` (`id`, `domain_url_id`, `tag_name`, `scr
 (1, 1, 'div', 'class', 'w-full'),
 (2, 2, 'div', 'class', 'blogtwo'),
 (3, 3, 'div', 'class', 'detail-center'),
-(4, 20, 'div', 'class', 'w-full'),
-(5, 21, 'div', 'class', 'most-popular'),
-(6, 22, 'div', 'class', 'latest-content'),
-(7, 23, 'div', 'class', 'container');
+(4, 6, 'div', 'class', 'container'),
+(5, 20, 'div', 'class', 'w-full'),
+(6, 21, 'div', 'class', 'most-popular'),
+(7, 22, 'div', 'class', 'latest-content'),
+(8, 23, 'div', 'class', 'container');
 
 -- --------------------------------------------------------
 
