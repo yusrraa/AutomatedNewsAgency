@@ -56,6 +56,21 @@ def deleteurl(request, id):
 def test(request):
     return render(request, 'test.html')  # remmove this path later (for testing purpose only)
 
+def check_config(request):
+    return render(request, 'check_config.html')
+
+def img_config(request):
+    return render(request, 'img_config.html')
+
+def text_config(request):
+    return render(request, 'text_config.html')
+
+def headline_config(request):
+    return render(request, 'headline_config.html')
+
+def time_config(request):
+    return render(request, 'time_config.html')
+
 
 
 

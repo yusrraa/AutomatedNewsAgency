@@ -13,5 +13,11 @@ urlpatterns = [
     path('url', views.url, name='url'),
     path('deleteurl/<int:id>', views.deleteurl, name='urldom'),
     path('test', views.test, name='test'), # remmove this path later (for testing purpose only)
+    path('check_config', views.check_config, name='check_config'),
+    path('img_config', views.img_config, name='img_config'),
+    path('text_config', views.text_config, name='text_config'),
+    path('headline_config', views.headline_config, name='headline_config'),
+    path('time_config', views.time_config, name='time_config'),
+
 ]
 
