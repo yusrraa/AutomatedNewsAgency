@@ -1,5 +1,9 @@
 from django import forms
 from .models import *
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout
+from crispy_forms.bootstrap import InlineRadios
+
 
 class DomainForm(forms.ModelForm):
 
@@ -29,11 +33,16 @@ class URLform(forms.ModelForm):
 
 
 class TextConfiguraton(forms.ModelForm):
-
     class Meta:
         model = ArticleTextConfiguration
-        fields = {'tag_name','attribute_name'}
+        fields = "__all__"
+        widgets = {'scrape_type': forms.RadioSelect}
         labels = {
             'tag_name': 'Tag Name',
             'attribute_name': 'Attribute Name'
             }
+        helper = FormHelper()
+        helper.layout = Layout(
+            InlineRadios('scrape_type'),
+            )
+        helper.use_custom_control = True

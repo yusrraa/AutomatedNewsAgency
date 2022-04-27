@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 
+SCRAPE_CHOICES = (('class','Scrape by Class'),('id','Scrape by ID'))
+
+
 class tb1_master_domain(models.Model):
     domain_name = models.CharField(max_length=90);
 
@@ -49,7 +52,7 @@ class ArticlePublishDateConfiguration(models.Model):
 class ArticleTextConfiguration(models.Model):
     domain_url = models.ForeignKey('DomainUrl', models.DO_NOTHING)
     tag_name = models.CharField(max_length=20)
-    scrape_type = models.CharField(max_length=20)
+    scrape_type = models.CharField(max_length=20,choices=SCRAPE_CHOICES, default='class')
     attribute_name = models.CharField(max_length=100)
 
     class Meta:
