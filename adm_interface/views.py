@@ -65,8 +65,76 @@ def config(request, id):
     return render(request,'config.html',  {'form':form, 'config_list':config_list})
 
 
-def test(request):
-    return render(request, 'test.html')  # remmove this path later (for testing purpose only)
+def test(request,id):   # remmove this path later (for testing purpose only)
+    url_obj = DomainUrl.objects.get(id=id)
+    txtform = TextConfrForm()
+    imgform = ImgConfrForm()
+    dateform = DateConfrForm()
+    headlineform = HeadlineConfrForm()
+    urlform = URLConfrForm()
+
+    if request.method == 'POST' and 'add_config' in request.POST:
+        txtform = TextConfrForm(request.POST)
+        if txtform.is_valid():
+            url_id = url_obj
+            tag_nm = txtform.cleaned_data['tag_name']
+            att_nm = txtform.cleaned_data['attribute_name']
+            scrp_type = txtform.cleaned_data['scrape_type']
+            text_conf = ArticleTextConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
+            text_conf.save()
+
+
+    if request.method == 'POST' and 'img_config' in request.POST:
+        imgform = ImgConfrForm(request.POST)
+        if imgform.is_valid():
+            url_id = url_obj
+            tag_nm = imgform.cleaned_data['tag_name']
+            att_nm = imgform.cleaned_data['attribute_name']
+            scrp_type = imgform.cleaned_data['scrape_type']
+            text_conf = ArticleImgConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
+            text_conf.save()
+
+
+    if request.method == 'POST' and 'date_config' in request.POST:
+        dateform = DateConfrForm(request.POST)
+        if dateform.is_valid():
+            url_id = url_obj
+            tag_nm = dateform.cleaned_data['tag_name']
+            att_nm = dateform.cleaned_data['attribute_name']
+            scrp_type = dateform.cleaned_data['scrape_type']
+            text_conf = ArticlePublishDateConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
+            text_conf.save()
+
+
+    if request.method == 'POST' and 'headline_config' in request.POST:
+        headlineform = HeadlineConfrForm(request.POST)
+        if headlineform.is_valid():
+            url_id = url_obj
+            pt_tag_nm = headlineform.cleaned_data['parent_tag_name']
+            cd_tag_nm = headlineform.cleaned_data['child_tag_name']
+            att_nm = headlineform.cleaned_data['attribute_name']
+            scrp_type = headlineform.cleaned_data['scrape_type']
+            text_conf = ArticleTopicHeadlineConfiguration(domain_url=url_id, parent_tag_name=pt_tag_nm, child_tag_name=cd_tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
+            text_conf.save()
+
+    if request.method == 'POST' and 'url_config' in request.POST:
+        urlform = URLConfrForm(request.POST)
+        if  urlform.is_valid():
+            url_id = url_obj
+            tag_nm = urlform.cleaned_data['tag_name']
+            att_nm = urlform.cleaned_data['attribute_name']
+            scrp_type = urlform.cleaned_data['scrape_type']
+            text_conf = ArticleUrlConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
+            text_conf.save()
+
+
+
+    config_list = ArticleTextConfiguration.objects.all()
+    return render(request, 'test.html', {'txtform': txtform, 'imgform': imgform, 'dateform': dateform, 'headlineform': headlineform, 'urlform': urlform, 'config_list':config_list})
+    
+
+
+
 
 def check_config(request):
     return render(request, 'check_config.html')

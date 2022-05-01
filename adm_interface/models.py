@@ -30,7 +30,7 @@ class Article(models.Model):
 class ArticleImgConfiguration(models.Model):
     domain_url = models.ForeignKey('DomainUrl', models.DO_NOTHING)
     tag_name = models.CharField(max_length=20)
-    scrape_type = models.CharField(max_length=20)
+    scrape_type = models.CharField(max_length=20,choices=SCRAPE_CHOICES, default='class')
     attribute_name = models.CharField(max_length=100)
 
     class Meta:
@@ -41,7 +41,7 @@ class ArticleImgConfiguration(models.Model):
 class ArticlePublishDateConfiguration(models.Model):
     domain_url = models.ForeignKey('DomainUrl', models.DO_NOTHING)
     tag_name = models.CharField(max_length=20)
-    scrape_type = models.CharField(max_length=20)
+    scrape_type = models.CharField(max_length=20,choices=SCRAPE_CHOICES, default='class')
     attribute_name = models.CharField(max_length=100)
 
     class Meta:
@@ -64,7 +64,7 @@ class ArticleTopicHeadlineConfiguration(models.Model):
     domain_url = models.ForeignKey('DomainUrl', models.DO_NOTHING)
     parent_tag_name = models.CharField(max_length=20)
     child_tag_name = models.CharField(max_length=20)
-    scrape_type = models.CharField(max_length=20)
+    scrape_type = models.CharField(max_length=20,choices=SCRAPE_CHOICES, default='class')
     attribute_name = models.CharField(max_length=100)
 
     class Meta:
@@ -75,7 +75,7 @@ class ArticleTopicHeadlineConfiguration(models.Model):
 class ArticleUrlConfiguration(models.Model):
     domain_url = models.ForeignKey('DomainUrl', models.DO_NOTHING)
     tag_name = models.CharField(max_length=20)
-    scrape_type = models.CharField(max_length=20)
+    scrape_type = models.CharField(max_length=20,choices=SCRAPE_CHOICES, default='class')
     attribute_name = models.CharField(max_length=100)
 
     class Meta:
