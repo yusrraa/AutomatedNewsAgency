@@ -128,7 +128,7 @@
                                 <!-- Main -->
                                 <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                 <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                                <li><a href="#"><i class="icon-popout"></i> <span>Domains</span></a></li>
+                                <li class="active" ><a href="#"><i class="icon-popout"></i> <span>Domains</span></a></li>
                                 <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
                                 <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
                                 <!-- /main -->
@@ -174,7 +174,7 @@
                         <!-- Iconified modal -->
                         <div id="add_domain" class="modal fade">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content" style="padding-right:2%">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h5 class="modal-title"><i class="icon-popout"></i> &nbsp;Add New Domain</h5>
@@ -219,7 +219,7 @@
 
                             <div class="panel-body">This table displays the domain related details here<br /></div>
 
-                            <table class="table datatable-basic table-hover">
+                            <table class="table datatable-basic pre-scrollable table-hover">
                                 <thead>
                                     <tr>
                                         <th>S.No</th>

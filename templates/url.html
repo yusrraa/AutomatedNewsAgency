@@ -130,7 +130,7 @@
                                 <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
                                 <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
-                                <li><a href="#"><i class="icon-select2"></i> <span>URLs</span></a></li>
+                                <li class="active " ><a href="#"><i class="icon-select2"></i> <span>URLs</span></a></li>
                                 <!-- /main -->
 
 
@@ -173,8 +173,8 @@
 
                         <!-- Iconified modal -->
                         <div id="add_url" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
+                            <div class="modal-dialog" >
+                                <div class="modal-content" style="padding-right:2%">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Add New URL</h5>
@@ -215,174 +215,63 @@
 
                             <div class="panel-body">This table displays the URL related details here<br /></div>
 
-                            <table class="table datatable-basic table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>S.No</th>
-                                        <th>Domain</th>
-                                        <th>Website URLs</th>
-                                        <th>Status</th>
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for url in urls_list %}
-                                    <tr>
-                                        <td>{{url.id}}</td>
-                                        <td>{{url.category}}</td>
-                                        <td>{{url.url}}</td>
-                                        <!--<td>{{url.is_active}}</td>-->
-                                        <td><span class="label label-success">Active</span></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
 
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="icon-pencil3"></i>Edit</a></li>
-                                                        <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
-                                                        <li><a href="/adm/deleteurl/{{ url.id }}" onclick="return confirm('Are you sure you want to delete this url?')"><i class="icon-cross"></i>Delete</a></li>
-                                                        <li><a href="/adm/config/{{ url.id }}"><i class="icon-cogs"></i>Config</a></li>
+                            <!-- Scrollable table -->
+                                <div class="table-responsive pre-scrollable table-hover">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Domain</th>
+                                                <th>Website URLs</th>
+                                                <th>Status</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for url in urls_list %}
+                                            <tr>
+                                                <td>{{url.id}}</td>
+                                                <td>{{url.category}}</td>
+                                                <td>{{url.url}}</td>
+                                                <!--<td>{{url.is_active}}</td>-->
+                                                <td><span class="label label-success">Active</span></td>
+                                                <td class="text-center">
+                                                    <ul class="icons-list">
+                                                        <li class="dropdown">
+                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                                <i class="icon-menu9"></i>
+                                                            </a>
+
+                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                <li><a href="{% url 'adm_interface:updateurl' url.id %}"><i class="icon-pencil3"></i>Edit</a></li>
+                                                                <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
+                                                                <li><a href="/adm/deleteurl/{{ url.id }}" onclick="return confirm('Are you sure you want to delete this url?')"><i class="icon-cross"></i>Delete</a></li>
+                                                                <li><a href="/adm/config/{{ url.id }}"><i class="icon-cogs"></i>Config</a></li>
+                                                            </ul>
+                                                        </li>
                                                     </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /scrollable table -->
 
-                                </tbody>
-                               
-                              <!---  <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Sports</td>
-                                        <td>sports.com</td>
-                                        <td><span class="label label-success">Active</span></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
 
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="icon-pencil3"></i>Edit</a></li>
-                                                        <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
-                                                        <li><a href="#"><i class="icon-cross"></i>Delete</a></li>
-                                                        <li><a href="#"><i class="icon-file-word"></i>Config</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Weather</td>
-                                        <td><a href="#">weather.com</a></td>
-                                        <td><span class="label label-default">Inactive</span></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
+                                <!-- /content -->
+                                <br>
+                                <br>
+                                <!-- Footer -->
+                                <div class="footer text-muted text-center" style="text-align:center">
+                                    Copyright  &copy; 2021. <a href="#">Automated News Channel</a>
+                                </div>
+                                <!-- /footer -->
 
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="icon-pencil3"></i>Edit</a></li>
-                                                        <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
-                                                        <li><a href="#"><i class="icon-cross"></i>Delete</a></li>
-                                                        <li><a href="#"><i class="icon-file-word"></i>Config</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>sports</td>
-                                        <td>sports.com</td>
-                                        <td><span class="label label-danger">Disabled</span></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
-
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="icon-pencil3"></i>Edit</a></li>
-                                                        <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
-                                                        <li><a href="#"><i class="icon-cross"></i>Delete</a></li>
-                                                        <li><a href="#"><i class="icon-file-word"></i>Config</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>weather</td>
-                                        <td><a href="#">weather.com</a></td>
-                                        <td><span class="label label-success">Active</span></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
-
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="icon-pencil3"></i>Edit</a></li>
-                                                        <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
-                                                        <li><a href="#"><i class="icon-cross"></i>Delete</a></li>
-                                                        <li><a href="#"><i class="icon-file-word"></i>Config</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>sports</td>
-                                        <td>sports.com</td>
-                                        <td><span class="label label-default">Inactive</span></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
-
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="icon-pencil3"></i>Edit</a></li>
-                                                        <li><a href="#"><i class="icon-file-excel"></i>Disable</a></li>
-                                                        <li><a href="#"><i class="icon-cross"></i>Delete</a></li>
-                                                        <li><a href="#"><i class="icon-file-word"></i>Config</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                                  -->
-
-                    <!-- /dashboard content -->
-
-                    <br><br>
-                    <!-- Footer -->
-                    <div class="footer text-muted text-center" style="text-align:center">
-                        Copyright  &copy; 2021. <a href="#">Automated News Channel</a>
-                    </div>
-                    <!-- /footer -->
-
-                </div>
+                        
+                                </div>
                 <!-- /content area -->
 
             </div>

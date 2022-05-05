@@ -130,7 +130,7 @@
                                 <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
                                 <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
-                                <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+                                <li class="active "><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
                                 <!-- /main -->
 
 
@@ -157,7 +157,7 @@
                         <ul class="breadcrumb">
                             <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
                             <li><a href="{% url 'adm_interface:url' %}">URLs</a></li>
-                            <li class="active">Configure URLs</li>
+                            <li class="active">Configure URL</li>
                         </ul>
                     </div>
 
@@ -170,11 +170,11 @@
                     <div class="row">
                         <div class="col">
                             <h3 style="text-align:center">&nbsp;<strong>Text Configuration</strong></h3>
-                            <form action="" method="POST" autocomplete="off" style="padding-left:10px">
+                            <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                                 &nbsp;&nbsp;
                                 {% csrf_token %}
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" >
                                         {{txtform.tag_name|as_crispy_field}}
                                     </div>
                                     <div class="col-sm-6">
@@ -228,13 +228,12 @@
                                 </div>
                                 <!-- table -->
                             </div>
-                            <br /><br />
-                            <form action="" method="POST" autocomplete="off">
+                            <br />
+                            <h4 style="text-align:center">&nbsp;<strong>Article URL Configuration</strong></h4>
+                            <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                                 {% csrf_token %}
                                 <div class="row">
-                                    <h7 style="text-align:center">&nbsp;<strong>Article URL Configuration</strong></h7>
-                                    <br /><br />
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" >
                                         {{urlform.tag_name|as_crispy_field}}
                                     </div>
                                     <div class="col-sm-6">
@@ -249,12 +248,12 @@
                                 </div>
                             </form>
                             <br /><br /><br /><br />
-                            <form action="" method="POST" autocomplete="off">
+                            <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                                 {% csrf_token %}
                                 <div class="row">
-                                    <h7 style="text-align:center">&nbsp;<strong> News Topic Headline Configuration</strong></h7>
-                                    <br /><br />
-                                    <div class="col-sm-6">
+                                    <h4 style="text-align:center">&nbsp;<strong> News Topic Headline Configuration</strong></h4>
+                                    
+                                    <div class="col-sm-6" >
                                         {{headlineform.parent_tag_name|as_crispy_field}}
                                     </div>
                                     <div class="col-sm-6">
@@ -272,11 +271,11 @@
                                 </div>
                             </form>
                             <br /><br /><br /><br />
-                            <form action="" method="POST" autocomplete="off">
+                            <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                                 {% csrf_token %}
-                                <div class="row">
-                                    <h7 style="text-align:center">&nbsp;<strong>Image Configuration</strong></h7>
-                                    <br /><br />
+                                <div class="row" >
+                                    <h4 style="text-align:center">&nbsp;<strong>Image Configuration</strong></h4>
+                                    
                                     <div class="col-sm-6">
                                         {{imgform.tag_name|as_crispy_field}}
                                     </div>
@@ -292,13 +291,13 @@
                                 </div>
                             </form>
                             <br /><br /><br /><br />
-                            <form action="" method="POST" autocomplete="off">
+                            <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                                 {% csrf_token %}
-                                <br /><br /><br />
+                                <br />
                                 <div class="row">
-                                    <h7 style="text-align:center">&nbsp;<strong>Pulish Date Configuration</strong></h7>
-                                    <br /><br />
-                                    <div class="col-sm-6">
+                                    <h4 style="text-align:center">&nbsp;<strong>Pulish Date Configuration</strong></h4>
+                                    
+                                    <div class="col-sm-6" >
                                         {{dateform.tag_name|as_crispy_field}}
                                     </div>
                                     <div class="col-sm-6">

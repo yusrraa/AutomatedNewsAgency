@@ -1,4 +1,5 @@
 ﻿{% load static %}
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +41,12 @@
     <script type="text/javascript" src="{% static 'assets/js/pages/layout_fixed_custom.js' %}"></script>
     <!-- /theme JS files -->
     <!-- /theme JS files -->
+
+    <script>
+        $(document).ready(function () {
+            $("#edit_url").modal('show');
+        });
+    </script>
 
 </head>
 
@@ -128,8 +135,8 @@
                                 <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                 <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
-                                <li class="active " ><a href="#"><i class="icon-file-css"></i> <span>Document</span></a></li>
-                                <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+                                <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
+                                <li class="active "><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
                                 <!-- /main -->
 
 
@@ -148,14 +155,15 @@
                 <div class="page-header page-header-default">
                     <div class="page-header-content">
                         <div class="page-title">
-                            <h4><i class="icon-file-css position-left"></i> <span class="text-bold">Document</span></h4>
+                            <h4><i class="icon-select2 position-left"></i> <span class="text-bold">URLs</span></h4>
                         </div>
                     </div>
 
                     <div class="breadcrumb-line">
                         <ul class="breadcrumb">
                             <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
-                            <li class="active">Documents</li>
+                            <li><a href="{% url 'adm_interface:url' %}">URLs</a></li>
+                            <li class="active">Update URL</li>
                         </ul>
                     </div>
 
@@ -165,89 +173,74 @@
                 <div class="content">
 
                     <!-- Dashboard content -->
-                    <div class="row">
-
-                        <div class="form-group" style="position:center">
-                            <div class="col-lg-8">
-                                <textarea rows="5" cols="20" name="textarea" class="form-control" placeholder="Sanitised News will be displayed here" style="width:700px; height:250px"></textarea>
+                    <!-- Iconified modal -->
+                    <div id="edit_url" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Add New URL</h5>
+                                </div>
                                 <br />
-                            </div>
-                            <div class="col-lg-4">
-                                <button type="button" class="btn btn-primary" style="width:150px"><i class="icon-pencil3 position-left"></i> Edit</button>
-                                <button type="button" class="btn btn-danger" style="width:150px"><i class="icon-cross position-left"></i> Disable</button>
 
+                                <form action="" method="POST" autocomplete="off" style="padding-left:10px">
+                                    &nbsp;&nbsp;
+                                    {% csrf_token %}
+                                    {{form.category|as_crispy_field}}
+                                    {{form.url|as_crispy_field}}
+                                    <button type="submit" class="btn btn-success" name="add_url"><i class="icon-database"></i> Save</button>
+
+                                </form>
+
+                                <br /><br />
+                                <div class="modal-footer">
+                                    <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /iconified modal -->
+
+
 
                     <div class="row">
-                        <table class="table datatable-basic table-hover">
-                            <thead>
-                                <tr>
-                                    <th>S.No</th>
-                                    <th>Domain Name</th>
-                                    <th>News</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Sports</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-success">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Weather</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-danger">Disabled</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>sports</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-danger">Disabled</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>weather</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-success">Active</span></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>sports</td>
-                                    <td>news displayed here</td>
-                                    <td><span class="label label-success">Active</span></td>
-                                    
-                                </tr>
+                        <div class="col" style="margin-left:25%; margin-right:25%">
+                            <form action="" method="POST" autocomplete="off" style="padding-left:10px">
+                                &nbsp;&nbsp;
+                                {% csrf_token %}
+                                {{form.category|as_crispy_field}}
+                                {{form.url|as_crispy_field}}
+                                <button type="submit" class="btn btn-success" href="/adm/url"><i class="icon-database"></i> Save</button>
 
-                            </tbody>
-                        </table>
-                    </div>
+                            </form>
+                        </div>
+
+
 
                     </div>
-                    <!-- /dashboard content -->
                     <br /><br />
+
+                    <!-- /content -->
+                    <br>
+                    <br>
                     <!-- Footer -->
                     <div class="footer text-muted text-center" style="text-align:center">
                         Copyright  &copy; 2021. <a href="#">Automated News Channel</a>
                     </div>
                     <!-- /footer -->
 
+
                 </div>
-                <!-- /content area -->
+                    <!-- /content area -->
+
+                </div>
+                <!-- /main content -->
 
             </div>
-            <!-- /main content -->
+            <!-- /page content -->
 
         </div>
-        <!-- /page content -->
-
-    </div>
-    <!-- /page container -->
+        <!-- /page container -->
 
 </body>
 </html>

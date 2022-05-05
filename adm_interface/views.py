@@ -32,16 +32,30 @@ def document(request):
 
 def url(request):
     if request.method == 'GET':
-         form = URLform()
+        form = URLform()
     else:
-        form = URLform(request.POST)
-        if form.is_valid():
-            form.save()
-    
-
+         form = URLform(request.POST)
+         if form.is_valid():
+             form.save()
+      
     url_list = DomainUrl.objects.all()
     return render(request, 'url.html', {'form':form, 'urls_list':url_list})
-    
+ 
+
+def updateurl(request,id):
+    if request.method == 'GET':
+        upd_url = DomainUrl.objects.get(pk=id)
+        form = URLform(instance=upd_url)
+    else:
+         upd_url = DomainUrl.objects.get(pk=id)
+         form = URLform(request.POST, instance=upd_url)
+         if form.is_valid():
+             form.save()
+         return redirect("/adm/url") 
+
+    url_list = DomainUrl.objects.all()
+    return render(request, 'updateurl.html', {'form':form, 'urls_list':url_list})
+
 
 def deleteurl(request, id):
     url_obj = DomainUrl.objects.get(id=id)
@@ -113,7 +127,7 @@ def config(request, id):
 
 
      config_list = ArticleTextConfiguration.objects.all()
-     return render(request, 'test.html', {'txtform': txtform, 'imgform': imgform, 'dateform': dateform, 'headlineform': headlineform, 'urlform': urlform, 'config_list':config_list})
+     return render(request, 'config.html', {'txtform': txtform, 'imgform': imgform, 'dateform': dateform, 'headlineform': headlineform, 'urlform': urlform, 'config_list':config_list})
     
 
 
