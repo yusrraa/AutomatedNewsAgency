@@ -4,5 +4,9 @@
     "\\adm_interface",
     "\\autonewsagn"
   ],
+<<<<<<< HEAD
+=======
+  "SelectedNode": "\\adm_interface\\models.py",
+>>>>>>> Rushan
   "PreviewInSolutionExplorer": false
 }
