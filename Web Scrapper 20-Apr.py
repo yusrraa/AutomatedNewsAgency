@@ -76,7 +76,7 @@ def get_article_url(url_id,domain_url):
     options = webdriver.ChromeOptions()
     options.headless = True
     s = Service("F:/Program Files (x86)/chromedriver.exe")
-    driver = webdriver.Chrome(service=s,options=options)
+    driver = webdriver.Chrome(service=s, options=options)
     driver.get(domain_url)
     time.sleep(5)
     doc = BeautifulSoup(driver.page_source, "html.parser")
@@ -155,135 +155,121 @@ def get_article_url(url_id,domain_url):
 
 def Scrapper():
     merged_data = ""
-    url_details_lst = get_url()  # Get all domain url table details
-    for url_id in range(len(url_details_lst)):  # get all url one by one
-        try:
-            article_text_config_details = get_article_text_config(
-                url_details_lst[url_id][0])  # get all article text config details
-            article_url_extracted_lst = get_article_url(url_details_lst[url_id][0],
-                                                        url_details_lst[url_id][1])  # get all articles url in lst
-            article_topic_head_lst = get_article_topic_head_config(
-                url_details_lst[url_id][0])  # get news headline config details
-            article_pub_date_lst = get_article_publish_date_config(
-                url_details_lst[url_id][0])  # get publish date config details
-            article_img_config_lst = get_article_img_config(url_details_lst[url_id][0])  # get news image config details
-            for article_url in article_url_extracted_lst:  # get all article url from domain url one by one
-                options = Options()
-                options.headless = True
-                s = Service("F:/Program Files (x86)/chromedriver.exe")
-                driver = webdriver.Chrome(service=s, options=options)
-                driver.get(article_url)
-                time.sleep(5)
-                doc = BeautifulSoup(driver.page_source, "html.parser")
-                driver.quit()
-
-                # Following Section Scrape all the text description from url
-                for article_text_config in range(len(article_text_config_details)):
-                    if article_text_config_details[article_text_config][1] == "id":
-                        page_text = doc.find_all(article_text_config_details[article_text_config][0],
-                                                 id=article_text_config_details[article_text_config][2])
-                        for scrp in page_text:
-                            content = scrp.contents
-                            for grab in content:
-                                if str(grab.string) == "None" or str(grab.string) == "" or str(grab.string) == "\n":
-                                    pass
-                                else:
-                                    merged_data = merged_data + str(grab.string) + "\n"
-                    else:
-                        page_text = doc.find_all(article_text_config_details[article_text_config][0],
-                                                 class_=article_text_config_details[article_text_config][2])
-                        for scrp in page_text:
-                            content = scrp.contents
-                            for grab in content:
-                                if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
-                                    pass
-                                else:
-                                    merged_data = merged_data + str(grab.string) + "\n"
-                print("All Data Together: ", merged_data)
-
-                # Following Section Scrape all the text headline from url
-                article_headline = ""
-                if article_topic_head_lst[0][2] == "id":
-                    article_topic_headline = doc.find(article_topic_head_lst[0][0],
-                                                      {'id': article_topic_head_lst[0][3]})
-                    for item in article_topic_headline.find(article_topic_head_lst[0][1]):
-                        if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
-                            pass
-                        else:
-                            article_headline += str(item.string)
-                            print("Article Headline: ", item.string)
-
+    url_details_lst = get_url() #Get all domain url table details
+    for url_id in range(len(url_details_lst)): # get all url one by one
+        article_text_config_details = get_article_text_config(url_details_lst[url_id][0]) #get all article text config details
+        article_url_extracted_lst = get_article_url(url_details_lst[url_id][0],url_details_lst[url_id][1]) # get all articles url in lst
+        article_topic_head_lst = get_article_topic_head_config(url_details_lst[url_id][0]) #get news headline config details
+        article_pub_date_lst = get_article_publish_date_config(url_details_lst[url_id][0]) #get publish date config details
+        article_img_config_lst = get_article_img_config(url_details_lst[url_id][0]) #get news image config details
+        for article_url in article_url_extracted_lst: # get all article url from domain url one by one
+            options = Options()
+            options.headless = True
+            s = Service("F:/Program Files (x86)/chromedriver.exe")
+            driver = webdriver.Chrome(service=s, options=options)
+            driver.get(article_url)
+            time.sleep(5)
+            doc = BeautifulSoup(driver.page_source, "html.parser")
+            remove_tag = ['header', 'script', 'noscript', 'footer', "button", "input", "style"]
+            for sel_tag in remove_tag:
+                for scr in doc.find_all(sel_tag):
+                    scr.decompose()
+            driver.quit()
+            # Following Section Scrape all the text description from url
+            for article_text_config in range(len(article_text_config_details)):
+                if article_text_config_details[article_text_config][1] == "id":
+                    page_text = doc.find_all(article_text_config_details[article_text_config][0], id=article_text_config_details[article_text_config][2])
+                    for scrp in page_text:
+                        content = scrp.contents
+                        for grab in content:
+                            if str(grab.string) == "None" or str(grab.string) == "" or str(grab.string) == "\n":
+                                pass
+                            else:
+                                merged_data = merged_data + str(grab.string) + "\n"
                 else:
-                    article_topic_headline = doc.find(article_topic_head_lst[0][0],
-                                                      {'class': article_topic_head_lst[0][3]})
-                    for item in article_topic_headline.find(article_topic_head_lst[0][1]):
-                        if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
-                            pass
-                        else:
-                            article_headline += str(item.string)
-                            print("Article Headline: ", item.string)
-
-                # Following Section Scrape all the text publish date from url
-                article_date = ""
-                if article_pub_date_lst[0][1] == "id":
-                    time_date_publish = doc.find_all(article_pub_date_lst[0][0], {'id': article_pub_date_lst[0][2]})
-                    article_date += str(time_date_publish[0].text)
-                    print(time_date_publish[0].text)
-                elif article_pub_date_lst[0][1] == "class":
-                    time_date_publish = doc.find_all(article_pub_date_lst[0][0], {'class': article_pub_date_lst[0][2]})
-                    article_date += str(time_date_publish[0].text)
-                    print(time_date_publish[0].text)
-                else:
-                    article_date += "None"
-                    print("None")
-
-                # Following Section Scrape article image from url
-                article_img_url = ""
-                try:
-                    if article_img_config_lst[0][1] == "id":
-                        li = doc.find(article_img_config_lst[0][0], {'id': article_img_config_lst[0][2]})
-                        for descendant in li.descendants:
-                            if descendant.name == "img":
-                                article_img_url += str(descendant['src'])
-                                print(descendant['src'])
-                    elif article_img_config_lst[0][1] == "class":
-                        li = doc.find(article_img_config_lst[0][0], {'class': article_img_config_lst[0][2]})
-                        for descendant in li.descendants:
-                            if descendant.name == "img":
-                                article_img_url += str(descendant['src'])
-                                print(descendant['src'])
+                    page_text = doc.find_all(article_text_config_details[article_text_config][0], class_=article_text_config_details[article_text_config][2])
+                    for scrp in page_text:
+                        content = scrp.contents
+                        for grab in content:
+                            if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
+                                pass
+                            else:
+                                merged_data = merged_data + str(grab.string) + "\n"
+            print("All Data Together: ",merged_data)
+            # Following Section Scrape all the text headline from url
+            article_headline = ""
+            if article_topic_head_lst[0][2] == "id":
+                article_topic_headline = doc.find(article_topic_head_lst[0][0], {'id': article_topic_head_lst[0][3]})
+                for item in article_topic_headline.find(article_topic_head_lst[0][1]):
+                    if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
+                        pass
                     else:
-                        article_img_url += "None"
-                        print("None")
-                except:
+                        article_headline += str(item.string)
+                        print("Article Headline: ", item.string)
+
+            else:
+                article_topic_headline = doc.find(article_topic_head_lst[0][0], {'class': article_topic_head_lst[0][3]})
+                for item in article_topic_headline.find(article_topic_head_lst[0][1]):
+                    if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
+                        pass
+                    else:
+                        article_headline += str(item.string)
+                        print("Article Headline: ", item.string)
+            # Following Section Scrape all the text publish date from url
+            article_date = ""
+            if article_pub_date_lst[0][1] == "id":
+                time_date_publish = doc.find_all(article_pub_date_lst[0][0], {'id': article_pub_date_lst[0][2]})
+                article_date += str(time_date_publish[0].text)
+                print(time_date_publish[0].text)
+            elif article_pub_date_lst[0][1] == "class":
+                time_date_publish = doc.find_all(article_pub_date_lst[0][0], {'class': article_pub_date_lst[0][2]})
+                article_date += str(time_date_publish[0].text)
+                print(time_date_publish[0].text)
+            else:
+                article_date += "None"
+                print("None")
+            # Following Section Scrape article image from url
+            article_img_url = ""
+            try:
+                if article_img_config_lst[0][1] == "id":
+                    li = doc.find(article_img_config_lst[0][0], {'id': article_img_config_lst[0][2]})
+                    for descendant in li.descendants:
+                        if descendant.name == "img":
+                            article_img_url += str(descendant['src'])
+                            print(descendant['src'])
+                elif article_img_config_lst[0][1] == "class":
+                    li = doc.find(article_img_config_lst[0][0], {'class': article_img_config_lst[0][2]})
+                    for descendant in li.descendants:
+                        if descendant.name == "img":
+                            article_img_url += str(descendant['src'])
+                            print(descendant['src'])
+                else:
                     article_img_url += "None"
-                # database connection
-                connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
-                                             database="automated_news_broadcast")
-                cursor = connection.cursor()
-                # Extracting all article url configuration details from database against url
-                cursor.execute("select id from article where article_url = '%s'" % article_url)
-                article_url_id = cursor.fetchall()
-                connection.close()
-                now = datetime.now()
-                current_time = now.strftime("%H:%M:%S")
-                today = date.today()
-                current_date = today.strftime("%d/%m/%Y")  # dd/mm/YY
-                # database connection
-                if (merged_data != '' or merged_data != None) or (article_headline != '' or article_headline != None):
-                    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
-                                                 database="automated_news_broadcast")
-                    cur = connection.cursor()
-                    # inserting article url into database
-                    cur.execute(
-                        "Insert into unprocesssed_scrape_data (article_id,unprocessed_news_topic,unprocessed_news_description,publication_date,image_href,scrape_date_stamp,scrape_time_stamp) "
+                    print("None")
+            except:
+                article_img_url += "None"
+            # database connection
+            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                                         database="automated_news_broadcast")
+            cursor = connection.cursor()
+            # Extracting all article url configuration details from database against url
+            cursor.execute("select id from article where article_url = '%s'" % article_url)
+            article_url_id = cursor.fetchall()
+            connection.close()
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            today = date.today()
+            current_date = today.strftime("%d/%m/%Y")  # dd/mm/YY
+            # database connection
+            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                                         database="automated_news_broadcast")
+            cur = connection.cursor()
+            # inserting article url into database
+            cur.execute("Insert into unprocesssed_scrape_data (article_id,unprocessed_news_topic,unprocessed_news_description,publication_date,image_href,scrape_date_stamp,scrape_time_stamp) "
                         "values (%s,%s,%s,%s,%s,%s,%s)",
-                        (article_url_id[0][0], article_headline, merged_data, article_date, article_img_url,
-                         current_date, current_time))
-                    connection.commit()
-                    merged_data = ""
-        except AttributeError:
-            pass
+                        (article_url_id[0][0],article_headline,merged_data,article_date,article_img_url,current_date,current_time))
+            connection.commit()
+            merged_data = ""
     return
 
 
