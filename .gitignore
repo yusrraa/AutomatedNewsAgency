@@ -1,2 +1,3 @@
 *.mp4
 Documents/Wordfiles/
+*/__pycache__/*
