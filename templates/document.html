@@ -1,253 +1,123 @@
-﻿{% load static %}
+﻿{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Automated News Channel</title>
+{% load crispy_forms_tags %}
 
-    <!-- Global stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/icons/icomoon/styles.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/colors.css' %}" rel="stylesheet" type="text/css">
-    <!-- /global stylesheets -->
-    <!-- Core JS files -->
-    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/pace.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/core/libraries/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/core/libraries/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/blockui.min.js' %}"></script>
-    <!-- /core JS files -->
-    <!-- Theme JS files -->
-    <script type="text/javascript" src="{% static 'assets/js/plugins/visualization/d3/d3.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/visualization/d3/d3_tooltip.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/forms/styling/switchery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/forms/styling/uniform.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/forms/selects/bootstrap_multiselect.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/moment/moment.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/pickers/daterangepicker.js' %}"></script>
-
-    <script type="text/javascript" src="{% static 'assets/js/core/app.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/pages/dashboard.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/nicescroll.min.js' %}"></script>
-
-    <script type="text/javascript" src="{% static 'assets/js/core/app.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/pages/dashboard.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/pages/layout_fixed_custom.js' %}"></script>
-    <!-- /theme JS files -->
-    <!-- /theme JS files -->
-
-</head>
-
-<body class="navbar-top">
-
-    <!-- Main navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="font-size:large;">News@000</a>
-            <ul class="nav navbar-nav visible-xs-block">
-                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-                <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="navbar-collapse collapse" id="navbar-mobile">
-            <ul class="nav navbar-nav">
-                <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
-            </ul>
-
-            <p class="navbar-text"><span class="label bg-success">Online</span></p>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown language-switch">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{% static 'assets/images/flags/gb.png' %}" class="position-left" alt="">
-                        English
-                        <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li><a class="english"><img src="{% static 'assets/images/flags/gb.png' %}" alt=""> English</a></li>
-                    </ul>
-                </li>
+{% block content %}
 
 
-                <li class="dropdown dropdown-user">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{% static 'assets/images/placeholder.jpg' %}" alt="">
-                        <span>Admin</span>
-                        <i class="caret"></i>
-                    </a>
 
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                        <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<!-- Main navigation -->
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+
+            <!-- Main -->
+            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+            <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+            <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
+            <li class="active "><a href="#"><i class="icon-file-css"></i> <span>Document</span></a></li>
+            <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <!-- /main -->
+
+
+        </ul>
     </div>
+</div>
+<!-- /main navigation -->
+     </div>
+   </div>          
+<!-- /main sidebar -->
+<!-- Main content -->
+<div class="content-wrapper">
 
+    <!-- Page header -->
+    <div class="page-header page-header-default">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><i class="icon-file-css position-left"></i> <span class="text-bold">Document</span></h4>
+            </div>
+        </div>
 
-    <!-- /main navbar -->
-    <!-- Page container -->
-    <div class="page-container">
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Documents</li>
+            </ul>
+        </div>
 
-        <!-- Page content -->
-        <div class="page-content">
+    </div>
+    <!-- /page header -->
+    <!-- Content area -->
+    <div class="content">
 
-            <!-- Main sidebar -->
-            <div class="sidebar sidebar-main sidebar-fixed">
-                <div class="sidebar-content">
+        <!-- Dashboard content -->
+        <div class="row">
 
-                    <!-- User menu -->
-                    <div class="sidebar-user">
-                        <div class="category-content">
-                            <div class="media">
-                                <a href="#" class="media-left"><img src="{% static 'assets/images/adminsym.png' %}" alt=""></a>
-                                <div class="media-body">
-                                    <span class="media-heading text-semibold">ADMIN</span>
-                                    <div class="text-size-mini text-muted">
-                                        <i class="icon-pin text-size-small"></i> &nbsp;Karachi, Pakistan
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /user menu -->
-                    <!-- Main navigation -->
-                    <div class="sidebar-category sidebar-category-visible">
-                        <div class="category-content no-padding">
-                            <ul class="navigation navigation-main navigation-accordion">
-
-                                <!-- Main -->
-                                <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-                                <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                                <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
-                                <li class="active " ><a href="#"><i class="icon-file-css"></i> <span>Document</span></a></li>
-                                <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
-                                <!-- /main -->
-
-
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /main navigation -->
+            <div class="form-group" style="position:center">
+                <div class="col-lg-8">
+                    <textarea rows="5" cols="20" name="textarea" class="form-control" placeholder="Sanitised News will be displayed here" style="width:700px; height:250px"></textarea>
+                    <br />
+                </div>
+                <div class="col-lg-4">
+                    <button type="button" class="btn btn-primary" style="width:150px"><i class="icon-pencil3 position-left"></i> Edit</button>
+                    <button type="button" class="btn btn-danger" style="width:150px"><i class="icon-cross position-left"></i> Disable</button>
 
                 </div>
             </div>
-            <!-- /main sidebar -->
-            <!-- Main content -->
-            <div class="content-wrapper">
-
-                <!-- Page header -->
-                <div class="page-header page-header-default">
-                    <div class="page-header-content">
-                        <div class="page-title">
-                            <h4><i class="icon-file-css position-left"></i> <span class="text-bold">Document</span></h4>
-                        </div>
-                    </div>
-
-                    <div class="breadcrumb-line">
-                        <ul class="breadcrumb">
-                            <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
-                            <li class="active">Documents</li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- /page header -->
-                <!-- Content area -->
-                <div class="content">
-
-                    <!-- Dashboard content -->
-                    <div class="row">
-
-                        <div class="form-group" style="position:center">
-                            <div class="col-lg-8">
-                                <textarea rows="5" cols="20" name="textarea" class="form-control" placeholder="Sanitised News will be displayed here" style="width:700px; height:250px"></textarea>
-                                <br />
-                            </div>
-                            <div class="col-lg-4">
-                                <button type="button" class="btn btn-primary" style="width:150px"><i class="icon-pencil3 position-left"></i> Edit</button>
-                                <button type="button" class="btn btn-danger" style="width:150px"><i class="icon-cross position-left"></i> Disable</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <table class="table datatable-basic table-hover">
-                            <thead>
-                                <tr>
-                                    <th>S.No</th>
-                                    <th>Domain Name</th>
-                                    <th>News</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Sports</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-success">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Weather</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-danger">Disabled</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>sports</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-danger">Disabled</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>weather</td>
-                                    <td>news displayed here.......</td>
-                                    <td><span class="label label-success">Active</span></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>sports</td>
-                                    <td>news displayed here</td>
-                                    <td><span class="label label-success">Active</span></td>
-                                    
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    </div>
-                    <!-- /dashboard content -->
-                    <br /><br />
-                    <!-- Footer -->
-                    <div class="footer text-muted text-center" style="text-align:center">
-                        Copyright  &copy; 2021. <a href="#">Automated News Channel</a>
-                    </div>
-                    <!-- /footer -->
-
-                </div>
-                <!-- /content area -->
-
-            </div>
-            <!-- /main content -->
-
         </div>
-        <!-- /page content -->
+
+        <div class="row">
+            <table class="table datatable-basic table-hover">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Domain Name</th>
+                        <th>News</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sports</td>
+                        <td>news displayed here.......</td>
+                        <td><span class="label label-success">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Weather</td>
+                        <td>news displayed here.......</td>
+                        <td><span class="label label-danger">Disabled</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>sports</td>
+                        <td>news displayed here.......</td>
+                        <td><span class="label label-danger">Disabled</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>weather</td>
+                        <td>news displayed here.......</td>
+                        <td><span class="label label-success">Active</span></td>
+
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>sports</td>
+                        <td>news displayed here</td>
+                        <td><span class="label label-success">Active</span></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
 
     </div>
-    <!-- /page container -->
+    <!-- /dashboard content -->
+    <br /><br />
 
-</body>
-</html>
+
+
+{% endblock %}

@@ -2,11 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\adm_interface",
-    "\\autonewsagn"
+    "\\templates"
   ],
-<<<<<<< HEAD
-=======
-  "SelectedNode": "\\adm_interface\\models.py",
->>>>>>> Rushan
+  "SelectedNode": "\\templates\\config.html",
   "PreviewInSolutionExplorer": false
 }

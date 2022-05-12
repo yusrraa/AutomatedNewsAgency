@@ -8,7 +8,7 @@ import time
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
-driver = webdriver.Chrome(executable_path="F:/Program Files (x86)/chromedriver.exe",options=options)
+driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
 url =input("Enter Url: ")
 driver.get(url)
 time.sleep(5)
