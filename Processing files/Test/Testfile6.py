@@ -57,6 +57,13 @@ for i in range(n_clusters):
 print(my_dict)
 print(my_list)
 print("\n\n\n")
+x = ""
+for i in sorted(my_list):
+    y = sentence[i]
+    x = x+y
+
+print(x)
+print("\n\n\n")
 for i in sorted(my_list):
     print(sentence[i])
 
