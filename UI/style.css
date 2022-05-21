@@ -153,6 +153,8 @@ NEWS CONTENT STYLING
     flex-wrap: wrap;
     flex-direction: row;
     width: auto;
+    justify-content: center;
+    text-align: center;
 }
 
 .news_card {
@@ -224,6 +226,12 @@ p{
     .mar{
         background-color: #2471B0;
     }
+    video{
+        width:350px;
+    }
+    .video{
+        height: max-content;
+    }
 }
 @media only screen and (max-width: 375px) {
     video{
@@ -250,6 +258,8 @@ p{
 
 .box1 {
     background-color: #2471B0;
+    text-align: center;
+    justify-content: center;
 }
 /*******************************************************
 FOOTER STYLING
