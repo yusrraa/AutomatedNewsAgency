@@ -46,4 +46,3 @@ def news_data_scrapper(url, tag_name, scrape_by, att_name):
                     print(grab.string)
     return
 # news_data_scrapper()
-
