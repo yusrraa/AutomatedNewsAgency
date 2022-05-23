@@ -3,7 +3,26 @@
 
 {% load static %}
 {% block content %}
-
+<a href="{% url 'main' %}" class="active">Home</a>
+<a href="{% url 'sports' %}">Sports</a>
+<a href="{% url 'tech' %}">Technology</a>
+<a href="{% url 'entertm' %}">Entertainment</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a>
+    </div>
+<!-- function for responsive nav bar -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<!---------------------------------- Nav bar --------------------------->
 <!--------------------- Select domain cards ---------------------->
 <br>
 <br>

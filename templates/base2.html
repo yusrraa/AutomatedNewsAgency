@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News.io</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
@@ -16,27 +17,10 @@
         <span>
             <img src={% static 'MicrosoftTeams-image.png' %} class="logo">
         </span>
-        <a href="{% url 'main' %}" class="active">Home</a>
         
-    </div>
-    <!-- function for responsive nav bar -->
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
-    <!---------------------------------- Nav bar --------------------------->
     {% block content %}
-
-
     {% endblock %}
 
-    
 
     <!---------------------------------- Footer  --------------------------->
     <div class="copy">
