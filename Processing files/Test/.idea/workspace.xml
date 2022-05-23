@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af4c0105-fcff-4b1c-acd9-e7d8d69380e2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.vs/FYP/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/FYP/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/VSWorkspaceState.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/slnx.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Class_Testfile1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Class_Testfile1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text_summerization_nltk.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_summerization_nltk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../adm_interface/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../adm_interface/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../adm_interface/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../adm_interface/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../templates/config.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../templates/config.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +81,28 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.text_summerization_nltk">
+  <component name="RunManager" selected="Python.Class_Testfile1">
+    <configuration name="Class_Testfile1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Class_Testfile1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Summarisation function_KMeans" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Test" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,27 +116,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Summarisation function_KMeans.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Summarisation2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Test" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Downloads" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Downloads/Summarisation2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -186,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Class_Testfile1" />
         <item itemvalue="Python.text_summerization_nltk" />
         <item itemvalue="Python.Summarisation function_KMeans" />
         <item itemvalue="Python.Testfile6" />
         <item itemvalue="Python.Summarisation3" />
-        <item itemvalue="Python.Summarisation2" />
       </list>
     </recent_temporary>
   </component>

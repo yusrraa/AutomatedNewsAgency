@@ -35,7 +35,9 @@ def deletedom(request, id):
     
    
 def document(request):
-    return render(request, 'document.html')
+
+    doc_list = ProcesssedScrapeData.objects.all() 
+    return render(request, 'document.html', {'doc_list':doc_list})
 
 def url(request):
     if request.method == 'GET':

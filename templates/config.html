@@ -1,4 +1,5 @@
-﻿{% extends 'base.html' %}
+﻿
+ {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
 
@@ -69,7 +70,7 @@
                     <div class="row" style="text-align:center;">
                         {{txtform.scrape_type|as_crispy_field}}
                     </div>
-                    <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                    <!--<button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
                     <button type="submit" class="btn btn-success" name="add_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                 </form>
@@ -127,7 +128,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{urlform.scrape_type|as_crispy_field}}
-                        <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <!-- <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
                         <button type="submit" class="btn btn-success" name="url_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                     </div>
@@ -150,7 +151,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{headlineform.scrape_type|as_crispy_field}}
-                        <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <!--<button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
                         <button type="submit" class="btn btn-success" name="headline_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                     </div>
@@ -170,7 +171,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{imgform.scrape_type|as_crispy_field}}
-                        <button type="submit" class="btn btn-info" name="check_config_img" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <!--<button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal" data-target="#modal_confg_img" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
                         <button type="submit" class="btn btn-success" name="img_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                         <!-- Image modal -->
@@ -196,14 +197,6 @@
                         <!-- /image modal -->
 
 
-
-
-
-
-
-
-
-
                     </div>
                 </form>
                 <br /><br /><br /><br />
@@ -222,7 +215,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{dateform.scrape_type|as_crispy_field}}
-                        <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <!--<button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
                         <button type="submit" class="btn btn-success" name="date_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                     </div>

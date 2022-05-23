@@ -1,0 +1,52 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News.io</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <!---------------------------------- Nav bar --------------------------->
+    <div class="topnav" id="myTopnav">
+        <span>
+            <img src={% static 'MicrosoftTeams-image.png' %} class="logo">
+        </span>
+        <a href="{% url 'main' %}" class="active">Home</a>
+        
+    </div>
+    <!-- function for responsive nav bar -->
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+    <!---------------------------------- Nav bar --------------------------->
+    {% block content %}
+
+
+    {% endblock %}
+
+    
+
+    <!---------------------------------- Footer  --------------------------->
+    <div class="copy">
+        <div class="copywrite">
+            <center>
+                <p>Copyright © 2022 NEWS.io</p>
+            </center>
+        </div>
+    </div>
+    <!---------------------------------- Footer  --------------------------->
+</body>
+
+</html>

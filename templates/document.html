@@ -51,70 +51,46 @@
     <div class="content">
 
         <!-- Dashboard content -->
+        
+
         <div class="row">
-
-            <div class="form-group" style="position:center">
-                <div class="col-lg-8">
-                    <textarea rows="5" cols="20" name="textarea" class="form-control" placeholder="Sanitised News will be displayed here" style="width:700px; height:250px"></textarea>
-                    <br />
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">News Details</h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <button type="button" class="btn btn-primary" style="width:150px"><i class="icon-pencil3 position-left"></i> Edit</button>
-                    <button type="button" class="btn btn-danger" style="width:150px"><i class="icon-cross position-left"></i> Disable</button>
 
-                </div>
+                <div class="panel-body">This table displays the sanitised news here<br /></div>
+
+                <table class="table datatable-basic table-hover ">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>News Topic</th>
+                            <th>News</th>
+                            <th>Published Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in doc_list %}
+                        <tr>
+                            <td>{{doc.id}}</td>
+                            <td>{{doc.processed_news_topic}}</td>
+                            <td>{{doc.processed_news_description}}</td>
+                            <td>{{doc.scrape_date_stamp}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
+
         </div>
-
-        <div class="row">
-            <table class="table datatable-basic table-hover">
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Domain Name</th>
-                        <th>News</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Sports</td>
-                        <td>news displayed here.......</td>
-                        <td><span class="label label-success">Active</span></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Weather</td>
-                        <td>news displayed here.......</td>
-                        <td><span class="label label-danger">Disabled</span></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>sports</td>
-                        <td>news displayed here.......</td>
-                        <td><span class="label label-danger">Disabled</span></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>weather</td>
-                        <td>news displayed here.......</td>
-                        <td><span class="label label-success">Active</span></td>
-
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>sports</td>
-                        <td>news displayed here</td>
-                        <td><span class="label label-success">Active</span></td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-
-    </div>
     <!-- /dashboard content -->
     <br /><br />
 

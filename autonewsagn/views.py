@@ -1,4 +1,15 @@
 from django.http import *
+from django.shortcuts import render, HttpResponseRedirect, redirect
 
 def main(request):
-    return HttpResponse("<h1>Main Home page for user</h1>""This is the main page. This is where we would have our news transmission")
+    return render(request, 'index.html')
+
+def sports(request):
+    return render(request, 'sports.html')
+
+def tech(request):
+    return render(request, 'tech.html')
+
+def entertm(request):
+    return render(request, 'entertm.html')
+   

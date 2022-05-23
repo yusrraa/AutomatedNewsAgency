@@ -27,6 +27,9 @@ admin.site.index_title = 'Welcome to Automated News Channel'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.main, name='main'),
+    path('sports',views.sports, name='sports'),
+    path('tech',views.tech, name='tech'),
+    path('entertm',views.entertm, name='entertm'),
     path('adm/', include('adm_interface.urls'))
 
 ]

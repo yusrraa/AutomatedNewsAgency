@@ -113,7 +113,7 @@ class DomainUrl(models.Model):
 
 
 class ProcesssedScrapeData(models.Model):
-    article_id = models.IntegerField()
+    article = models.ForeignKey('UnprocesssedScrapeData', models.DO_NOTHING)
     processed_news_topic = models.TextField()
     processed_news_description = models.TextField()
     image_href = models.CharField(max_length=767)
@@ -126,7 +126,7 @@ class ProcesssedScrapeData(models.Model):
 
 
 class UnprocesssedScrapeData(models.Model):
-    article = models.OneToOneField(Article, models.DO_NOTHING)
+    article = models.ForeignKey('Article', models.DO_NOTHING)
     unprocessed_news_topic = models.TextField()
     unprocessed_news_description = models.TextField()
     publication_date = models.CharField(max_length=767)
@@ -149,6 +149,32 @@ class Users(models.Model):
     class Meta:
         managed = False
         db_table = 'users'
+
+
+class ProcesssedNewsData(models.Model):
+    article_id = models.ForeignKey('Article',  models.DO_NOTHING)
+    processed_news = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'processsed_news_data'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class AuthGroup(models.Model):
