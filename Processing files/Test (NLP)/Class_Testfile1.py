@@ -60,10 +60,8 @@ class Sanitisation:
                            "values (%s,%s,%s,%s,%s,%s)", (art_id, art_top, summ, art_img, art_date, art_time))
             connection.commit()
 
+        return
 
 
 
-
-A = Sanitisation()
-A.summarise()
 
