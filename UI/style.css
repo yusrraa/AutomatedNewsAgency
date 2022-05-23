@@ -136,131 +136,47 @@ body {
 /*******************************************************
 NEWS CONTENT STYLING
 ********************************************************/
-.text {
-    height: max-content;
-    width: 500px;
-    background: #0CB5DF;
-    color: white;
-    box-sizing: border-box;
-    padding: 10%;
-    margin: 20px 10px 0px 10px;
-    border-radius: 15px 50px 30px;
-    text-align: center;
+.main_container{
+    background-color: #2471B0;
+    padding: 10px;
 }
-
-.box2 {
+.inner_container{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
-    width: auto;
-    justify-content: center;
-    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    margin-bottom: 32px;
+    
 }
-
-.news_card {
-    background-color: #2471B0;
-    margin-left: 10px;
-    margin-top: 33px;
-    height: 300px;
+#box1{
+    width: 600px;
 }
-
-/************************************** marquee ************************/
-.marquee {
-    background-color: #0CB5DF;
+#box2{
+    width: 600px;
+    background: #0CB5DF;
+    color: white; 
+    height: 320px; 
+    border-radius: 10px; 
+    padding: 10px;
+}
+#box2 marquee{
+    height: 320px;
+    text-align:justify ;
+    line-height: 1.5;
+    font-size: 19px;
+}
+.marquee{
+    background-color:#0CB5DF ; 
     color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-bottom: 35px;
-    padding-top: 5px;
-}
-p{
-    font-size: x-large;
+    width: auto;
+    height: 30px;
+    margin-bottom: 0%;
+    font-size: 18px;
+    padding-top:12px;
 }
 
-@media only screen and (max-width: 600px) {
-    .marquee {
-        /* float: left; */
-        padding-left: 5%;
 
-    }
-}
-@media only screen and (max-width: 1024px) {
-    video{
-        width: 600px;
-    }
-    .text{
-        width: 300px;
-    }
-    .box2{
-        padding-left: 30px;
-    }
-}
-@media only screen and (max-width: 768px){
-    video{
-        width: 350px;
-        height: 300px;
-    }
-    .text{
-        width: 350px;
-        padding-top: 5px;
-        height: max-content;
-    }
-    .news_card{
-        margin-top: 65px;
-    }
-}
-@media only screen and (max-width: 425px){
-    .box2 {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        width: auto;
-    }
-    .text{
-        margin-top: -3px;
-        height: max-content;
-    }
-    .news_card{
-        margin-top: 10px;
-    }
-    .mar{
-        background-color: #2471B0;
-    }
-    video{
-        width:350px;
-    }
-    .video{
-        height: max-content;
-    }
-}
-@media only screen and (max-width: 375px) {
-    video{
-        width: 80%;
-        margin-bottom: 10px ;
-    }
-    .box1{
-        width: 100%;
-        background-color: #2471B0;
-    }
-    .news_card{
-        width: auto;
-        margin-left: 5px;
-    }
-    .text{
-        width: auto;
-    }
-}
-@media only screen and (max-width: 375px) {
-    .mar{
-        margin-top: 20px;
-    }
-}
-
-.box1 {
-    background-color: #2471B0;
-    text-align: center;
-    justify-content: center;
-}
 /*******************************************************
 FOOTER STYLING
 ********************************************************/
