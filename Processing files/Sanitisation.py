@@ -12,6 +12,7 @@ class Sanitisation:
 
     def summarise(self):
         self.t_date = self.t_date.strftime("%d/%m/%Y")
+
         connection = pymysql.connect(host="localhost", user="root", passwd="newsagn", database="newsagn")
         cursor = connection.cursor()
         cursor.execute("select id, unprocessed_news_topic, unprocessed_news_description, image_href, scrape_date_stamp,"
