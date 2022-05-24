@@ -90,6 +90,45 @@ def config(request, id):
             text_conf = ArticleTextConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
             text_conf.save()
 
+     if request.method == 'POST' and 'check_config_text' in request.POST:
+        txtform = TextConfrForm(request.POST)
+        if txtform.is_valid():
+            url_id = url_obj
+            tag_nm = txtform.cleaned_data['tag_name']
+            att_nm = txtform.cleaned_data['attribute_name']
+            scrp_type = txtform.cleaned_data['scrape_type']
+
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
+        driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
+        driver.get(url)
+        time.sleep(5)
+        doc = BeautifulSoup(driver.page_source, "html.parser")
+
+        remove_tag = ['header', 'script', 'noscript', 'img', 'footer', 'figure', "button", "input","ul"
+            "style","sup","hr","br","iframe","label","nav","form","svg", 'meta','fieldset',"li","ins","style"]
+        for sel_tag in remove_tag:
+            for scr in doc.find_all(sel_tag):
+                scr.decompose()
+
+        if scrp_type == 'Scrape by ID':
+            page_text = doc.find_all(tag_nm,id = att_nm)
+            for scrp in page_text:
+                content = scrp.contents
+                for grab in content:
+                    if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
+                        pass
+                    else:
+                        x = grab.string
+        else:
+            page_text = doc.find_all(tag_name,class_=class_name)
+            for scrp in page_text:
+                content = scrp.contents
+                for grab in content:
+                    if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
+                        pass
+                    else:
+                        x = grab.string
 
      if request.method == 'POST' and 'img_config' in request.POST:
         imgform = ImgConfrForm(request.POST)
@@ -141,6 +180,23 @@ def config(request, id):
             scrp_type = dateform.cleaned_data['scrape_type']
             text_conf = ArticlePublishDateConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
             text_conf.save()
+            
+     if request.method == 'POST' and 'check_config_date' in request.POST:
+        dateform = DateConfrForm(request.POST)
+        if dateform.is_valid():
+            url_id = url_obj
+            tag_nm = dateform.cleaned_data['tag_name']
+            att_nm = dateform.cleaned_data['attribute_name']
+            scrp_type = dateform.cleaned_data['scrape_type']
+
+            options = webdriver.ChromeOptions()
+            options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
+            driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
+            driver.get(url)
+            time.sleep(5)
+            doc = BeautifulSoup(driver.page_source, "html.parser")
+
+
 
 
      if request.method == 'POST' and 'headline_config' in request.POST:
@@ -153,6 +209,42 @@ def config(request, id):
             scrp_type = headlineform.cleaned_data['scrape_type']
             text_conf = ArticleTopicHeadlineConfiguration(domain_url=url_id, parent_tag_name=pt_tag_nm, child_tag_name=cd_tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
             text_conf.save()
+     
+
+     if request.method == 'POST' and 'check_config_headline' in request.POST:
+        headlineform = HeadlineConfrForm(request.POST)
+        if headlineform.is_valid():
+            url_id = url_obj.url
+            pt_tag_nm = headlineform.cleaned_data['parent_tag_name']
+            cd_tag_nm = headlineform.cleaned_data['child_tag_name']
+            att_nm = headlineform.cleaned_data['attribute_name']
+            scrp_type = headlineform.cleaned_data['scrape_type']
+           
+            options = webdriver.ChromeOptions()
+            options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
+            driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
+            driver.get(url)
+            time.sleep(5)
+            doc = BeautifulSoup(driver.page_source, "html.parser")
+
+            article_headline = ""
+            if scrp_type == 'Scrape by ID':
+                article_topic_headline = doc.find(pt_tag_nm, {'id': att_nm})
+                for item in article_topic_headline.find(cd_tag_nm):
+                    if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
+                        pass
+                    else:
+                        article_headline += str(item.string)
+                        x = item.string
+            else:
+                article_topic_headline = doc.find(pt_tag_nm, {'class': att_nm})
+                for item in article_topic_headline.find(cd_tag_nm):
+                    if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
+                       pass
+                    else:
+                       article_headline += str(item.string)
+                       x = item.string
+
 
      if request.method == 'POST' and 'url_config' in request.POST:
         urlform = URLConfrForm(request.POST)
@@ -163,6 +255,18 @@ def config(request, id):
             scrp_type = urlform.cleaned_data['scrape_type']
             text_conf = ArticleUrlConfiguration(domain_url=url_id, tag_name=tag_nm, scrape_type=scrp_type, attribute_name=att_nm)
             text_conf.save()
+
+
+     if request.method == 'POST' and 'check_config_url' in request.POST:
+        urlform = URLConfrForm(request.POST)
+        if  urlform.is_valid():
+            url_id = url_obj
+            tag_nm = urlform.cleaned_data['tag_name']
+            att_nm = urlform.cleaned_data['attribute_name']
+            scrp_type = urlform.cleaned_data['scrape_type']
+
+            
+
 
 
 
