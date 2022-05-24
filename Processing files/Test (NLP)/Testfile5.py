@@ -36,7 +36,7 @@ tot_words_log = math.log(tot_words)
 #    word_frequencies[word] = word_frequencies[word]/tot_words
 
 print("\n")
-#print(word_frequencies)
+print(word_frequencies)
 
 sentence_scores = {}
 sen_lst = nltk.sent_tokenize(text)
@@ -49,7 +49,7 @@ for sentence in sen_lst:
             freq += tot_word_freq
     sentence_scores[sentence] = freq
 
-
+print("\n")
 print(sentence_scores)
 
 sentence_prob={}
