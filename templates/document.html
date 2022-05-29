@@ -15,8 +15,8 @@
             <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
             <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
             <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
-            <li class="active "><a href="#"><i class="icon-file-css"></i> <span>Document</span></a></li>
             <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <li class="active "><a href="#"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
             <!-- /main -->
 
 
@@ -34,14 +34,14 @@
     <div class="page-header page-header-default">
         <div class="page-header-content">
             <div class="page-title">
-                <h4><i class="icon-file-css position-left"></i> <span class="text-bold">Document</span></h4>
+                <h4><i class="icon-file-css position-left"></i> <span class="text-bold">Processed News</span></h4>
             </div>
         </div>
 
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
-                <li class="active">Documents</li>
+                <li class="active">Processed News</li>
             </ul>
         </div>
 
@@ -51,7 +51,7 @@
     <div class="content">
 
         <!-- Dashboard content -->
-        
+
 
         <div class="row">
             <div class="panel panel-flat">
@@ -66,34 +66,36 @@
                     </div>
                 </div>
 
-                <div class="panel-body">This table displays the sanitised news here<br /></div>
-
-                <table class="table datatable-basic table-hover ">
-                    <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>News Topic</th>
-                            <th>News</th>
-                            <th>Published Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for doc in doc_list %}
-                        <tr>
-                            <td>{{doc.id}}</td>
-                            <td>{{doc.processed_news_topic}}</td>
-                            <td>{{doc.processed_news_description}}</td>
-                            <td>{{doc.scrape_date_stamp}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="panel-body" style="height: 500px; overflow: auto">
+                    This table displays the sanitised news here
+                    <br /><br />
+                    <table class="table table-xlg table-bordered table-framed" style="height: 800px">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>News Topic</th>
+                                <th>News</th>
+                                <th>Published Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for doc in doc_list %}
+                            <tr>
+                                <td>{{doc.id}}</td>
+                                <td>{{doc.processed_news_topic}}</td>
+                                <td>{{doc.processed_news_description}}</td>
+                                <td>{{doc.scrape_date_stamp}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
-    <!-- /dashboard content -->
-    <br /><br />
+        <!-- /dashboard content -->
+
+        <br /><br />
 
 
-
-{% endblock %}
+        {% endblock %}

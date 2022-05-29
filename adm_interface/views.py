@@ -279,22 +279,3 @@ def test(request):   # remmove this path later (for testing purpose only)
     return render(request, 'test.html')
 
 
-
-def check_config(request):
-    return render(request, 'check_config.html')
-
-def img_config(request):
-    return render(request, 'img_config.html')
-
-def text_config(request):
-    return render(request, 'text_config.html')
-
-def headline_config(request):
-    return render(request, 'headline_config.html')
-
-def time_config(request):
-    return render(request, 'time_config.html')
-
-
-
-

@@ -142,8 +142,8 @@
             <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
             <li class="active"><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
             <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
-            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
             <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
             <!-- /main -->
 
 
@@ -228,31 +228,31 @@
                     <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
 
                     <script>
-var xValues = ["Technology", "Sports", "Entertainment", "whether"];
-var yValues = [55, 49, 43, 24];
-var barColors = [
-  "#89B9DC",
-  "#82E9DB",
-  "#BD82E9",
-  "#D3EB7B"
-];
+                        var xValues = ["Technology", "Sports", "Entertainment", "whether"];
+                        var yValues = [55, 49, 43, 24];
+                        var barColors = [
+                            "#89B9DC",
+                            "#82E9DB",
+                            "#BD82E9",
+                            "#D3EB7B"
+                        ];
 
-new Chart("myChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Domain Wise Data "
-    }
-  }
-});
+                        new Chart("myChart", {
+                            type: "pie",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: "Domain Wise Data "
+                                }
+                            }
+                        });
 
 
                     </script>
@@ -355,7 +355,12 @@ new Chart("myChart", {
                     </tbody>
                 </table>
             </div>
-        </div>
+            <!--calendar-->
 
+        </div>
         <hr><hr>
+        <br /><br />
+
+    </div>
+
         {% endblock %}
