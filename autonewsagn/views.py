@@ -10,7 +10,7 @@ def sports(request):
     return render(request, 'sports.html')
 
 def tech(request):
-    dom_list = Category.objects.all()
+    tech_list = ProcesssedScrapeData.objects.filter()
     return render(request, 'tech.html', {'domain_list':dom_list})
 
 def entertm(request):
