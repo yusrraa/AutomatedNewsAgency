@@ -21,6 +21,7 @@ urlpatterns = [
     path('text_config', views.text_config, name='text_config'),
     path('headline_config', views.headline_config, name='headline_config'),
     path('time_config', views.time_config, name='time_config'),
+#path('api/', include('api.urls')),
 
 ]
 

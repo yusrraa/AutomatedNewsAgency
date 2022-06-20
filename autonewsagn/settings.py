@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
+    'crispy_forms',
+    # 'api.apps.AdmInterfaceConfig',
+    # 'rest_framework'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -80,11 +82,11 @@ WSGI_APPLICATION = 'autonewsagn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'newsagn',
+        'NAME': 'automated_news_broadcast',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'newsagn',
+        'PASSWORD': 'q1w2e3rty12345',
     }
 }
 
