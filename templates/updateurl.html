@@ -1,0 +1,105 @@
+﻿{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<!-- Main navigation -->
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+
+            <!-- Main -->
+            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+            <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+            <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
+            <li class="active "><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
+            <!-- /main -->
+
+
+        </ul>
+    </div>
+</div>
+<!-- /main navigation -->
+                </div>
+            </div>
+<!-- /main sidebar -->
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header page-header-default">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><i class="icon-select2 position-left"></i> <span class="text-bold">URLs</span></h4>
+            </div>
+        </div>
+
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li><a href="{% url 'adm_interface:url' %}">URLs</a></li>
+                <li class="active">Update URL</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- Content area -->
+    <div class="content">
+
+        <!-- Dashboard content -->
+        <!-- Iconified modal -->
+        <div id="edit_url" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Add New URL</h5>
+                    </div>
+                    <br />
+
+                    <form action="" method="POST" autocomplete="off" style="padding-left:10px">
+                        &nbsp;&nbsp;
+                        {% csrf_token %}
+                        {{form.category|as_crispy_field}}
+                        {{form.url|as_crispy_field}}
+                        <button type="submit" class="btn btn-success" name="add_url"><i class="icon-database"></i> Save</button>
+
+                    </form>
+
+                    <br /><br />
+                    <div class="modal-footer">
+                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /iconified modal -->
+
+
+
+        <div class="row">
+            <div class="col" style="margin-left:25%; margin-right:25%">
+                <form action="" method="POST" autocomplete="off" style="padding-left:10px">
+                    &nbsp;&nbsp;
+                    {% csrf_token %}
+                    {{form.category|as_crispy_field}}
+                    {{form.url|as_crispy_field}}
+                    <button type="submit" class="btn btn-success" href="/adm/url"><i class="icon-database"></i> Save</button>
+
+                </form>
+            </div>
+
+
+
+        </div>
+        <br /><br />
+
+        <!-- /content -->
+        <br>
+        <br>
+
+{% endblock %}

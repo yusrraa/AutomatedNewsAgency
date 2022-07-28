@@ -1,0 +1,48 @@
+﻿{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+
+<a href="{% url 'main' %}" >Home</a>
+<a href="{% url 'sports' %}">Sports</a>
+<a href="{% url 'tech' %}" class="active">Technology</a>
+<a href="{% url 'entertm' %}">Entertainment</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a>
+    </div>
+<!-- function for responsive nav bar -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<!---------------------------------- Nav bar --------------------------->
+<!---------------------------------- News content  --------------------------->
+<div class="main_container">
+    <div class="inner_container">
+        <div id="box1">
+            <video loop muted controls autoplay width="100%" height="auto" style="pointer-events:none;">
+                    <source src="{% static "1.mp4" %}" type="video/mp4">
+                </video>
+        </div>
+        <div id="box2">
+            <marquee direction="up" scrollamount="2">
+                every time an iphone is about to launch, leaks come up with such rumours. due to the samsung and apple competition, leaks often spread false rumours. the rumours about apple pencil have been in the air for quite some time. this is also because iphone has four models only, meanwhile, samsung has multiple ranges like the galaxy a, j, s, and z. each of these has many phones which can be alternatives if one does not want a stylus. however, none of these features was seen in any of the phones. these rumours had especially intensified when iphone 11 was launched. there have been rumours about iphone flip as well. maybe with time the stylus will become more popular and become part of the iphone family.
+            </marquee>
+        </div>
+    </div>
+    <div>
+        <marquee direction="left" class="marquee" style="width:100%;">
+            Will iPhone 14 be first Apple Pencil iPhone?
+        </marquee>
+    </div>
+</div>
+<br>
+<br>
+<!---------------------------------- News content  --------------------------->
+   {% endblock %}

@@ -1,0 +1,51 @@
+﻿{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<a href="{% url 'main' %}">Home</a>
+<a href="{% url 'sports' %}">Sports</a>
+<a href="{% url 'tech' %}">Technology</a>
+<a href="{% url 'entertm' %}" class="active">Entertainment</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a>
+    </div>
+<!-- function for responsive nav bar -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<!---------------------------------- Nav bar --------------------------->
+<!---------------------------------- News content  --------------------------->
+<div class="main_container">
+    <div class="inner_container">
+        <div id="box1">
+            <video loop muted controls autoplay width="100%" height="auto" style="pointer-events:none;">
+                    <source src="{% static "1.mp4" %}" type="video/mp4">
+                </video>
+        </div>
+        <div id="box2">
+            <marquee direction="up" scrollamount="2">
+                islamabad: minister for inter-provincial coordination ehsan-ur-rehman mazari on saturday held a meeting with officials of the ipc ministry wherein he was briefed about the operations and mandate of the ministry. the ipc secretary briefed him about the roles of various sections and wings of ipc and details about various programmes going on under the ministry. it was informed that establishment of a sports university was also on the agenda of the ipc ministry. it was mazari’s first official meeting with the officials of the ministry since taking oath as the federal minister. the minister was given a presentation about the functions, budget and role of the pakistan sports board (psb) in promoting sports. “sports and tourism are integral for promoting the soft image of pakistan. psb director general retired col asif zaman during the meeting gave an overview of various schemes of the board. the ipc secretary on the occasion also briefed the minister on the major achievements of the ministry and its role for conducting the 2023 south asian games — to be hosted by pakistan — and solving the fifa membership crisis.
+            </marquee>
+        </div>
+    </div>
+    <div>
+        <marquee direction="left" class="marquee" style="width:100%;">
+            Mazari holds first meeting as IPC minister
+        </marquee>
+    </div>
+</div>
+<br>
+<br>
+<!---------------------------------- News content  --------------------------->
+   {% endblock %}

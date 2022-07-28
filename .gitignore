@@ -1,0 +1,6 @@
+*.mp4
+Documents/Wordfiles/
+*/__pycache__/*
+adm_interface/migrations/*
+adm_interface/__pycache__/*
+.vs/*

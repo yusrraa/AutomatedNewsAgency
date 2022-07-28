@@ -1,0 +1,366 @@
+﻿{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+    body {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .main-part {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0px 5px;
+    }
+
+    .cpanel {
+        width: 32%;
+        display: inline-block;
+        background-color: #34495E;
+        color: #fff;
+        margin-top: 50px;
+    }
+
+    .icon-part i {
+        font-size: 30px;
+        padding: 10px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        margin-top: -25px;
+        margin-bottom: 10px;
+        background-color: #34495E;
+    }
+
+    .icon-part p {
+        margin: 0px;
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+
+    .card-content-part {
+        background-color: #2F4254;
+        padding: 5px 0px;
+        border-radius: 25px;
+    }
+
+    .cpanel .card-content-part:hover {
+        background-color: #5a5a5a;
+        cursor: pointer;
+    }
+
+    .card-content-part a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .cpanel-green .icon-part, .cpanel-green .icon-part i {
+        background-color: #16A085;
+    }
+
+    .cpanel-green .card-content-part {
+        background-color: #149077;
+    }
+
+    .cpanel-orange .icon-part, .cpanel-orange .icon-part i {
+        background-color: #F39C12;
+    }
+
+    .cpanel-orange .card-content-part {
+        background-color: #DA8C10;
+    }
+
+    .cpanel-blue .icon-part, .cpanel-blue .icon-part i {
+        background-color: #2980B9;
+        border-radius: 25px;
+    }
+
+    .cpanel-blue .card-content-part {
+        background-color: #2573A6;
+        border-radius: 25px;
+    }
+
+    .cpanel-red .icon-part, .cpanel-red .icon-part i {
+        background-color: #E74C3C;
+    }
+
+    .cpanel-red .card-content-part {
+        background-color: #CF4436;
+    }
+
+    .cpanel-skyblue .icon-part, .cpanel-skyblue .icon-part i {
+        background-color: #8E44AD;
+    }
+
+    .cpanel-skyblue .card-content-part {
+        background-color: #803D9B;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .img-container {
+        float: left;
+        width: 470PX;
+        HEIGHT: 250PX;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+    }
+
+    .img-container1 {
+        float: left;
+        width: 390px;
+        HEIGHT: 250PX;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    table {
+        background: white;
+        color: black;
+    }
+
+    th,
+    td {
+        font-weight: bold;
+    }
+</style>
+<!-- Main navigation -->
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion ">
+
+            <!-- Main -->
+            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+            <li class="active"><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+            <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
+            <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
+            <!-- /main -->
+
+
+        </ul>
+    </div>
+</div>
+<!-- /main navigation -->
+                </div>
+            </div>
+
+<!-- /main sidebar -->
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header page-header-default">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><i class="icon-home2 position-left"></i> <span class="text-bold">Home</span> - Dashboard</h4>
+            </div>
+        </div>
+
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="#"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- Content area -->
+    <!-- /dashboard content -->
+    <div class="main-part">
+        <div class="cpanel">
+            <div class="icon-part">
+
+                <!-- <large>No Of Users</large> -->
+                <i class="fa fa-user-circle"></i>
+                <h3> Visitors</h3>
+                <br>
+
+
+            </div>
+            <div class="card-content-part">
+                <a href="#">#2344</a>
+            </div>
+        </div>
+        <div class="cpanel ">
+            <div class="icon-part">
+                <i class="fa fa-file-text-o"></i>
+
+                <h3>No Of News </h3>
+
+                <br>
+            </div>
+            <div class="card-content-part">
+                <a href="#">#122 </a>
+            </div>
+        </div>
+        <div class="cpanel">
+            <div class="icon-part">
+                <i class="fa fa-refresh"></i>
+
+                <h3>Total News</h3>
+                <br>
+            </div>
+            <div class="card-content-part">
+                <a href="#">#3430 </a>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <!--pie chart-->
+
+        <div class="clearfix">
+            <div class="img-container">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+                <body>
+
+                    <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+
+                    <script>
+                        var xValues = ["Technology", "Sports", "Entertainment", "whether"];
+                        var yValues = [55, 49, 43, 24];
+                        var barColors = [
+                            "#89B9DC",
+                            "#82E9DB",
+                            "#BD82E9",
+                            "#D3EB7B"
+                        ];
+
+                        new Chart("myChart", {
+                            type: "pie",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: "Domain Wise Data "
+                                }
+                            }
+                        });
+
+
+                    </script>
+
+            </div>
+            <!--calendar-->
+            <div class="img-container1">
+                <h1 align="center" style="color: dark blue;">
+                    May 2022
+                </h1>
+
+
+                <table bgcolor="lightgrey" align="center"
+                       cellspacing="50" cellpadding="50" width="300px" height="170px">
+                    <caption align="top">
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th style="color: white; background: #42596D;">
+                                Sun
+                            </th>
+                            <th style="color: white; background: #42596D;">
+                                Mon
+                            </th>
+                            <th style="color: white; background: #42596D;">
+                                Tue
+                            </th>
+                            <th style="color: white; background: #42596D;">
+                                Wed
+                            </th>
+                            <th style="color: white; background: #42596D;">
+                                Thu
+                            </th>
+                            <th style="color: white; background: #42596D;">
+                                Fri
+                            </th>
+                            <th style="color: white; background: #42596D;">
+                                Sat
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--calendar-->
+
+        </div>
+        <hr><hr>
+        <br /><br />
+
+    </div>
+
+        {% endblock %}
