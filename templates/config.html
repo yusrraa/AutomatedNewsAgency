@@ -16,8 +16,8 @@
             <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
             <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
             <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
-            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
             <li class="active "><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
             <!-- /main -->
 
 
@@ -57,7 +57,6 @@
             <div class="col">
                 <h3 style="text-align:center">&nbsp;<strong>Text Configuration</strong></h3>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
-                    &nbsp;&nbsp;
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-sm-6">
@@ -69,10 +68,30 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{txtform.scrape_type|as_crispy_field}}
-                    </div>
-                    <!--<button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
-                    <button type="submit" class="btn btn-success" name="add_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <button class="btn btn-info" name="check_config_text" data-toggle="modal" data-target="#modal_confg_text" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <button type="submit" class="btn btn-success" name="add_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <!-- Text modal -->
+                        <div id="modal_confg_text" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Text Configuration</h5>
+                                    </div>
+                                    <br />
 
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /text modal -->
+                    </div>
                 </form>
 
                 <br /><br /><br />
@@ -128,7 +147,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{urlform.scrape_type|as_crispy_field}}
-                        <!-- <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
+                         <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
                         <button type="submit" class="btn btn-success" name="url_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                     </div>
@@ -151,7 +170,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{headlineform.scrape_type|as_crispy_field}}
-                        <!--<button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
+                        <button class="btn btn-info" name="check_config_headline" style="position:absolute; left:55%">Check Configuration</button><br /><br />
                         <button type="submit" class="btn btn-success" name="headline_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                     </div>
@@ -171,7 +190,7 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{imgform.scrape_type|as_crispy_field}}
-                        <!--<button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal" data-target="#modal_confg_img" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
+                        <button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal" data-target="#modal_confg_img" style="position:absolute; left:55%">Check Configuration</button><br /><br />
                         <button type="submit" class="btn btn-success" name="img_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
 
                         <!-- Image modal -->
@@ -215,9 +234,29 @@
                     </div>
                     <div class="row" style="text-align:center;">
                         {{dateform.scrape_type|as_crispy_field}}
-                        <!--<button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />-->
+                        <button class="btn btn-info" name="check_config_date" data-toggle="modal" data-target="#modal_confg_date" style="position:absolute; left:55%">Check Configuration</button><br /><br />
                         <button type="submit" class="btn btn-success" name="date_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <!-- Text modal -->
+                        <div id="modal_confg_date" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Date Configuration</h5>
+                                    </div>
+                                    <br />
 
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /text modal -->
                     </div>
                 </form>
             </div>

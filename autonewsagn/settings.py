@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^43+h+-t^1e504@g5&e_dd$@i4g8_w9)6(0^q$=7d1oe*po1#s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_crontab',
     # 'api.apps.AdmInterfaceConfig',
     # 'rest_framework'
+]
+
+CRONJOBS = [
+    ('10 8 * * *', 'Processing files.cron.cronjob')
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -129,9 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #Added manually 
-STATICFILES_DIRS = [BASE_DIR / "static",
-    '/var/www/static/',
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
