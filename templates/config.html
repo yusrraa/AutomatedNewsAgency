@@ -58,18 +58,20 @@
                 <h3 style="text-align:center">&nbsp;<strong>Text Configuration</strong></h3>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="row" style="display:flex; justify-content:center;">
+                        <div class="col-sm-4">
                             {{txtform.tag_name|as_crispy_field}}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{txtform.attribute_name|as_crispy_field}}
                         </div>
                     </div>
                     <div class="row" style="text-align:center;">
                         {{txtform.scrape_type|as_crispy_field}}
-                        <button class="btn btn-info" name="check_config_text" data-toggle="modal" data-target="#modal_confg_text" style="position:absolute; left:55%">Check Configuration</button><br /><br />
-                        <button type="submit" class="btn btn-success" name="add_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <span>
+                        <button class="btn btn-info" name="check_config_text" data-toggle="modal" data-target="#modal_confg_text" style="">Check Configuration</button>
+                        <button type="submit" class="btn btn-success" name="add_config" style=""><i class="icon-add position-right"></i> Add</button>
+                        </span>
                         <!-- Text modal -->
                         <div id="modal_confg_text" class="modal">
                             <div class="modal-dialog">
@@ -134,64 +136,74 @@
                     <!-- table -->
                 </div>
                 <br />
+                <hr>
                 <h4 style="text-align:center">&nbsp;<strong>Article URL Configuration</strong></h4>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="row" style="display:flex; justify-content:center;">
+                        <div class="col-sm-4">
                             {{urlform.tag_name|as_crispy_field}}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{urlform.attribute_name|as_crispy_field}}
                         </div>
                     </div>
                     <div class="row" style="text-align:center;">
                         {{urlform.scrape_type|as_crispy_field}}
-                         <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
-                        <button type="submit" class="btn btn-success" name="url_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
-
+                        <span>
+                            <button class="btn btn-info" name="check_config_url" style="">Check Configuration</button>
+                        <button type="submit" class="btn btn-success" name="url_config" style=""><i class="icon-add position-right"></i> Add</button>
+                        </span>
                     </div>
                 </form>
                 <br /><br /><br /><br />
+                <hr>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
                     <div class="row">
                         <h4 style="text-align:center">&nbsp;<strong> News Topic Headline Configuration</strong></h4>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{headlineform.parent_tag_name|as_crispy_field}}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{headlineform.child_tag_name|as_crispy_field}}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{headlineform.attribute_name|as_crispy_field}}
                         </div>
                     </div>
                     <div class="row" style="text-align:center;">
                         {{headlineform.scrape_type|as_crispy_field}}
-                        <button class="btn btn-info" name="check_config_headline" style="position:absolute; left:55%">Check Configuration</button><br /><br />
-                        <button type="submit" class="btn btn-success" name="headline_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <span>
+                        <button class="btn btn-info" name="check_config_headline" style="">Check Configuration</button>
+                        <button type="submit" class="btn btn-success" name="headline_config" ><i class="icon-add position-right"></i> Add</button>
+                        </span>
+                        
 
                     </div>
                 </form>
                 <br /><br /><br /><br />
+                <hr>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
-                    <div class="row">
+                    <div class="row" style="display:flex; justify-content:center;">
                         <h4 style="text-align:center">&nbsp;<strong>Image Configuration</strong></h4>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{imgform.tag_name|as_crispy_field}}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{imgform.attribute_name|as_crispy_field}}
                         </div>
                     </div>
                     <div class="row" style="text-align:center;">
                         {{imgform.scrape_type|as_crispy_field}}
-                        <button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal" data-target="#modal_confg_img" style="position:absolute; left:55%">Check Configuration</button><br /><br />
-                        <button type="submit" class="btn btn-success" name="img_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <span>
+                        <button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal" data-target="#modal_confg_img" style="">Check Configuration</button>
+                        <button type="submit" class="btn btn-success" name="img_config" style=""><i class="icon-add position-right"></i> Add</button>
+                        </span>
+                        
 
                         <!-- Image modal -->
                         <div id="modal_confg_img" class="modal">
@@ -219,23 +231,26 @@
                     </div>
                 </form>
                 <br /><br /><br /><br />
+                <hr>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
                     <br />
-                    <div class="row">
+                    <div class="row" style="display:flex; justify-content:center;">
                         <h4 style="text-align:center">&nbsp;<strong>Pulish Date Configuration</strong></h4>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{dateform.tag_name|as_crispy_field}}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{dateform.attribute_name|as_crispy_field}}
                         </div>
                     </div>
                     <div class="row" style="text-align:center;">
                         {{dateform.scrape_type|as_crispy_field}}
-                        <button class="btn btn-info" name="check_config_date" data-toggle="modal" data-target="#modal_confg_date" style="position:absolute; left:55%">Check Configuration</button><br /><br />
-                        <button type="submit" class="btn btn-success" name="date_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <span>
+                        <button class="btn btn-info" name="check_config_date" data-toggle="modal" data-target="#modal_confg_date" style="">Check Configuration</button>
+                        <button type="submit" class="btn btn-success" name="date_config" style=""><i class="icon-add position-right"></i> Add</button>
+                        </span>
                         <!-- Text modal -->
                         <div id="modal_confg_date" class="modal">
                             <div class="modal-dialog">
