@@ -1,6 +1,6 @@
 ﻿{% extends 'base2.html' %}
 <!--{% load static %}-->
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,10 @@
     </head>
 <body>
 {% block content %}
-<a href="index.html" class="active">Home</a>
-<a href="sports.html">Sports</a>
-<a href="tech.html">Technology</a>
-<a href="entertm.html">Entertainment</a>
+<a href="{% url 'main' %}" class="active">Home</a>
+<a href="{% url 'sports' %}">Sports</a>
+<a href="{% url 'tech' %}">Technology</a>
+<a href="{% url 'entertm' %}">Entertainment</a>
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
 </a>
@@ -31,7 +31,7 @@
 <!--------------------- Select domain cards ---------------------->
 <br>
 <br>
-<a id="inner_card" href="sports.html" style="cursor: pointer; text-decoration: none;">
+<a id="inner_card" href="{% url 'sports' %}" style="cursor: pointer; text-decoration: none;">
     <div class="cards-list">
 
         <div class="card 1">
@@ -45,7 +45,7 @@
             </div>
         </div>
 </a>
-<a id="inner_card" href="tech.html" style="cursor: pointer; text-decoration: none;">
+<a id="inner_card" href="{% url 'tech' %}" style="cursor: pointer; text-decoration: none;">
     <div class="card 2">
         <div class="card_image">
             <img src="https://image.freepik.com/free-vector/illustration-social-media-concept_53876-18383.jpg" />
@@ -57,7 +57,7 @@
         </div>
     </div>
 </a>
-<a id="inner_card" href="entertm.html" style="cursor: pointer; text-decoration: none;">
+<a id="inner_card" href="{% url 'entertm' %}" style="cursor: pointer; text-decoration: none;">
     <div class="card 3">
         <div class="card_image">
             <img src="https://cdn.dribbble.com/users/1626229/screenshots/5955795/shared-life.jpg?compress=1&resize=400x300" />
