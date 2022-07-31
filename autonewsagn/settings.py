@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
+    'crispy_forms',
+    'django_crontab',
+    # 'api.apps.AdmInterfaceConfig',
+    # 'rest_framework'
+]
+
+CRONJOBS = [
+    ('10 8 * * *', 'Processing files.cron.cronjob')
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -80,11 +87,11 @@ WSGI_APPLICATION = 'autonewsagn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'newsagn',
+        'NAME': 'automated_news_broadcast',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'newsagn',
+        'PASSWORD': 'q1w2e3rty12345',
     }
 }
 
@@ -127,9 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #Added manually 
-STATICFILES_DIRS = [BASE_DIR / "static",
-    '/var/www/static/',
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -30,6 +30,7 @@ urlpatterns = [
     path('sports',views.sports, name='sports'),
     path('tech',views.tech, name='tech'),
     path('entertm',views.entertm, name='entertm'),
+    path('reporter_video',views.reporter_video, name='reporter_video'),
     path('adm/', include('adm_interface.urls'))
 
 ]
