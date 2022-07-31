@@ -6,7 +6,7 @@ from adm_interface import views
 app_name = 'adm_interface'
 
 urlpatterns = [
-    path('', views.login, name='login'),
+    path('', views.loginPage, name='login'),
     path('main', views.main, name='main'),
     path('domain', views.domain, name='domain'),
     path('deletedom/<int:id>', views.deletedom, name='deletedom'),
