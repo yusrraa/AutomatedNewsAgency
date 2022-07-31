@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 CRONJOBS = [
-    ('10 8 * * *', 'Processing files.cron.cronjob')
+    ('*/2 * * * *', 'Processingfiles.cron.cronjob')
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
