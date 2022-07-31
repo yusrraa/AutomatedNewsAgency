@@ -1,0 +1,367 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Automated News Channel</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/icons/icomoon/styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/colors.css' %}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/pace.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/core/libraries/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/core/libraries/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/blockui.min.js' %}"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{% static 'assets/js/plugins/visualization/d3/d3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/visualization/d3/d3_tooltip.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/forms/styling/switchery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/forms/styling/uniform.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/forms/selects/bootstrap_multiselect.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/moment/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/pickers/daterangepicker.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'assets/js/core/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/pages/dashboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/nicescroll.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'assets/js/core/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/pages/dashboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/pages/layout_fixed_custom.js' %}"></script>
+    <!-- /theme JS files -->
+    <!-- /theme JS files -->
+    <!--    font awesome link-->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <style>
+        .url_box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        #atr_url {
+            margin-left: 10px;
+            margin-top: 5px;
+            padding-left: 5px;
+            height: 30px;
+            width: 40%;
+        }
+        #tags {
+            margin-right: 20px;
+            padding: auto;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        #attribute {
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .name_box {
+            display: flex;
+            flex-wrap: wrap;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+        .radio_btn,
+        .check_btn {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #scrap_data {
+            width: 600px;
+            border: solid 1px black;
+            box-shadow: 4px 4px 16px 4px gray;
+            padding: 10px;
+            text-align: center;
+            display: none;
+            margin: auto;
+            margin-top: 16px;
+            border-radius: 10px;
+        }
+        #check{
+            border-radius: 10px;
+            height: 30px;
+            background-color: #34b7eb;
+            color: white;
+        }
+        #by_id {
+            margin-left: 30px;
+        }
+        @media only screen and (max-width: 425px) {
+            #atr_url{
+                width: 50%;
+            }
+            #scrap_data{
+                width: 70%;
+            }
+        <!--Dropdown Class-->
+        ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+    </style>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="font-size:large;">News@000</a>
+        <ul class="nav navbar-nav visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav">
+            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+
+        <p class="navbar-text"><span class="label bg-success">Online</span></p>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown language-switch">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{% static 'assets/images/flags/gb.png' %}" class="position-left" alt="">
+                    English
+                    <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="english"><img src="{% static 'assets/images/flags/gb.png' %}" alt=""> English</a></li>
+                </ul>
+            </li>
+
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{% static 'assets/images/placeholder.jpg' %}" alt="">
+                    <span>Admin</span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- /main navbar -->
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main sidebar-fixed">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <div class="sidebar-user">
+                    <div class="category-content">
+                        <div class="media">
+                            <a href="#" class="media-left"><img src="{% static 'assets/images/adminsym.png' %}" alt=""></a>
+                            <div class="media-body">
+                                <span class="media-heading text-semibold">ADMIN</span>
+                                <div class="text-size-mini text-muted">
+                                    <i class="icon-pin text-size-small"></i> &nbsp;Karachi, Pakistan
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /user menu -->
+                <!-- Main navigation -->
+                <div class="sidebar-category sidebar-category-visible">
+                    <div class="category-content no-padding">
+                        <ul class="navigation navigation-main navigation-accordion">
+
+                            <!-- Main -->
+                            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+                            <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                            <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
+                            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Document</span></a></li>
+                            <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+                            <li ><a href="{% url 'adm_interface:check_config' %}"><i  class="icon-cogs" ></i> <span>Check Config</span></a></li>
+                            <li ><a href="{% url 'adm_interface:img_config' %}"><i  class="icon-cogs" ></i> <span>Image Config</span></a></li>
+                            <li class="active"><a href="{% url 'adm_interface:text_config' %}"><i  class="icon-cogs" ></i> <span>Text Config</span></a></li>
+                            <li><a href="{% url 'adm_interface:headline_config' %}"><i  class="icon-cogs" ></i> <span>Headline Config</span></a></li>
+                            <li><a href="{% url 'adm_interface:time_config' %}"><i  class="icon-cogs" ></i> <span>Time Config</span></a></li>
+
+                            <!-- /main -->
+
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header page-header-default">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-cogs position-left"></i> <span class="text-bold">Text Configuration</span></h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Text Config</li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /page header -->
+            <!-- Content area -->
+
+            <!-- /dashboard content -->
+            <section>
+                <!-- URl box -->
+                <div class="url_box">
+                    <p>
+                        URL
+                    </p>
+                    <input type="text" id="atr_url">
+                </div><br><br>
+                <!-- Tag name and Attribute name -->
+                <div class="name_box">
+                    <div>
+                        <select name="" id="tags" style="height: 30px; width: 120px;">
+                            <option value="0">Tag name</option>
+                            <option value="h1">h1</option>
+                            <option value="p">p</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                    <div style="height: 30px;">
+                        <input type="text" name="" id="attribute" placeholder="Attribute name"
+                               style="height: 30px; padding-left: 5px; width: 120px;">
+                    </div>
+                </div><br>
+                <!-- Radio buttons -->
+                <div class="radio_btn">
+                    <input type="radio" id="by_class" name="attribute">
+                    <label for="by_class" style="padding-left: 5px;">By Class</label>
+                    <input type="radio" id="by_id" name="attribute">
+                    <label for="by_id" style="padding-left: 5px;" >By ID</label>
+                </div><br>
+                <!-- Check button -->
+                <div class="check_btn">
+                    <button type="button" onclick="myFunction()" id="check" >CHECKED</button>
+                </div>
+                <!-- config table -->
+                <div id="scrap_data">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+
+                    </p>
+                </div>
+            </section>
+            <script>
+        function myFunction() {
+            document.getElementById("scrap_data").style.display = "block";
+        }
+    </script>
+
+            </section>
+            <br /><br /><br><br>
+            <!-- Footer -->
+            <div class="footer text-muted text-center" style="text-align:center">
+                Copyright  &copy; 2021. <a href="#">Automated News Channel</a>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /content area -->
+
+    </div>
+    <!-- /main content -->
+
+</div>
+<!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

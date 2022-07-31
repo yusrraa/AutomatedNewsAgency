@@ -1,0 +1,276 @@
+﻿
+ {% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+<!-- Main navigation -->
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+
+            <!-- Main -->
+            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+            <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+            <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
+            <li class="active "><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
+            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
+            <!-- /main -->
+
+
+        </ul>
+    </div>
+</div>
+<!-- /main navigation -->
+<!-- /main sidebar -->
+          </div>
+       </div>
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header page-header-default">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><i class="icon-cogs"></i> <span class="text-bold">Configure URL</span></h4>
+            </div>
+        </div>
+
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home2 position-left"></i> Home</a></li>
+                <li><a href="{% url 'adm_interface:url' %}">URLs</a></li>
+                <li class="active">Configure URL</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /page header -->
+    <!-- Content area -->
+    <div class="content">
+
+        <!-- Configure page content -->
+        <div class="row">
+            <div class="col">
+                <h3 style="text-align:center">&nbsp;<strong>Text Configuration</strong></h3>
+                <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{txtform.tag_name|as_crispy_field}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{txtform.attribute_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        {{txtform.scrape_type|as_crispy_field}}
+<<<<<<< HEAD
+                    </div>
+                    <button class="btn btn-info" name="check_config_text" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                    <button type="submit" class="btn btn-success" name="add_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+=======
+                        <button class="btn btn-info" name="check_config_text" data-toggle="modal" data-target="#modal_confg_text" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <button type="submit" class="btn btn-success" name="add_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <!-- Text modal -->
+                        <div id="modal_confg_text" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Text Configuration</h5>
+                                    </div>
+                                    <br />
+>>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
+
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /text modal -->
+                    </div>
+                </form>
+
+                <br /><br /><br />
+                <div class="col align-self-center">
+                    <!-- table -->
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">Scrapper Text Details</h5>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Tag Name</th>
+                                        <th>Attribute Name</th>
+                                        <th>Scrape type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for config in config_list %}
+                                    <tr>
+                                        <td>{{config.id}}</td>
+                                        <td>{{config.tag_name}}</td>
+                                        <td>{{config.scrape_type}}</td>
+                                        <td>{{config.attribute_name}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- table -->
+                </div>
+                <br />
+                <h4 style="text-align:center">&nbsp;<strong>Article URL Configuration</strong></h4>
+                <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{urlform.tag_name|as_crispy_field}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{urlform.attribute_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        {{urlform.scrape_type|as_crispy_field}}
+                         <button class="btn btn-info" name="check_config_url" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <button type="submit" class="btn btn-success" name="url_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+
+                    </div>
+                </form>
+                <br /><br /><br /><br />
+                <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
+                    {% csrf_token %}
+                    <div class="row">
+                        <h4 style="text-align:center">&nbsp;<strong> News Topic Headline Configuration</strong></h4>
+
+                        <div class="col-sm-6">
+                            {{headlineform.parent_tag_name|as_crispy_field}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{headlineform.child_tag_name|as_crispy_field}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{headlineform.attribute_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        {{headlineform.scrape_type|as_crispy_field}}
+                        <button class="btn btn-info" name="check_config_headline" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <button type="submit" class="btn btn-success" name="headline_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+
+                    </div>
+                </form>
+                <br /><br /><br /><br />
+                <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
+                    {% csrf_token %}
+                    <div class="row">
+                        <h4 style="text-align:center">&nbsp;<strong>Image Configuration</strong></h4>
+
+                        <div class="col-sm-6">
+                            {{imgform.tag_name|as_crispy_field}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{imgform.attribute_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        {{imgform.scrape_type|as_crispy_field}}
+                        <button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal" data-target="#modal_confg_img" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+                        <button type="submit" class="btn btn-success" name="img_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+
+                        <!-- Image modal -->
+                        <div id="modal_confg_img" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Image Configuration</h5>
+                                    </div>
+                                    <br />
+
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /image modal -->
+
+
+                    </div>
+                </form>
+                <br /><br /><br /><br />
+                <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
+                    {% csrf_token %}
+                    <br />
+                    <div class="row">
+                        <h4 style="text-align:center">&nbsp;<strong>Pulish Date Configuration</strong></h4>
+
+                        <div class="col-sm-6">
+                            {{dateform.tag_name|as_crispy_field}}
+                        </div>
+                        <div class="col-sm-6">
+                            {{dateform.attribute_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        {{dateform.scrape_type|as_crispy_field}}
+<<<<<<< HEAD
+                        <button class="btn btn-info" name="check_config_date" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+=======
+                        <button class="btn btn-info" name="check_config_date" data-toggle="modal" data-target="#modal_confg_date" style="position:absolute; left:55%">Check Configuration</button><br /><br />
+>>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
+                        <button type="submit" class="btn btn-success" name="date_config" style="position:absolute; left:58%"><i class="icon-add position-right"></i> Add</button>
+                        <!-- Text modal -->
+                        <div id="modal_confg_date" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Date Configuration</h5>
+                                    </div>
+                                    <br />
+
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /text modal -->
+                    </div>
+                </form>
+            </div>
+        </div>
+  
+
+{% endblock %}

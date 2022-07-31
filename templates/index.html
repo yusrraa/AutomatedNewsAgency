@@ -1,0 +1,78 @@
+﻿{% extends 'base2.html' %}
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>News.io</title>
+    </head>
+<body>
+{% block content %}
+<a href="{% url 'main' %}" class="active">Home</a>
+<a href="{% url 'sports' %}">Sports</a>
+<a href="{% url 'tech' %}">Technology</a>
+<a href="{% url 'entertm' %}">Entertainment</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a>
+    </div>
+<!-- function for responsive nav bar -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<!---------------------------------- Nav bar --------------------------->
+<!--------------------- Select domain cards ---------------------->
+<br>
+<br>
+<a id="inner_card" href="{% url 'sports' %}" style="cursor: pointer; text-decoration: none;">
+    <div class="cards-list">
+
+        <div class="card 1">
+            <div class="card_image">
+                <img src="https://www.bls.gov/spotlight/2017/sports-and-exercise/images/cover_image.jpg" />
+            </div>
+            <div class="card_title">
+                <p>
+                    <font color="black">SPORTS</font>
+                </p>
+            </div>
+        </div>
+</a>
+<a id="inner_card" href="{% url 'tech' %}" style="cursor: pointer; text-decoration: none;">
+    <div class="card 2">
+        <div class="card_image">
+            <img src="https://image.freepik.com/free-vector/illustration-social-media-concept_53876-18383.jpg" />
+        </div>
+        <div class="card_title">
+            <p>
+                <font color="black">TECHNOLOGY</font>
+            </p>
+        </div>
+    </div>
+</a>
+<a id="inner_card" href="{% url 'entertm' %}" style="cursor: pointer; text-decoration: none;">
+    <div class="card 3">
+        <div class="card_image">
+            <img src="https://cdn.dribbble.com/users/1626229/screenshots/5955795/shared-life.jpg?compress=1&resize=400x300" />
+        </div>
+        <div class="card_title">
+            <p>ENTERTAINMENT</p>
+        </div>
+    </div>
+</a>
+    </div>
+    </section>
+<br>
+<br>
+<br>
+<!--------------------- Select domain cards ---------------------->
+{% endblock %}
+</body>
+</html>
