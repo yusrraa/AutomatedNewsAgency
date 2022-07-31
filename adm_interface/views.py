@@ -107,48 +107,11 @@ def config(request, id):
      if request.method == 'POST' and 'check_config_text' in request.POST:
         txtform = TextConfrForm(request.POST)
         if txtform.is_valid():
-<<<<<<< HEAD
-            url_id = url_obj
-=======
             url = url_obj.url
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
             tag_nm = txtform.cleaned_data['tag_name']
             att_nm = txtform.cleaned_data['attribute_name']
             scrp_type = txtform.cleaned_data['scrape_type']
 
-<<<<<<< HEAD
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
-        driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
-        driver.get(url)
-        time.sleep(5)
-        doc = BeautifulSoup(driver.page_source, "html.parser")
-
-        remove_tag = ['header', 'script', 'noscript', 'img', 'footer', 'figure', "button", "input","ul"
-            "style","sup","hr","br","iframe","label","nav","form","svg", 'meta','fieldset',"li","ins","style"]
-        for sel_tag in remove_tag:
-            for scr in doc.find_all(sel_tag):
-                scr.decompose()
-
-        if scrp_type == 'Scrape by ID':
-            page_text = doc.find_all(tag_nm,id = att_nm)
-            for scrp in page_text:
-                content = scrp.contents
-                for grab in content:
-                    if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
-                        pass
-                    else:
-                        x = grab.string
-        else:
-            page_text = doc.find_all(tag_name,class_=class_name)
-            for scrp in page_text:
-                content = scrp.contents
-                for grab in content:
-                    if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
-                        pass
-                    else:
-                        x = grab.string
-=======
             options = Options()
             options.headless = True
             s = Service("F:/Program Files (x86)/chromedriver.exe")
@@ -187,7 +150,6 @@ def config(request, id):
                         else:
                             print(grab.string)
                             x = grab.string
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
 
      if request.method == 'POST' and 'img_config' in request.POST:
         imgform = ImgConfrForm(request.POST)
@@ -244,38 +206,25 @@ def config(request, id):
      if request.method == 'POST' and 'check_config_date' in request.POST:
         dateform = DateConfrForm(request.POST)
         if dateform.is_valid():
-<<<<<<< HEAD
-            url_id = url_obj
-=======
             url = url_obj.url
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
             tag_nm = dateform.cleaned_data['tag_name']
             att_nm = dateform.cleaned_data['attribute_name']
             scrp_type = dateform.cleaned_data['scrape_type']
 
-<<<<<<< HEAD
-            options = webdriver.ChromeOptions()
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
-            driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
-=======
             options = Options()
             options.headless = True
             s = Service("F:/Program Files (x86)/chromedriver.exe")
             driver = webdriver.Chrome(service=s, options=options)
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
             driver.get(url)
             time.sleep(5)
             doc = BeautifulSoup(driver.page_source, "html.parser")
 
-<<<<<<< HEAD
-=======
             if scrp_type == 'Scrape by ID':
                 time_date_publish = doc.find_all(tag_nm, {'class': att_nm})
                 print(time_date_publish[0].text)
             else:
                 print("None")
 
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
 
 
 
@@ -294,27 +243,16 @@ def config(request, id):
      if request.method == 'POST' and 'check_config_headline' in request.POST:
         headlineform = HeadlineConfrForm(request.POST)
         if headlineform.is_valid():
-<<<<<<< HEAD
-            url_id = url_obj.url
-=======
             url = url_obj.url
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
             pt_tag_nm = headlineform.cleaned_data['parent_tag_name']
             cd_tag_nm = headlineform.cleaned_data['child_tag_name']
             att_nm = headlineform.cleaned_data['attribute_name']
             scrp_type = headlineform.cleaned_data['scrape_type']
-<<<<<<< HEAD
-           
-            options = webdriver.ChromeOptions()
-            options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
-            driver = webdriver.Chrome(executable_path="C:\Program Files (x86)\chromedriver.exe",options=options)
-=======
 
             options = Options()
             options.headless = True
             s = Service("F:/Program Files (x86)/chromedriver.exe")
             driver = webdriver.Chrome(service=s, options=options)
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
             driver.get(url)
             time.sleep(5)
             doc = BeautifulSoup(driver.page_source, "html.parser")
@@ -351,13 +289,8 @@ def config(request, id):
 
      if request.method == 'POST' and 'check_config_url' in request.POST:
         urlform = URLConfrForm(request.POST)
-<<<<<<< HEAD
-        if  urlform.is_valid():
-            url_id = url_obj
-=======
         if urlform.is_valid():
             url = url_obj.url
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
             tag_nm = urlform.cleaned_data['tag_name']
             att_nm = urlform.cleaned_data['attribute_name']
             scrp_type = urlform.cleaned_data['scrape_type']

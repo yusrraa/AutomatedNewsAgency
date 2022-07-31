@@ -2,8 +2,6 @@ from django.http import *
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.db import models
 from adm_interface.models import *
-<<<<<<< HEAD
-=======
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
@@ -19,7 +17,6 @@ def loginPage(request):
             messages.info(request, "Username OR Password is incorrect")
             return render(request,'login.html', {})
 
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
 
 def main(request):
     return render(request, 'index.html')
@@ -31,11 +28,7 @@ def sports(request):
 
 def tech(request):
     tech_list = ProcesssedScrapeData.objects.filter()
-<<<<<<< HEAD
-    return render(request, 'tech.html', {'domain_list':dom_list})
-=======
     return render(request, 'tech.html')
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
 
 
 def entertm(request):

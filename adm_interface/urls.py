@@ -17,8 +17,6 @@ urlpatterns = [
     path('deleteurl/<int:id>', views.deleteurl, name='urldom'),
     path('test', views.test, name='test'), # remove this path later (for testing purpose only)
     path('config/<int:id>', views.config, name='config'),
-<<<<<<< HEAD
-=======
     # path('check_config', views.check_config, name='check_config'),
     # path('img_config', views.img_config, name='img_config'),
     # path('text_config', views.text_config, name='text_config'),
@@ -26,7 +24,6 @@ urlpatterns = [
     # path('time_config', views.time_config, name='time_config'),
 #path('api/', include('api.urls')),
 
->>>>>>> 9486038fbc377cc4d0f56ccbf5cacbada19afb42
 ]
 urlpatterns += staticfiles_urlpatterns()
 
