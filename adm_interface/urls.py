@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from adm_interface import views
 
 app_name = 'adm_interface'
@@ -24,4 +25,5 @@ urlpatterns = [
 #path('api/', include('api.urls')),
 
 ]
+urlpatterns += staticfiles_urlpatterns()
 
