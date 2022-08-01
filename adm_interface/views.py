@@ -6,13 +6,28 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
-
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
-def login(request):
+
+def loginPage(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return render(request, 'main.html')
+        else:
+            messages.info(request, "Username OR Password is incorrect")
+            return render(request,'login.html', {})
+
     return render(request, 'login.html')
-    
+
+@login_required(login_url = '')
 def main(request):
     return render(request, 'main.html')
 

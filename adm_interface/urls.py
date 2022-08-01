@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from adm_interface import views
 
 app_name = 'adm_interface'
 
 urlpatterns = [
-    path('', views.login, name='login'),
+    path('', views.loginPage, name='login'),
     path('main', views.main, name='main'),
     path('domain', views.domain, name='domain'),
     path('deletedom/<int:id>', views.deletedom, name='deletedom'),
@@ -24,4 +25,5 @@ urlpatterns = [
 #path('api/', include('api.urls')),
 
 ]
+urlpatterns += staticfiles_urlpatterns()
 

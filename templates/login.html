@@ -1,6 +1,5 @@
 ﻿{% load static %}
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -59,7 +58,9 @@
                 <div class="content">
 
                     <!-- Simple login form -->
-                    <form action="{% url 'adm_interface:main' %}">
+                    <form action="" method="POST">
+
+                        {% csrf_token %}
                         <div class="panel panel-body login-form " style="border-radius: 1rem; height: 450px; background-color: #36454F; color: white">
                             <div class="text-center">
                                 <div class="icon-object border-slate-300 text-slate-300"><i class="icon-user-plus"></i></div>
@@ -67,14 +68,14 @@
                             </div>
 
                             <div class="form-group has-feedback has-feedback-left">
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input type="text" class="form-control" placeholder="Username" name="username">
                                 <div class="form-control-feedback">
                                     <i class="icon-user text-muted"></i>
                                 </div>
                             </div>
 
                             <div class="form-group has-feedback has-feedback-left">
-                                <input type="text" class="form-control" placeholder="Password">
+                                <input type="text" class="form-control" placeholder="Password" name="password">
                                 <div class="form-control-feedback">
                                     <i class="icon-lock2 text-muted"></i>
                                 </div>
@@ -85,12 +86,13 @@
                             </div>
                             <br /><br />
                             <div class="form-group" style="padding-left: 80px">
-                                <button type="submit" class="btn btn-block btn-lg px-5" style="color:black; border:medium 2px black; width: 120px; ">Login <i class="icon-circle-right2 position-right"></i></button>
+                                <button type="submit" value="submit" class="btn btn-block btn-lg px-5" style="color:black; border:medium 2px black; width: 120px; ">Login <i class="icon-circle-right2 position-right"></i></button>
                             </div>
-
-
                         </div>
                     </form>
+                    {% for message in messages %}
+                    <p id="messages">{{message}}</p>
+                    {% endfor %}
                     <!-- /simple login form -->
                     <!-- Footer -->
                     <div class="footer text-muted text-center" style="text-align:center">
