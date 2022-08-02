@@ -6,7 +6,6 @@ def cronjob():
     sanitization = Sanitization()
     scrapper.Scrape_news()
     sanitization.summarise()
-    print("Chal para")
 
 cronjob()
 
