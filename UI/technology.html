@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!---------------------------------- Nav bar --------------------------->
+    <div class="topnav" id="myTopnav">
+        <span>
+            <img src='MicrosoftTeams-image.png' class="logo">
+        </span>
+        <a href="index.html">Home</a>
+        <a href="sports.html">Sports</a>
+        <a href="technology.html" class="active">Technology</a>
+        <a href="entertainment.html">Entertainment</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <!-- function for responsive nav bar -->
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+    <!---------------------------------- Nav bar --------------------------->
+    <!---------------------------------- News content  --------------------------->
+    <div class="main_container">
+        <div class="inner_container">
+            <div id="box1">
+                <video width="100%" height="auto" loop autoplay muted controls style="pointer-events: none;">
+                    <source src="1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="box2">
+                <marquee direction="up" scrollamount="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</marquee>
+            </div>
+        </div>
+        <div>
+            <marquee direction="left" class="marquee">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo.
+            </marquee>
+        </div>
+    </div>
+    <br><br>
+    <!---------------------------------- News content  --------------------------->
+    <!---------------------------------- Footer  --------------------------->
+    <div class="copy">
+        <div class="copywrite">
+            <center>
+                <p>Copyright © 2022 NEWS.io</p>
+            </center>
+        </div>
+    </div>
+    <!---------------------------------- Footer  --------------------------->
+</body>
+
+</html>
