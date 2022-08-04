@@ -13,7 +13,7 @@ class ArticleUrlConfig:
 
     def get_article_url_config(self,url_id):
         # database connection
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                      database="automated_news_broadcast")
         cursor = connection.cursor()
         # Extracting all article url configuration details from database against url
@@ -28,7 +28,7 @@ class ArticleUrlConfig:
 class ImgConfig:
     def get_article_img_config(self,url_id):
         # database connection
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                      database="automated_news_broadcast")
         cursor = connection.cursor()
         # Extracting all article url configuration details from database against url
@@ -42,7 +42,7 @@ class ImgConfig:
 class PublishConfig:
     def get_article_publish_date_config(self,url_id):
         # database connection
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                      database="automated_news_broadcast")
         cursor = connection.cursor()
         # Extracting all article url configuration details from database against url
@@ -57,7 +57,7 @@ class PublishConfig:
 class HeadlineConfig:
     def get_article_topic_head_config(self,url_id):
         # database connection
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                      database="automated_news_broadcast")
         cursor = connection.cursor()
         # Extracting all article url configuration details from database against url
@@ -74,7 +74,7 @@ class TextConfig:
 
     def get_article_text_config(self,url_id):
         # database connection
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                      database="automated_news_broadcast")
         cursor = connection.cursor()
         # Extracting all article url configuration details from database against url
@@ -89,7 +89,7 @@ class TextConfig:
 class Url(ArticleUrlConfig):
     def get_domain_url(self):
         # database connection
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                      database="automated_news_broadcast")
         cursor = connection.cursor()
         # Extracting all url and their ids from database
@@ -122,7 +122,7 @@ class Url(ArticleUrlConfig):
                         article_url_extract = re.search(url_id_extract, item.get('href')).group()
                         if (len(item.get('href')) - len(article_url_extract)) > 50:
                             # database connection
-                            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                            connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                                          database="automated_news_broadcast")
                             cursor = connection.cursor()
                             # Extracting all article url configuration details from database against url
@@ -134,7 +134,7 @@ class Url(ArticleUrlConfig):
                                 print(item.get('href'))
                                 article_url_extracted_lst.append(item.get('href'))
                                 # database connection
-                                connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                                connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                                              database="automated_news_broadcast")
                                 cur = connection.cursor()
                                 # inserting article url into database
@@ -159,7 +159,7 @@ class Url(ArticleUrlConfig):
                         # print(article_url_extract)
                         if (len(item.get('href')) - len(article_url_extract)) > 50:
                             # database connection
-                            connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                            connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                                          database="automated_news_broadcast")
                             cursor = connection.cursor()
                             # Extracting all article url configuration details from database against url
@@ -170,7 +170,7 @@ class Url(ArticleUrlConfig):
                                 print(item.get('href'))
                                 article_url_extracted_lst.append(item.get('href'))
                                 # database connection
-                                connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                                connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                                              database="automated_news_broadcast")
                                 cur = connection.cursor()
                                 # inserting article url into database
@@ -312,7 +312,7 @@ class Scrapper(Url, ArticleUrlConfig, ImgConfig, PublishConfig, HeadlineConfig, 
                     except DeprecationWarning:
                         article_img_url = "None"
                     # database connection
-                    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                    connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                                  database="automated_news_broadcast") # line 31
                     cursor = connection.cursor()
                     # Extracting all article url configuration details from database against url
@@ -324,7 +324,7 @@ class Scrapper(Url, ArticleUrlConfig, ImgConfig, PublishConfig, HeadlineConfig, 
                     today = date.today()
                     current_date = today.strftime("%d/%m/%Y")  # dd/mm/YY
                     # database connection
-                    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                    connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                                  database="automated_news_broadcast")
                     cur = connection.cursor()
                     if article_headline != "None" or article_headline is not None:

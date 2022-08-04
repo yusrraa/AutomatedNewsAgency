@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'autonewsagn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'automated_news_broadcast',
+        'NAME': 'newsagn',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'q1w2e3rty12345',
+        'PASSWORD': 'newsagn',
     }
 }
 
