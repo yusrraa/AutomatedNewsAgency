@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
 import re
+from django.contrib import auth
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -28,10 +29,20 @@ def loginPage(request):
 
     return render(request, 'login.html')
 
-@login_required(login_url = '')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/adm/')
+
+
+
+@login_required(login_url='/adm/')
 def main(request):
     return render(request, 'main.html')
 
+
+
+@login_required(login_url='/adm/')
 def domain(request):
     if request.method == 'GET':
          form = DomainForm()
@@ -42,18 +53,25 @@ def domain(request):
     dom_list = Category.objects.all()
     return render(request, 'domain.html', {'form':form, 'domain_list':dom_list })
 
-       
+
+
+@login_required(login_url='/adm/')       
 def deletedom(request, id):
     dom_obj = Category.objects.get(id=id)
     dom_obj.delete()
     return redirect("/adm/domain")    
     
-   
-def document(request):
 
+
+
+@login_required(login_url='/adm/')   
+def document(request):
     doc_list = ProcesssedScrapeData.objects.all() 
     return render(request, 'document.html', {'doc_list':doc_list})
 
+
+
+@login_required(login_url='/adm/')
 def url(request):
     if request.method == 'GET':
         form = URLform()
@@ -66,6 +84,7 @@ def url(request):
     return render(request, 'url.html', {'form':form, 'urls_list':url_list})
  
 
+@login_required
 def updateurl(request,id):
     if request.method == 'GET':
         upd_url = DomainUrl.objects.get(pk=id)
@@ -81,11 +100,14 @@ def updateurl(request,id):
     return render(request, 'updateurl.html', {'form':form, 'urls_list':url_list})
 
 
+@login_required(login_url='/adm/')
 def deleteurl(request, id):
     url_obj = DomainUrl.objects.get(id=id)
     url_obj.delete()
     return redirect("/adm/url")    
 
+
+@login_required(login_url='/adm/')
 def config(request, id):
      url_obj = DomainUrl.objects.get(id=id)
      txtform = TextConfrForm()
@@ -280,6 +302,7 @@ def config(request, id):
                         else:
                             article_headline += str(item.string)
                             x = item.string
+                    return x      
                 else:
                     article_topic_headline = doc.find(pt_tag_nm, {'class': att_nm})
                     for item in article_topic_headline.find(cd_tag_nm):
@@ -288,6 +311,7 @@ def config(request, id):
                         else:
                            article_headline += str(item.string)
                            x = item.string
+                    return x
             except:
                 return None
 
