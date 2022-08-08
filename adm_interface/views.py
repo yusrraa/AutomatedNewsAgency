@@ -381,14 +381,6 @@ def config(request, id):
             except:
                 return "None"
 
-            
-
-
-
-
-
-
-
      config_list = ArticleTextConfiguration.objects.filter(domain_url=url_obj)
      return render(request, 'config.html', {'txtform': txtform, 'imgform': imgform, 'dateform': dateform, 'headlineform': headlineform, 'urlform': urlform, 'config_list':config_list, 'chk_config':x})
     
