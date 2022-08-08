@@ -1,5 +1,5 @@
 from Scrapper import *
-from Sanitisation import *
+from Sanitization import *
 
 def scrap():
     obj = Scrapper()

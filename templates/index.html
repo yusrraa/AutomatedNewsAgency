@@ -1,7 +1,12 @@
 ﻿{% extends 'base2.html' %}
-
-
-{% load static %}
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>News.io</title>
+    </head>
+<body>
 {% block content %}
 <a href="{% url 'main' %}" class="active">Home</a>
 <a href="{% url 'sports' %}">Sports</a>
@@ -69,3 +74,5 @@
 <br>
 <!--------------------- Select domain cards ---------------------->
 {% endblock %}
+</body>
+</html>
