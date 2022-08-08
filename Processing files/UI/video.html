@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <style>
+        .text {
+            height: max-content;
+            width: 500px;
+            background: #0CB5DF;
+            color: white;
+            box-sizing: border-box;
+            padding: 10%;
+            margin: 20px 10px 0px 10px;
+            border-radius: 15px 50px 30px;
+            text-align: center;
+        }
+
+        .box2 {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            width: auto;
+        }
+
+        .news_card {
+            background-color: #2471B0;
+            margin-left: 10px;
+            margin-top: 33px;
+            height: 300px;
+        }
+
+        /* marquee */
+        .marquee {
+            background-color: #0CB5DF;
+            color: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 35px;
+            padding-top: 5px;
+        }
+        p{
+            font-size: x-large;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .marquee {
+                /* float: left; */
+                padding-left: 5%;
+
+            }
+        }
+        @media only screen and (max-width: 1024px) {
+            video{
+                width: 600px;
+            }
+            .text{
+                width: 300px;
+            }
+            .box2{
+                padding-left: 30px;
+            }
+        }
+        @media only screen and (max-width: 768px){
+            video{
+                width: 350px;
+                height: 300px;
+            }
+            .text{
+                width: 300px;
+                padding-top: 5px;
+                height: 200px;
+            }
+            .news_card{
+                margin-top: 65px;
+            }
+        }
+        @media only screen and (max-width: 425px){
+            .box2 {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                width: auto;
+            }
+            .text{
+                margin-top: -3px;
+                height: max-content;
+            }
+            .news_card{
+                margin-top: 10px;
+            }
+            .mar{
+                background-color: #2471B0;
+            }
+        }
+        @media only screen and (max-width: 375px) {
+            video{
+                width: 80%;
+            }
+            .box1{
+                width: 100%;
+                background-color: #2471B0;
+            }
+        }
+
+        .box1 {
+            background-color: #2471B0;
+        }
+    </style>
+</head>
+
+<body>
+    <!--------------------- news content -------------------------->
+    <div class="box1">
+        <div class="box2">
+            <div class="video">
+                <video height="350px" width="800px" autoplay playsinline style="pointer-events: none; margin-top: 33px;"
+                    >
+                    <source src="1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="news_card">
+                <div class="text">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. </h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="mar">
+            <marquee width="auto" height="30px" direction="left" class="marquee" onmouseover="this.stop();"
+                onmouseout="this.start();">
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo.</p>
+            </marquee>
+        </div>
+    </div>
+</body>
+
+</html>
