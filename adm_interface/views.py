@@ -9,6 +9,8 @@ import time
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import pymysql
+
 
 # Create your views here.
 
@@ -83,7 +85,20 @@ def updateurl(request,id):
 def deleteurl(request, id):
     url_obj = DomainUrl.objects.get(id=id)
     url_obj.delete()
-    return redirect("/adm/url")    
+    return redirect("/adm/url")   
+
+def disableurl(request,id):
+    # database connection
+    connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                                 database="automated_news_broadcast")
+    cursor = connection.cursor()
+    # Disable the URl
+    #extracted_id = DomainUrl.objects.get(id=id)
+    disable_url = cursor.execute("Update domain_url set is_active=0 where id=id")
+    connection.close()
+    return redirect("/adm/url")
+ 
+
 
 def config(request, id):
      url_obj = DomainUrl.objects.get(id=id)
@@ -307,5 +322,7 @@ def config(request, id):
 
 def test(request):   # remmove this path later (for testing purpose only)
     return render(request, 'test.html')
+
+
 
 

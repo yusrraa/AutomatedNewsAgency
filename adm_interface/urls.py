@@ -15,6 +15,7 @@ urlpatterns = [
     path('<int:id>', views.updateurl, name='updateurl'),
     #path('updateurl/<int:id>/', views.updateurl, name='updateurl'),
     path('deleteurl/<int:id>', views.deleteurl, name='urldom'),
+    path('disableurl/<int:id>', views.disableurl, name ='disableurl' ),
     path('test', views.test, name='test'), # remove this path later (for testing purpose only)
     path('config/<int:id>', views.config, name='config'),
     # path('check_config', views.check_config, name='check_config'),
