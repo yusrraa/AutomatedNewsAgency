@@ -29,19 +29,35 @@
 <div class="main_container">
     <div class="inner_container">
         <div id="box1">
-            <video loop muted controls autoplay width="100%" height="auto" style="pointer-events:none;">
-                    <source src="{% static 'reporter_video.mp4' %}" type="video/mp4">
-                </video>
+            <video loop muted autoplay width="100%" height="auto" style="pointer-events:none;">
+                <source src="{% static 'reporter_video.mp4' %}" type="video/mp4">
+            </video>
+
+            <audio autoplay>
+                <source src="output" type="audio">
+                Your browser does not support the audio element.
+            </audio>
+
+
         </div>
         <div id="box2">
             <marquee direction="up" scrollamount="2">
-                the game showed that the taliban could not stop the players, said team captain nilab, who like her teammates did not give a family name so as to protect relatives living in afghanistan. the shirts are marked with numbers but no names for the safety of players' families in afghanistan. players from afghanistan's national women's football team competed in a local league match in australia on sunday for the first time since fleeing the taliban. the result was a scoreless draw after an afghan goal was disallowed for being offside in a lower league amateur match in the eastern state of victoria. but for the afghan women it was a powerful, symbolic victory as they returned to the pitch together after leaving their homeland to rebuild their lives in australia. “today, we are playing as a team and together and powerful. “that obviously wasn't happening for them in afghanistan — they were being persecuted for it,” he said. “we fled the country but we are still thinking of our country and we are still working for our victory for our country.” australia helped dozens of afghan national women's team players and their relatives to escape when the taliban swept back to power eight months ago.
+                {% for x in sprt_list %}
+                {% for news in x %}
+                {{news.processed_news_description}}
+                <br /><br /><br />
+                {% endfor %}
+                {% endfor %}
             </marquee>
         </div>
     </div>
     <div>
-        <marquee direction="left" class="marquee" style="width:100%;">
-            Afghan women players make football debut in Australia
+        <marquee direction="left" class="marquee" style="width:100%;" scrollamount="2">
+            {% for x in sprt_list %}
+            {% for news in x %}
+            {{news.processed_news_topic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% endfor %}
+            {% endfor %}
         </marquee>
     </div>
 </div>
