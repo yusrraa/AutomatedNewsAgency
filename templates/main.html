@@ -1,44 +1,41 @@
-﻿{% extends 'base.html' %}
+﻿﻿{% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
 
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<style type="text/css">
-    body {
-        font-family: 'Raleway', sans-serif;
-    }
-
+<style>
+    /************* Dashboard panel boxes ***********/
     .main-part {
         width: 80%;
         margin: 0 auto;
         text-align: center;
         padding: 0px 5px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     .cpanel {
         width: 32%;
         display: inline-block;
-        background-color: #34495E;
+        background-color: #26A69A;
         color: #fff;
         margin-top: 50px;
+        border-radius: 12px;
     }
 
     .icon-part i {
         font-size: 30px;
         padding: 10px;
-        border: 1px solid #fff;
+        border: 2px solid #26A69A;
+        color: #26A69A;
         border-radius: 50%;
         margin-top: -25px;
         margin-bottom: 10px;
-        background-color: #34495E;
-    }
-
-    .icon-part p {
-        margin: 0px;
-        font-size: 20px;
-        padding-bottom: 10px;
+        background-color: #fff;
     }
 
     .card-content-part {
@@ -57,81 +54,221 @@
         text-decoration: none;
     }
 
-    .cpanel-green .icon-part, .cpanel-green .icon-part i {
-        background-color: #16A085;
-    }
-
-    .cpanel-green .card-content-part {
-        background-color: #149077;
-    }
-
-    .cpanel-orange .icon-part, .cpanel-orange .icon-part i {
-        background-color: #F39C12;
-    }
-
-    .cpanel-orange .card-content-part {
-        background-color: #DA8C10;
-    }
-
-    .cpanel-blue .icon-part, .cpanel-blue .icon-part i {
-        background-color: #2980B9;
-        border-radius: 25px;
-    }
-
-    .cpanel-blue .card-content-part {
-        background-color: #2573A6;
-        border-radius: 25px;
-    }
-
-    .cpanel-red .icon-part, .cpanel-red .icon-part i {
-        background-color: #E74C3C;
-    }
-
-    .cpanel-red .card-content-part {
-        background-color: #CF4436;
-    }
-
-    .cpanel-skyblue .icon-part, .cpanel-skyblue .icon-part i {
-        background-color: #8E44AD;
-    }
-
-    .cpanel-skyblue .card-content-part {
-        background-color: #803D9B;
-    }
-
     * {
         box-sizing: border-box;
     }
 
+    .outer-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    /**************** Pie-chart ****************/
     .img-container {
-        float: left;
         width: 470PX;
-        HEIGHT: 250PX;
+        HEIGHT: 310PX;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+        margin-top: 20px;
     }
 
-    .img-container1 {
-        float: left;
-        width: 390px;
-        HEIGHT: 250PX;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+    /***************** Calendar ****************/
+    body {
+        font-family: 'Arial', sans-serif;
+        height: 100vh;
     }
 
-    .clearfix::after {
-        content: "";
-        clear: both;
-        display: table;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 20px;
+        min-height: 100%;
+    }
+
+    button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    #calendari {
+        margin: 20px 0;
+        position: relative;
+        overflow: hidden;
+        height: 310px;
+        width: 350px;
+        font-size: 14px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
     }
 
     table {
-        background: white;
-        color: black;
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 350px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+        transition: all 0.3s ease;
     }
 
-    th,
-    td {
-        font-weight: bold;
+        table.actiu {
+            transform: translateX(0px)top;
+        }
+
+        table.inactiu {
+            transition: all 0.3s 0.01s ease;
+        }
+
+        table.amagat-esquerra {
+            transform: translateX(-299px);
+        }
+
+        table.amagat-dreta {
+            transform: translateX(300px);
+        }
+
+    td,
+    th {
+        text-align: center;
+        background-color: #fff;
     }
+
+    th {
+        padding: 10px;
+    }
+
+    tr:first-child th {
+        font-size: 20px;
+        font-weight: bold;
+        border-left: none;
+        border-top: none;
+    }
+
+    td:last-child,
+    th:last-child {
+        border-right: none;
+    }
+
+    th {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: #26A69A;
+        color: #fff;
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+        font-weight: normal;
+    }
+
+        th .any {
+            font-size: 12px;
+            font-weight: normal;
+            display: block;
+            text-shadow: none;
+            color: #ffff;
+        }
+
+    tr:nth-child(2) th {
+        padding: 5px;
+    }
+
+    td {
+        padding: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        td > span {
+            color: #555;
+            padding: 10px;
+            display: block;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+
+        td:nth-child(even) > span {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        td:last-child > span,
+        td:nth-child(6) > span {
+            color: #26A69A;
+        }
+
+        td.avui > span {
+            font-weight: bold;
+            background-color: #26A69A;
+            color: #fff;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        td.fora > span {
+            opacity: 0.2;
+        }
+
+        td > span:hover {
+            background: #26A69A;
+            color: #fff;
+        }
+
+    .boto-next,
+    .boto-prev {
+        background: rgba(0, 0, 0, 0.1);
+        color: #fff;
+        font-family: inherit;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        text-shadow: inherit;
+        padding: 2px 10px 5px 10px;
+        line-height: 1px;
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
+        border-radius: 100%;
+        position: absolute;
+        top: 15px;
+    }
+
+    .boto-next {
+        right: 10px;
+        padding-left: 13px;
+    }
+
+    .boto-prev {
+        left: 10px;
+        padding-right: 13px;
+    }
+
+        .boto-next:hover,
+        .boto-prev:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    footer {
+        text-align: center;
+        color: #ddd;
+        font-weight: normal;
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+        font-size: 0.8em;
+        padding: 20px;
+    }
+
+        footer a,
+        footer a:link {
+            color: #fff;
+            text-decoration: none;
+        }
 </style>
 <!-- Main navigation -->
 <div class="sidebar-category sidebar-category-visible">
@@ -143,7 +280,14 @@
             <li class="active"><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
             <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
             <li><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i> <span>URLs</span></a></li>
-            <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed News</span></a></li>
+            <li>
+                <a href="{% url 'adm_interface:document' %}">
+                    <i class="icon-file-css"></i> <span>
+                        Processed
+                        News
+                    </span>
+                </a>
+            </li>
             <!-- /main -->
 
 
@@ -151,8 +295,8 @@
     </div>
 </div>
 <!-- /main navigation -->
-                </div>
-            </div>
+</div>
+</div>
 
 <!-- /main sidebar -->
 <!-- Main content -->
@@ -177,64 +321,50 @@
     <!-- /page header -->
     <!-- Content area -->
     <!-- /dashboard content -->
+    <!------------------------ Dashboard panel boxes --------------------->
     <div class="main-part">
         <div class="cpanel">
             <div class="icon-part">
 
                 <!-- <large>No Of Users</large> -->
-                <i class="fa fa-user-circle"></i>
-                <h3> Visitors</h3>
-                <br>
-
-
+                <i class="fa fa-link"></i>
+                <h5> No of domains</h5>
+                <h1 style="font-size:35px ;">03</h1>
             </div>
-            <div class="card-content-part">
-                <a href="#">#2344</a>
-            </div>
+
         </div>
         <div class="cpanel ">
             <div class="icon-part">
                 <i class="fa fa-file-text-o"></i>
 
-                <h3>No Of News </h3>
-
-                <br>
-            </div>
-            <div class="card-content-part">
-                <a href="#">#122 </a>
+                <h5>No Of domain URLs </h5>
+                <h1 style="font-size:35px ;">23</h1>
             </div>
         </div>
         <div class="cpanel">
             <div class="icon-part">
-                <i class="fa fa-refresh"></i>
+                <i class="fa fa-newspaper-o"></i>
 
-                <h3>Total News</h3>
-                <br>
-            </div>
-            <div class="card-content-part">
-                <a href="#">#3430 </a>
+                <h5>No of article URLs</h5>
+                <h1 style="font-size:35px ;">559</h1>
             </div>
         </div>
 
-        <br>
-        <br>
-        <!--pie chart-->
-
-        <div class="clearfix">
-            <div class="img-container">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-                <body>
+        <!-------------pie chart------------>
+        <div class="outer-container">
+            <div class="clearfix">
+                <div class="img-container">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
                     <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
 
                     <script>
-                        var xValues = ["Technology", "Sports", "Entertainment", "whether"];
-                        var yValues = [55, 49, 43, 24];
+                        var xValues = ["Technology", "Sports", "Entertainment"];
+                        var yValues = [55, 49, 43];
                         var barColors = [
                             "#89B9DC",
                             "#82E9DB",
-                            "#BD82E9",
-                            "#D3EB7B"
+                            "#BD82E9"
                         ];
 
                         new Chart("myChart", {
@@ -256,111 +386,181 @@
 
 
                     </script>
-
+                </div>
             </div>
-            <!--calendar-->
-            <div class="img-container1">
-                <h1 align="center" style="color: dark blue;">
-                    May 2022
-                </h1>
-
-
-                <table bgcolor="lightgrey" align="center"
-                       cellspacing="50" cellpadding="50" width="300px" height="170px">
-                    <caption align="top">
-                    </caption>
-
-                    <thead>
-                        <tr>
-                            <th style="color: white; background: #42596D;">
-                                Sun
-                            </th>
-                            <th style="color: white; background: #42596D;">
-                                Mon
-                            </th>
-                            <th style="color: white; background: #42596D;">
-                                Tue
-                            </th>
-                            <th style="color: white; background: #42596D;">
-                                Wed
-                            </th>
-                            <th style="color: white; background: #42596D;">
-                                Thu
-                            </th>
-                            <th style="color: white; background: #42596D;">
-                                Fri
-                            </th>
-                            <th style="color: white; background: #42596D;">
-                                Sat
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>1</td>
-                            <td>2</td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                            <td>15</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <td>17</td>
-                            <td>18</td>
-                            <td>19</td>
-                            <td>20</td>
-                            <td>21</td>
-                            <td>22</td>
-                            <td>23</td>
-                        </tr>
-                        <tr>
-                            <td>24</td>
-                            <td>25</td>
-                            <td>26</td>
-                            <td>27</td>
-                            <td>28</td>
-                            <td>29</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>31</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!----------------- Calendar -------------->
+            <div class="wrapper">
+                <div id="calendari"></div>
+                <footer><a href="http://boudra.me/"></a></footer>
             </div>
-            <!--calendar-->
+            <script>
+                var mesos = [
+                    'January',
+                    'February',
+                    'Marh',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'Octuber',
+                    'November',
+                    'Desember'
+                ];
+
+                var dies = [
+                    'Sunday',
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday'
+                ];
+
+                var dies_abr = [
+                    'Sun',
+                    'Mon',
+                    'Tue',
+                    'Wed',
+                    'Thur',
+                    'Fri',
+                    'Sat'
+                ];
+
+                Number.prototype.pad = function (num) {
+                    var str = '';
+                    for (var i = 0; i < (num - this.toString().length); i++)
+                        str += '0';
+                    return str += this.toString();
+                }
+
+                function calendari(widget, data) {
+
+                    var original = widget.getElementsByClassName('actiu')[0];
+
+                    if (typeof original === 'undefined') {
+                        original = document.createElement('table');
+                        original.setAttribute('data-actual',
+                            data.getFullYear() + '/' +
+                            data.getMonth().pad(2) + '/' +
+                            data.getDate().pad(2))
+                        widget.appendChild(original);
+                    }
+
+                    var diff = data - new Date(original.getAttribute('data-actual'));
+
+                    diff = new Date(diff).getMonth();
+
+                    var e = document.createElement('table');
+
+                    e.className = diff === 0 ? 'amagat-esquerra' : 'amagat-dreta';
+                    e.innerHTML = '';
+
+                    widget.appendChild(e);
+
+                    e.setAttribute('data-actual',
+                        data.getFullYear() + '/' +
+                        data.getMonth().pad(2) + '/' +
+                        data.getDate().pad(2))
+
+                    var fila = document.createElement('tr');
+                    var titol = document.createElement('th');
+                    titol.setAttribute('colspan', 7);
+
+                    var boto_prev = document.createElement('button');
+                    boto_prev.className = 'boto-prev';
+                    boto_prev.innerHTML = '&#9666;';
+
+                    var boto_next = document.createElement('button');
+                    boto_next.className = 'boto-next';
+                    boto_next.innerHTML = '&#9656;';
+
+                    titol.appendChild(boto_prev);
+                    titol.appendChild(document.createElement('span')).innerHTML =
+                        mesos[data.getMonth()] + '<span class="any">' + data.getFullYear() + '</span>';
+
+                    titol.appendChild(boto_next);
+
+                    boto_prev.onclick = function () {
+                        data.setMonth(data.getMonth() - 1);
+                        calendari(widget, data);
+                    };
+
+                    boto_next.onclick = function () {
+                        data.setMonth(data.getMonth() + 1);
+                        calendari(widget, data);
+                    };
+
+                    fila.appendChild(titol);
+                    e.appendChild(fila);
+
+                    fila = document.createElement('tr');
+
+                    for (var i = 1; i < 7; i++) {
+                        fila.innerHTML += '<th>' + dies_abr[i] + '</th>';
+                    }
+
+                    fila.innerHTML += '<th>' + dies_abr[0] + '</th>';
+                    e.appendChild(fila);
+                    var inici_mes =
+                        new Date(data.getFullYear(), data.getMonth(), -1).getDay();
+
+                    var actual = new Date(data.getFullYear(),
+                        data.getMonth(),
+                        -inici_mes);
+
+                    for (var s = 0; s < 6; s++) {
+                        var fila = document.createElement('tr');
+
+                        for (var d = 1; d < 8; d++) {
+                            var cela = document.createElement('td');
+                            var span = document.createElement('span');
+
+                            cela.appendChild(span);
+
+                            span.innerHTML = actual.getDate();
+
+                            if (actual.getMonth() !== data.getMonth())
+                                cela.className = 'fora';
+
+                            /* Si es avui el decorem */
+                            if (data.getDate() == actual.getDate() &&
+                                data.getMonth() == actual.getMonth())
+                                cela.className = 'avui';
+
+                            actual.setDate(actual.getDate() + 1);
+                            fila.appendChild(cela);
+                        }
+
+                        e.appendChild(fila);
+                    }
+
+                    setTimeout(function () {
+                        e.className = 'actiu';
+                        original.className +=
+                            diff === 0 ? ' amagat-dreta' : ' amagat-esquerra';
+                    }, 20);
+
+                    original.className = 'inactiu';
+
+                    setTimeout(function () {
+                        var inactius = document.getElementsByClassName('inactiu');
+                        for (var i = 0; i < inactius.length; i++)
+                            widget.removeChild(inactius[i]);
+                    }, 1000);
+
+                }
+
+                calendari(document.getElementById('calendari'), new Date());
+
+            </script>
 
         </div>
-        <hr><hr>
-        <br /><br />
-
     </div>
+    <br>
+    <br>
 
-        {% endblock %}
+    {% endblock %}
+
