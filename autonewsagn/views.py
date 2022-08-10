@@ -51,7 +51,7 @@ def sports(request):
     s_lst = ''.join(lst)
 
     output = gTTS(text = s_lst, lang = language, slow = False)
-    #output.save("opt_sprt.mp3")
+    #output.save(r'C:\Users\Khawaja Masood Ahmed\Desktop\UIT\FYP\static\opt_sprt.mp3')
 
     return render(request, 'sports.html', {'sprt_list':sprt_list, 'output':output})
 
