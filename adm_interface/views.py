@@ -6,6 +6,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
+import re
+from django.contrib import auth
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -24,15 +26,25 @@ def loginPage(request):
             login(request, user)
             return render(request, 'main.html')
         else:
-            messages.info(request, "Username OR Password is incorrect")
+            messages.error(request, "Username OR Password is Incorrect")
             return render(request,'login.html', {})
 
     return render(request, 'login.html')
 
-@login_required(login_url = '')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/adm/')
+
+
+
+@login_required(login_url='/adm/')
 def main(request):
     return render(request, 'main.html')
 
+
+
+@login_required(login_url='/adm/')
 def domain(request):
     if request.method == 'GET':
          form = DomainForm()
@@ -43,18 +55,25 @@ def domain(request):
     dom_list = Category.objects.all()
     return render(request, 'domain.html', {'form':form, 'domain_list':dom_list })
 
-       
+
+
+@login_required(login_url='/adm/')       
 def deletedom(request, id):
     dom_obj = Category.objects.get(id=id)
     dom_obj.delete()
     return redirect("/adm/domain")    
     
-   
-def document(request):
 
+
+
+@login_required(login_url='/adm/')   
+def document(request):
     doc_list = ProcesssedScrapeData.objects.all() 
     return render(request, 'document.html', {'doc_list':doc_list})
 
+
+
+@login_required(login_url='/adm/')
 def url(request):
     if request.method == 'GET':
         form = URLform()
@@ -67,6 +86,7 @@ def url(request):
     return render(request, 'url.html', {'form':form, 'urls_list':url_list})
  
 
+@login_required
 def updateurl(request,id):
     if request.method == 'GET':
         upd_url = DomainUrl.objects.get(pk=id)
@@ -82,6 +102,7 @@ def updateurl(request,id):
     return render(request, 'updateurl.html', {'form':form, 'urls_list':url_list})
 
 
+@login_required(login_url='/adm/')
 def deleteurl(request, id):
     url_obj = DomainUrl.objects.get(id=id)
     url_obj.delete()
@@ -100,6 +121,8 @@ def disableurl(request,id):
  
 
 
+
+@login_required(login_url='/adm/')
 def config(request, id):
      url_obj = DomainUrl.objects.get(id=id)
      txtform = TextConfrForm()
@@ -129,7 +152,7 @@ def config(request, id):
 
             options = Options()
             options.headless = True
-            s = Service("F:/Program Files (x86)/chromedriver.exe")
+            s = Service("C:\Program Files (x86)\chromedriver.exe")
             driver = webdriver.Chrome(service=s, options=options)
             #print("shit shhit shi",url)
             driver.get(url)
@@ -148,7 +171,7 @@ def config(request, id):
                     content = scrp.contents
                     for grab in content:
                         if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
-                            print("nahh")
+                            #print("nahh")
                             pass
                         else:
                             print(grab.string)
@@ -160,11 +183,13 @@ def config(request, id):
                     content = scrp.contents
                     for grab in content:
                         if str(grab.string) == "None" or str(grab.string) is None or str(grab.string) == "\n":
-                            print("nahh2")
+                            #print("nahh2")
                             pass
                         else:
                             print(grab.string)
                             x = grab.string
+
+
 
      if request.method == 'POST' and 'img_config' in request.POST:
         imgform = ImgConfrForm(request.POST)
@@ -186,26 +211,30 @@ def config(request, id):
 
             options = Options()
             options.headless = True
-            s = Service("F:/Program Files (x86)/chromedriver.exe")
+            s = Service("C:\Program Files (x86)\chromedriver.exe")
             driver = webdriver.Chrome(service=s, options=options)
             driver.get(url)
             time.sleep(5)
             doc = BeautifulSoup(driver.page_source, "html.parser")
             # driver.quit()
 
-            if scrp_type == 'Scrape by ID':
-                li = doc.find(tag_nm, {'id': att_nm})
-                for descendant in li.descendants:
-                    if descendant.name == "img":
-                        print(descendant['src'])
-                        x = descendant['src']
+            try:
+                if scrp_type == 'Scrape by ID':
+                    li = doc.find(tag_nm, {'id': att_nm})
+                    for descendant in li.descendants:
+                        if descendant.name == "img":
+                            #print(descendant['src'])
+                            x = descendant['src']
                         
-            else:
-                li = doc.find(tag_nm, {'class': att_nm})
-                for descendant in li.descendants:
-                    if descendant.name == "img":
-                        print(descendant['src'])
-                        x = descendant['src']
+                else:
+                    li = doc.find(tag_nm, {'class': att_nm})
+                    for descendant in li.descendants:
+                        if descendant.name == "img":
+                            print(descendant['src'])
+                            x = descendant['src']
+
+            except:
+                return "None"
            
 
      if request.method == 'POST' and 'date_config' in request.POST:
@@ -228,17 +257,23 @@ def config(request, id):
 
             options = Options()
             options.headless = True
-            s = Service("F:/Program Files (x86)/chromedriver.exe")
+            s = Service("C:\Program Files (x86)\chromedriver.exe")
             driver = webdriver.Chrome(service=s, options=options)
             driver.get(url)
             time.sleep(5)
             doc = BeautifulSoup(driver.page_source, "html.parser")
 
-            if scrp_type == 'Scrape by ID':
-                time_date_publish = doc.find_all(tag_nm, {'class': att_nm})
-                print(time_date_publish[0].text)
-            else:
-                print("None")
+            try:
+                if scrp_type == 'Scrape by ID':
+                    time_date_publish = doc.find_all(tag_nm, {'id': att_nm})
+                    x = time_date_publish[0].text
+                else:
+                    time_date_publish = doc.find_all(tag_nm, {'class': att_nm})
+                    x = time_date_publish[0].text
+            except:
+                return "None"
+          
+                
 
 
 
@@ -266,29 +301,34 @@ def config(request, id):
 
             options = Options()
             options.headless = True
-            s = Service("F:/Program Files (x86)/chromedriver.exe")
+            s = Service("C:\Program Files (x86)\chromedriver.exe")
             driver = webdriver.Chrome(service=s, options=options)
             driver.get(url)
             time.sleep(5)
             doc = BeautifulSoup(driver.page_source, "html.parser")
 
             article_headline = ""
-            if scrp_type == 'Scrape by ID':
-                article_topic_headline = doc.find(pt_tag_nm, {'id': att_nm})
-                for item in article_topic_headline.find(cd_tag_nm):
-                    if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
-                        pass
-                    else:
-                        article_headline += str(item.string)
-                        x = item.string
-            else:
-                article_topic_headline = doc.find(pt_tag_nm, {'class': att_nm})
-                for item in article_topic_headline.find(cd_tag_nm):
-                    if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
-                       pass
-                    else:
-                       article_headline += str(item.string)
-                       x = item.string
+            try:
+                if scrp_type == 'Scrape by ID':
+                    article_topic_headline = doc.find(pt_tag_nm, {'id': att_nm})
+                    for item in article_topic_headline.find(cd_tag_nm):
+                        if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
+                            pass
+                        else:
+                            article_headline += str(item.string)
+                            x = item.string
+                    return x      
+                else:
+                    article_topic_headline = doc.find(pt_tag_nm, {'class': att_nm})
+                    for item in article_topic_headline.find(cd_tag_nm):
+                        if str(item.string) is None or str(item.string) == "None" or str(item.string) == "\n":
+                           pass
+                        else:
+                           article_headline += str(item.string)
+                           x = item.string
+                    return x
+            except:
+                return None
 
 
      if request.method == 'POST' and 'url_config' in request.POST:
@@ -310,10 +350,51 @@ def config(request, id):
             att_nm = urlform.cleaned_data['attribute_name']
             scrp_type = urlform.cleaned_data['scrape_type']
 
-            
+            options = Options()
+            options.headless = True
+            s = Service("C:\Program Files (x86)\chromedriver.exe")
+            driver = webdriver.Chrome(service=s, options=options)
+            driver.get(url)
+            time.sleep(5)
+            doc = BeautifulSoup(driver.page_source, "html.parser")
+
+            url_domain_id = re.search('/(.+?)/', url).group(0)
+            url_id_extract = "https:" + url_domain_id
 
 
+            try:
+                 if scrp_type == 'Scrape by ID':
+                    article_url_extract = doc.find_all(tag_nm, {'id': att_nm})
+                    for tag in article_url_extract:
+                        for item in tag.find_all('a', attrs={'href': re.compile("^https://")}):
+                            try:
+                                condition_true_url = (re.search(url_id_extract, item.get('href')).group() == url_id_extract)
+                                article_url_extract = re.search(url_id_extract, item.get('href')).group()
+                                # print(article_url_extract)
+                                if (len(item.get('href')) - len(article_url_extract)) > 50:
+                                    x = item.get('href')
+                                else:
+                                    pass
+                            except:
+                                pass
+                 else:
+                    article_url_extract = doc.find_all(tag_nm, {'class': att_nm})
+                    for tag in article_url_extract:
+                        # print(tag)
+                        for item in tag.find_all('a', attrs={'href': re.compile("^https://")}):
+                            try:
+                                condition_true_url = (re.search(url_id_extract, item.get('href')).group() == url_id_extract)
+                                article_url_extract = re.search(url_id_extract, item.get('href')).group()
+                                # print(article_url_extract)
+                                if (len(item.get('href')) - len(article_url_extract)) > 50:
+                                    x = item.get('href')
+                                else:
+                                    pass
+                            except:
+                                pass
 
+            except:
+                return "None"
 
      config_list = ArticleTextConfiguration.objects.filter(domain_url=url_obj)
      return render(request, 'config.html', {'txtform': txtform, 'imgform': imgform, 'dateform': dateform, 'headlineform': headlineform, 'urlform': urlform, 'config_list':config_list, 'chk_config':x})

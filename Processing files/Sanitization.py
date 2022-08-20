@@ -15,7 +15,7 @@ class Sanitization:
     def summarise(self):
         self.t_date = self.t_date.strftime("%d/%m/%Y")
 
-        connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345", database="automated_news_broadcast")
+        connection = pymysql.connect(host="localhost", user="root", passwd="newsagn", database="automated_news_broadcast")
         cursor = connection.cursor()
         cursor.execute("select article_id, unprocessed_news_topic, unprocessed_news_description, image_href, scrape_date_stamp,"
                        " scrape_time_stamp from unprocesssed_scrape_data where (unprocessed_news_topic != ' ' and unprocessed_news_topic != 'None' and unprocessed_news_description != ' ' and unprocessed_news_description != 'None') and scrape_date_stamp != '%s'" %self.t_date)
@@ -60,7 +60,7 @@ class Sanitization:
                 summary = heapq.nlargest(len_sen_lst, sentence_prob, key=sentence_prob.get)
                 summ = " ".join(summary)
 
-                connection = pymysql.connect(host="localhost", user="root", passwd="q1w2e3rty12345",
+                connection = pymysql.connect(host="localhost", user="root", passwd="newsagn",
                                              database="automated_news_broadcast")
                 cursor = connection.cursor()
                 cursor.execute("Insert into processsed_scrape_data (article_id,processed_news_topic,processed_news_description,image_href,scrape_date_stamp,scrape_time_stamp) "
