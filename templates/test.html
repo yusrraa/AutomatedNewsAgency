@@ -228,31 +228,31 @@
                     <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
 
                     <script>
-var xValues = ["Technology", "Sports", "Entertainment", "whether"];
-var yValues = [55, 49, 43, 24];
-var barColors = [
-  "#89B9DC",
-  "#82E9DB",
-  "#BD82E9",
-  "#D3EB7B"
-];
+                        var xValues = ["Technology", "Sports", "Entertainment", "whether"];
+                        var yValues = [55, 49, 43, 24];
+                        var barColors = [
+                            "#89B9DC",
+                            "#82E9DB",
+                            "#BD82E9",
+                            "#D3EB7B"
+                        ];
 
-new Chart("myChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Domain Wise Data "
-    }
-  }
-});
+                        new Chart("myChart", {
+                            type: "pie",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: "Domain Wise Data "
+                                }
+                            }
+                        });
 
 
                     </script>
@@ -359,3 +359,8 @@ new Chart("myChart", {
 
         <hr><hr>
         {% endblock %}
+
+
+        <audio autoplay class="fc-media" style="width: 100%;">
+            <source src="{% static 'opt_sprt.mp3' %}" type="audio/mp3" />
+        </audio>

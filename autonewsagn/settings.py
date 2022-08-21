@@ -1,3 +1,5 @@
+import os 
+
 """
 Django settings for autonewsagn project.
 
@@ -87,11 +89,11 @@ WSGI_APPLICATION = 'autonewsagn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'automated_news_broadcast',
+        'NAME': 'newsagn',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'q1w2e3rty12345',
+        'PASSWORD': 'newsagn',
     }
 }
 
@@ -141,4 +143,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 

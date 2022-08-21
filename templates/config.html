@@ -15,10 +15,27 @@
             <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
             <li><a href="{% url 'adm_interface:main' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
             <li><a href="{% url 'adm_interface:domain' %}"><i class="icon-popout"></i> <span>Domains</span></a></li>
+<<<<<<< HEAD
             <li class="active "><a href="{% url 'adm_interface:url' %}"><i class="icon-select2"></i>
                     <span>URLs</span></a></li>
             <li><a href="{% url 'adm_interface:document' %}"><i class="icon-file-css"></i> <span>Processed
                         News</span></a></li>
+=======
+            <li class="active ">
+                <a href="{% url 'adm_interface:url' %}">
+                    <i class="icon-select2"></i>
+                    <span>URLs</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'adm_interface:document' %}">
+                    <i class="icon-file-css"></i> <span>
+                        Processed
+                        News
+                    </span>
+                </a>
+            </li>
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
             <!-- /main -->
 
 
@@ -56,6 +73,8 @@
         <!-- Configure page content -->
         <div class="row">
             <div class="col">
+
+                <!--   Text Configuration    -->
                 <h3 style="text-align:center">&nbsp;<strong>Text Configuration</strong></h3>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
@@ -71,9 +90,18 @@
                         {{txtform.scrape_type|as_crispy_field}}
                         <span>
                             <button class="btn btn-info" name="check_config_text" data-toggle="modal"
+<<<<<<< HEAD
                                 data-target="#modal_confg_text" style="">Check Configuration</button>
                             <button type="submit" class="btn btn-success" name="add_config" style=""><i
                                     class="icon-add position-right"></i> Add</button>
+=======
+                                    data-target="#modal_confg_text" style="">
+                                Check Configuration
+                            </button>
+                            <button type="submit" class="btn btn-success" name="add_config" style="">
+                                <i class="icon-add position-right"></i> Add
+                            </button>
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                         </span>
                         <!-- Text modal -->
                         <div id="modal_confg_text" class="modal">
@@ -81,8 +109,15 @@
                                 <div class="modal-content" style="padding-right:2%">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+<<<<<<< HEAD
                                         <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Text
                                             Configuration</h5>
+=======
+                                        <h5 class="modal-title">
+                                            <i class="icon-select2"></i> &nbsp;Check Text
+                                            Configuration
+                                        </h5>
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                                     </div>
                                     <br />
 
@@ -99,6 +134,8 @@
                         <!-- /text modal -->
                     </div>
                 </form>
+                <!--   /Text Configuration    -->
+
 
                 <br /><br /><br />
                 <div class="col align-self-center">
@@ -141,6 +178,11 @@
                 </div>
                 <br />
                 <hr>
+<<<<<<< HEAD
+=======
+
+                <!--   URL Configuration    -->
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                 <h4 style="text-align:center">&nbsp;<strong>Article URL Configuration</strong></h4>
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
@@ -156,13 +198,51 @@
                         {{urlform.scrape_type|as_crispy_field}}
                         <span>
                             <button class="btn btn-info" name="check_config_url" style="">Check Configuration</button>
+<<<<<<< HEAD
                             <button type="submit" class="btn btn-success" name="url_config" style=""><i
                                     class="icon-add position-right"></i> Add</button>
                         </span>
+=======
+                            <button type="submit" class="btn btn-success" name="url_config" style="">
+                                <i class="icon-add position-right"></i> Add
+                            </button>
+                        </span>
+
+                        <!-- URL modal -->
+                        <div id="modal_confg_url" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check URL Configuration</h5>
+                                    </div>
+                                    <br />
+
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /URL modal -->
+
+
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                     </div>
                 </form>
+                <!--   /URL Configuration    -->
+
                 <br /><br /><br /><br />
                 <hr>
+<<<<<<< HEAD
+=======
+
+                <!--   Headline Configuration   -->
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
                     <div class="row">
@@ -181,17 +261,58 @@
                     <div class="row" style="text-align:center;">
                         {{headlineform.scrape_type|as_crispy_field}}
                         <span>
+<<<<<<< HEAD
                             <button class="btn btn-info" name="check_config_headline" style="">Check
                                 Configuration</button>
                             <button type="submit" class="btn btn-success" name="headline_config"><i
                                     class="icon-add position-right"></i> Add</button>
                         </span>
 
+=======
+                            <button class="btn btn-info" name="check_config_headline" style="">
+                                Check
+                                Configuration
+                            </button>
+                            <button type="submit" class="btn btn-success" name="headline_config">
+                                <i class="icon-add position-right"></i> Add
+                            </button>
+                        </span>
+
+                        <!-- Headline modal -->
+                        <div id="modal_confg_headline" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="padding-right:2%">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Topic Headline Configuration</h5>
+                                    </div>
+                                    <br />
+
+                                    <div class="modal-body">
+                                        {{chk_config}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /headline modal -->
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
 
                     </div>
                 </form>
+                <!--  / Headline Configuration   -->
+
+
                 <br /><br /><br /><br />
                 <hr>
+<<<<<<< HEAD
+=======
+
+                <!--   Image Configuration   -->
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
 
@@ -208,9 +329,18 @@
                         {{imgform.scrape_type|as_crispy_field}}
                         <span>
                             <button type="submit" class="btn btn-info" name="check_config_img" data-toggle="modal"
+<<<<<<< HEAD
                                 data-target="#modal_confg_img" style="">Check Configuration</button>
                             <button type="submit" class="btn btn-success" name="img_config" style=""><i
                                     class="icon-add position-right"></i> Add</button>
+=======
+                                    data-target="#modal_confg_img" style="">
+                                Check Configuration
+                            </button>
+                            <button type="submit" class="btn btn-success" name="img_config" style="">
+                                <i class="icon-add position-right"></i> Add
+                            </button>
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                         </span>
 
 
@@ -220,8 +350,15 @@
                                 <div class="modal-content" style="padding-right:2%">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+<<<<<<< HEAD
                                         <h5 class="modal-title"><i class="icon-select2"></i> &nbsp;Check Image
                                             Configuration</h5>
+=======
+                                        <h5 class="modal-title">
+                                            <i class="icon-select2"></i> &nbsp;Check Image
+                                            Configuration
+                                        </h5>
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                                     </div>
                                     <br />
 
@@ -240,8 +377,15 @@
 
                     </div>
                 </form>
+                <!-- /  Image Configuration   -->
+
                 <br /><br /><br /><br />
                 <hr>
+<<<<<<< HEAD
+=======
+
+                <!--   Date Configuration   -->
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                 <form action="" method="POST" autocomplete="off" style="margin-left:10%; margin-right:10%">
                     {% csrf_token %}
                     <br />
@@ -259,11 +403,22 @@
                         {{dateform.scrape_type|as_crispy_field}}
                         <span>
                             <button class="btn btn-info" name="check_config_date" data-toggle="modal"
+<<<<<<< HEAD
                                 data-target="#modal_confg_date" style="">Check Configuration</button>
                             <button type="submit" class="btn btn-success" name="date_config" style=""><i
                                     class="icon-add position-right"></i> Add</button>
                         </span>
                         <!-- Text modal -->
+=======
+                                    data-target="#modal_confg_date" style="">
+                                Check Configuration
+                            </button>
+                            <button type="submit" class="btn btn-success" name="date_config" style="">
+                                <i class="icon-add position-right"></i> Add
+                            </button>
+                        </span>
+                        <!-- Date modal -->
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f
                         <div id="modal_confg_date" class="modal">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="padding-right:2%">
@@ -284,12 +439,18 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /text modal -->
+                        <!-- /Date modal -->
                     </div>
                 </form>
+
+                <!--   /Date Configuration   -->
             </div>
         </div>
         <br>
 
 
+<<<<<<< HEAD
         {% endblock %}
+=======
+        {% endblock %}
+>>>>>>> 0ad56a932de63c9a342e8598f6bc746d151db83f

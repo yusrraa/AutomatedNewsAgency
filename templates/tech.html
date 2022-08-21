@@ -26,23 +26,36 @@
 <div class="main_container">
     <div class="inner_container">
         <div id="box1">
-            <video loop muted controls autoplay width="100%" height="auto" style="pointer-events:none;">
+            <video loop muted autoplay width="100%" height="auto" style="pointer-events:none;">
                     <source src="{% static 'reporter_video.mp4' %}" type="video/mp4">
                 </video>
         </div>
         <div id="box2">
             <marquee direction="up" scrollamount="2">
-                every time an iphone is about to launch, leaks come up with such rumours. due to the samsung and apple competition, leaks often spread false rumours. the rumours about apple pencil have been in the air for quite some time. this is also because iphone has four models only, meanwhile, samsung has multiple ranges like the galaxy a, j, s, and z. each of these has many phones which can be alternatives if one does not want a stylus. however, none of these features was seen in any of the phones. these rumours had especially intensified when iphone 11 was launched. there have been rumours about iphone flip as well. maybe with time the stylus will become more popular and become part of the iphone family.
+
+                {% for x in tech_list %}
+                {% for news in x %}
+                {{news.processed_news_description}}
+                <br /><br /><br />
+                {% endfor %}
+                {% endfor %}
+
             </marquee>
         </div>
     </div>
     <div>
-        <marquee direction="left" class="marquee" style="width:100%;">
-            Will iPhone 14 be first Apple Pencil iPhone?
+        <marquee direction="left" class="marquee" style="width:100%;" scrollamount="2">
+
+            {% for x in tech_list %}
+            {% for news in x %}
+            {{news.processed_news_topic}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% endfor %}
+            {% endfor %}
+
         </marquee>
+        </div>
     </div>
-</div>
-<br>
-<br>
-<!---------------------------------- News content  --------------------------->
-   {% endblock %}
+    <br>
+    <br>
+    <!---------------------------------- News content  --------------------------->
+            {% endblock %}
